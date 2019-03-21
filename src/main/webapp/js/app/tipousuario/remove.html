@@ -1,0 +1,35 @@
+<header-component></header-component>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
+                    <form name="userForm">
+                        <h1><i class="fas fa-users"></i> Eliminar Tipo de Usuario</h1>
+                        <hr>
+                        <h5>ID</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataTipoUsuarios.id}}" disabled>                
+
+                        <h5 style="margin-top: 20px">Descripción</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataTipoUsuarios.desc}}" disabled> 
+                        <br><p><b>¿Quiere borrar este registro?</p>
+                    </form>
+                    <a href="javascript:window.history.back()"> 
+                        <button type="button" class="btn btn-primary btn-xs">
+                            <i class="fa fa-reply"></i>  <b>Volver</b>
+                        </button></a>
+                    <button ng-click="borrar()" class="btn btn-danger btn-xs" ng-show="boton"><b>Borrar</b></button> 
+                    <div style="margin-top: 10px" class="alert alert-success" ng-model="resultado" ng-show="mensaje">
+                        Datos borrados correctamente.
+                    </div>
+                    <div style="margin-top: 10px" class="alert alert-danger" ng-show="mensajeError">
+                        Ocurrion un error al borrar.
+                    </div>
+                </main>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

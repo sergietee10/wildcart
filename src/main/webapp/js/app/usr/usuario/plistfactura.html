@@ -1,0 +1,116 @@
+<header-component></header-component>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" style="min-height: 100%; min-width: 97%; border: 1px solid lightgrey;border-radius: 10px; margin: 75px auto 80px auto; background-color: lightgray; padding-bottom: 30px">
+                <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1><i class="fas fa-file-invoice-dollar"></i>   Facturas</h1>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-3">
+                        <nav aria-label="paginacion">
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 1" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Anterior</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 2" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/1/{{orderURLCliente}}">1</a>
+                                </li>
+                                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                    <a class="page-link" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">{{totalPages}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
+                                </li>
+                                <li>
+                                    <a style="margin-left: 10px" href="javascript:window.history.back()"> 
+                                        <button type="button" class="btn btn-primary btn-xs">
+                                            <i class="fa fa-reply"></i>  <b>Volver</b>
+                                        </button></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-hover table-dark">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" scope="col">Id</th>
+                                    <th class="text-center" scope="col">Fecha</th>
+                                    <th class="text-center" scope="col">IVA</th>
+                                    <!--<th class="text-center" scope="col">Usuario</th>-->
+                                    <th class="text-center" scope="col">Acciones</th>
+                                    <th class="text-center" scope="col">Lineas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="fila in ajaxDataUsuarios">
+                                    <th class="text-center">{{fila.id}}</th>
+                                    <td class="text-center">{{fila.fecha| date:'d-M-y'}}</td>
+                                    <td class="text-center">{{fila.iva}}</td>
+
+                                    <td class="text-center">
+                                        <a href="usr/factura/plistlinea/{{fila.id}}">
+                                            <button type="button" class="btn btn-light btn-sm">
+                                                <i class="fas fa-align-justify"></i>
+                                            </button>
+                                        </a>
+                                        <button type="button" class="btn btn-light btn-sm" ng-click="descargarPDF(fila.id)">
+                                            <i class="fa fa-file-pdf"></i>
+                                        </button>
+                                    </td>
+                                    <td class="text-center"> {{fila.link_linea}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-3">
+                        <nav aria-label="paginacion">
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 1" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Anterior</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 2" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/1/{{orderURLCliente}}">1</a>
+                                </li>
+                                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                    <a class="page-link" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">{{totalPages}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages" href="usr/usuario/plistfactura/{{usuarioId}}/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
+                                </li>
+                                <li>
+                                    <a style="margin-left: 10px" href="javascript:window.history.back()"> 
+                                        <button type="button" class="btn btn-primary btn-xs">
+                                            <i class="fa fa-reply"></i>  <b>Volver</b>
+                                        </button></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

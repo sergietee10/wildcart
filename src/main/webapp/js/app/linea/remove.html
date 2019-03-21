@@ -1,0 +1,30 @@
+<header-component></header-component>
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-6" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+        <form name="userForm" style="margin-top: 20px; margin-left: 20px; margin-bottom: 10px">
+        <h1><i class="fas fa-file-invoice-dollar"></i>  Eliminar Linea</h1>
+            <hr>
+                <h5>ID</h5>
+                <input type="text" class="form-control" value="{{ajaxDatoTipoUsuario.id}}" disabled>       
+                <h5 style="margin-top: 20px">Producto</h5>
+                <input type="text" class="form-control" value="{{ajaxDatoTipoUsuario.obj_Producto.desc}}" disabled>
+                <h5 style="margin-top: 20px">Cantidad</h5>
+                <input type="text" class="form-control" value="{{ajaxDatoTipoUsuario.cantidad}}" disabled> 
+                
+                    <br><h5>¿Seguro que quieres borrar el registro?</h5>
+                    <a href="javascript:window.history.back()"> 
+                        <button type="button" class="btn btn-primary btn-xs">
+                        <i class="fa fa-reply"></i>  <b>Volver</b>
+                    </button></a>
+                    <button ng-click="borrar()" class="btn btn-danger" ng-show="boton">Borrar</button> 
+                    <div class="alert alert-success" ng-model="resultado" ng-show="mensaje">
+        Datos borrados correctamente.
+    </div>    
+        </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

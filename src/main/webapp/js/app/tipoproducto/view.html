@@ -1,0 +1,26 @@
+<header-component></header-component>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+                <form name="userForm" style="margin-top: 10px; margin-left: 20px; margin-bottom: 30px">
+                    <h1><i class="fas fa-box-open"></i>  Tipo de Producto</h1>
+                    <hr>
+                    <h5>ID Tipo de Usuario</h5>
+                    <input type="text" class="form-control" value="{{ajaxDataTipoUsuarios.id}}" disabled>                
+
+                    <h5 style="margin-top: 20px">Descripción</h5>
+                    <input type="text" class="form-control" value="{{ajaxDataTipoUsuarios.desc}}" disabled> 
+                    <br>
+                    <a href="javascript:window.history.back()"> 
+                        <button type="button" class="btn btn-primary btn-xs">
+                            <i class="fa fa-reply"></i>  <b>Volver</b>
+                        </button></a>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

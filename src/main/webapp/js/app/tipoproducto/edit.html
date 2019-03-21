@@ -1,0 +1,36 @@
+<header-component></header-component>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
+                    <form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
+                        <h1><i class="fas fa-box-open"></i>   Editor de Tipo Producto</h1>
+                        <hr>
+                        <div class="form-group">
+                            <h5>ID</h5>
+                            <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoTipoUsuario.id" />
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.desc.$invalid && !userForm.desc.$pristine }">
+                            <h5>Descripción</h5>
+                            <input type="text" class="form-control" id="desc" name="desc" ng-model="ajaxDatoTipoUsuario.desc" ng-required="true"/>
+                            <div ng-show="!userForm.desc.$valid && !userForm.desc.$pristine" class="alert alert-danger" role="alert">
+                                Descripción obligatoria
+                            </div>
+                        </div>
+                    </form>
+                    <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
+                    <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>
+                    <div class="alert alert-success" ng-model="resultado" ng-show="mensaje">
+                        Datos actualizados correctamente.
+                    </div>
+                    <div class="alert alert-danger" ng-show="mensajeError">
+                        Datos erroneos.
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

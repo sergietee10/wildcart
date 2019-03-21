@@ -1,0 +1,108 @@
+<header-component></header-component>
+<div class="container-fluid">
+    <div class="container" style="min-height: 100%; min-width: 97%;">
+        <div class="row">
+            <div class="col-12" style="min-height: 100%; min-width: 97%; border: 1px solid lightgrey;border-radius: 10px; margin: 75px 0px 80px 0px; background-color: lightgray; padding-bottom: 30px">
+                <div style="padding-bottom: 20px" class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1><i class="fas fa-apple-alt"></i>  Productos</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group" style="width:400px;">
+                            <p class="mt-2" style="width:200px;"><b>Selecciona RPP: </b></p>
+                            <select class="form-control" ng-change="actulizar()" ng-model="rpp">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-3">
+                        <nav aria-label="paginacion" >
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 1" href="usr/producto/plist/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Anterior</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 2" href="usr/producto/plist/{{rpp}}/1/{{orderURLCliente}}">1</a>
+                                </li>
+                                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                    <a class="page-link" href="usr/producto/plist/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="usr/producto/plist/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">{{totalPages}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages" href="usr/producto/plist/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item" ng-repeat="fila in ajaxDataUsuarios track by $index">
+
+                        <a href="usr/producto/view/{{fila.id}}">
+                <div class="grid-contenido">
+                    <img ng-src="imagenes/{{fila.foto}}" style="width: 250px; height: 250px; margin-top: 20px">
+
+                            </div>
+
+                        </a>
+                        <div class="grid-contenido" style="margin-top: 15%; font-size: 20px">
+                            <p style="margin-top: 10px; color: black"><b>Nombre:</b> {{(fila.desc).toUpperCase()}}</p>
+                        </div>
+                        <div class="grid-contenido">
+                            <p style="font-size: 20px"><b>Precio:</b> <span style="color: red">{{(fila.precio).toFixed(2)}} €</span> </p>
+                        </div>
+                        <div class="grid-contenido" style="margin-top: 3px; font-size: 20px" ng-show="{{fila.existencias}}>0">
+                <strong>Quedan {{fila.existencias}} {{fila.desc}}</strong>
+            </div>
+                        <div class="grid-contenido" ng-show="{{fila.existencias}}> 0">
+                            <button class="btn btn-success" style="border-radius: 10px; font-family: sans-serif" ng-click="addProducto(fila.id)">
+                                <a><b>Añadir al carrito</b>
+                                    <i class="fas fa-shopping-cart" style="font-size: 30px;" >
+                                    </i>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-3">
+                        <nav aria-label="paginacion">
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 1" href="usr/producto/plist/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Anterior</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 2" href="usr/producto/plist/{{rpp}}/1/{{orderURLCliente}}">1</a>
+                                </li>
+                                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                    <a class="page-link" href="usr/producto/plist/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="usr/producto/plist/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">{{totalPages}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages" href="usr/producto/plist/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer class="footer" ng-include="'js/app/footer.html'"></footer>
