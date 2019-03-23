@@ -1,0 +1,52 @@
+<header-component></header-component>
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-9" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+            <form name="userForm" style="margin-top: 20px; margin-left: 20px; margin-bottom: 10px">
+                <h1><i class="fas fa-user"></i>  Eliminar Usuario</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-4">
+                        <label>
+                            <img style="width: 111%" src="../../../image/cliente.jpg" alt=""/>
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <h5>ID Usuario</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataUsuarios.id}}" disabled>
+                        <h5 style="margin-top: 20px">Nombre</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataUsuarios.nombre}}" disabled> 
+                        <h5 style="margin-top: 20px">Apellidos</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataUsuarios.ape1}} {{ajaxDataUsuarios.ape2}}" disabled>
+                    </div>
+                    <div class="col-4">
+                        <h5>DNI</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataUsuarios.dni}}" disabled>
+                        <h5 style="margin-top: 20px"><i class="fas fa-user"></i> Nombre de Usuario</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataUsuarios.login}}" disabled> 
+                        <h5 style="margin-top: 20px"><i class="fas fa-users"></i> Tipo de Usuario</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataUsuarios.obj_tipoUsuario.desc}}" disabled> 
+                    </div> 
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6" style="text-align: right">
+                        <h5>¿Seguro que quieres borrar el registro?</h5>
+                        <a href="javascript:window.history.back()"> 
+                            <button type="button" class="btn btn-primary btn-xs">
+                                <i class="fa fa-reply"></i>  <b>Volver</b>
+                            </button></a>
+                        <button ng-click="borrar()" class="btn btn-danger" ng-show="boton">Borrar</button> 
+                        <div class="alert alert-success" ng-model="resultado" ng-show="mensaje">
+                            Datos borrados correctamente.
+                        </div>    
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

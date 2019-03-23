@@ -1,0 +1,39 @@
+<header-component></header-component>
+<main  role="main" class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6" style="margin-top:150px; border: 3px solid #253034; border-radius: 10px; background-color: #ADC8D1">
+            <form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
+                <h3 style="text-align: center">Sign in</h3>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i>  Usuario</label>
+                    <input type="text" class="form-control" id="login" name="login" ng-model="login" ng-required="true" />
+                    <div ng-show="!userForm.login.$valid && !userForm.login.$pristine" class="alert alert-danger" role="alert">
+                        Usuario obligatorio
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-unlock"></i>  Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" ng-model="password" ng-required="true" />
+                    <div ng-show="!userForm.password.$valid && !userForm.password.$pristine" class="alert alert-danger" role="alert">
+                        Password obligatoria
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7"><a href="register"><button type="button" class="btn btn-danger btn-lg" style="right:inherit"><b>¡Resgitrate!</b></button></a></div>
+                    <div class="col-5">
+                        <button id="enviar" ng-click="validar()" type="submit" class="btn btn-primary btn-lg" ng-disabled="userForm.$invalid" style="right:inherit"><b>Enviar</b></button>
+                        <a href="/"> <button class="btn btn-warning btn-lg"><b style="color: white">Volver</b></button> </a>
+                    </div>
+                </div>
+            </form>
+            <div class="alert alert-success"ng-show="mensaje">
+                Usuario logueado.
+            </div>
+            <div class="alert alert-danger" ng-show="mensajeError">
+                Usuario erroneo.
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</main>

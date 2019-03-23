@@ -1,0 +1,48 @@
+<header-component></header-component>
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-9" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+            <form name="userForm" style="margin-top: 10px; margin-left: 20px; margin-bottom: 20px">
+                <h1><i class="fas fa-user"></i> Producto: {{ajaxDataProducto.desc}}</h1>
+                <hr>
+
+                <div class="row">
+                    <div class="col-4">
+                        <label>
+                            <img style="border-radius: 5px" ng-src="imagenes/{{ajaxDataProducto.foto}}" style="width: 250px; height: 250px; margin-top: 20px">
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <h5>ID Producto</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataProducto.id}}" disabled>      
+                        <h5 style="margin-top: 20px">Código</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataProducto.codigo}}" disabled> 
+                        <h5 style="margin-top: 20px">Descripción</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataProducto.desc}}" disabled> 
+                    </div>
+                    <div class="col-4">
+                        <h5>Existencias</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataProducto.existencias}}" disabled> 
+                        <h5 style="margin-top: 20px">Precio</h5>
+                        <input type="text" class="form-control" value="{{ajaxDataProducto.precio}}" disabled>  
+                        <a ng-if="isAdmin" href="tipoproducto/view/{{ajaxDataProducto.obj_tipoProducto.id}}"><h5 style="margin-top: 20px"><i class="fas fa-box-open"></i>  Tipo de Producto</h5>
+                            <input type="text" class="form-control" value="{{ajaxDataProducto.obj_tipoProducto.desc}}" disabled></a> 
+                    </div> 
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6" style="text-align: right">
+                        <a href="javascript:window.history.back()"> 
+                            <button type="button" class="btn btn-primary btn-xs">
+                                <i class="fa fa-reply"></i>  <b>Volver</b>
+                            </button></a>
+                    </div>
+                </div> 
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

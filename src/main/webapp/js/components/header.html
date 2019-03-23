@@ -1,0 +1,58 @@
+<!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/"><img src="../../image/icono3.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" ng-class="{'active': c.isActive('/home')}">
+                <a class="nav-link hvr-bob" href="home"><i class="fas fa-home"></i>  Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item" ng-show="c.isAdmin" ng-class="{'active': c.isActive('/tipousuario')}">
+                <a class="nav-link hvr-bob" href="tipousuario/plist"><i class="fas fa-users"></i>   Tipo de Usuario</a>
+            </li>
+            <li class="nav-item" ng-show="c.isAdmin" ng-class="{'active': c.isActive('/usuario')}">
+                <a class="nav-link hvr-bob" href="usuario/plist"><i class="fas fa-user"></i>  Usuario</a>
+            </li>
+            <li class="nav-item " ng-show="c.isAdmin" ng-class="{'active': c.isActive('/factura')}">
+                <a class="nav-link hvr-bob" href="factura/plist"><i class="fas fa-file-invoice-dollar"></i>  Factura</a>
+            </li>
+            <li class="nav-item " ng-show="c.ocultar && !c.isAdmin" ng-class="{'active': c.isActive('/factura')}">
+                <a class="nav-link hvr-bob" href="usr/usuario/plistfactura/{{c.idUsuariologeado}}"><i class="fas fa-file-invoice-dollar"></i> Facturas</a>
+            </li>
+            <li class="nav-item" ng-show="c.ocultar && !c.isAdmin" ng-class="{'active': c.isActive('/producto')}">
+                <a class="nav-link hvr-bob" href="usr/producto/plist"><i class="fas fa-apple-alt"></i>  Producto</a>
+            <li class="nav-item" ng-show="c.isAdmin" ng-class="{'active': c.isActive('/producto')}">
+                <a class="nav-link hvr-bob" href="producto/plist_1"><i class="fas fa-apple-alt"></i>  Producto</a>
+            </li>
+            <li class="nav-item" ng-show="c.isAdmin" ng-class="{'active': c.isActive('/tipoproducto')}">
+                <a class="nav-link hvr-bob" href="tipoproducto/plist"><i class="fas fa-box-open"></i>   Tipo de Producto</a>
+            </li>
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <div>
+                <a ng-show="c.ocultar && !c.isAdmin && c.carrito" class="nav-link hvr-buzz" href="carrito" style="color: yellow">
+                    <div class="row">
+                        <div class="col-6">
+                    <i style="margin-left: 50px" class="fas fa-shopping-cart"></i> 
+                    </div>
+                        <div class="col-5">
+                    <div style="border-radius: 5px; background-color: lightgrey; color: crimson">&nbsp;<b>+{{c.carrito}}&nbsp;</b></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div>
+                 <a ng-show="c.ocultar" style="color: white" href="usr/usuario/view/{{c.idUsuariologeado}}"><i class="fas fa-user" style="color: white"> </i> {{c.usuariologeado}}</a>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div>
+                <a href="/login"><button ng-show="!c.ocultar"  class="btn btn-outline-success my-2 my-sm-0" type="button" >Sign in</button></a>
+                <a href="/home"><button ng-show="c.ocultar" ng-click="c.logout()" class="btn btn-outline-danger my-2 my-sm-0" type="button">Logout</button></a>
+            </div>
+        </form>
+    </div>
+</nav>

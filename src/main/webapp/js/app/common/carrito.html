@@ -1,0 +1,89 @@
+<header-component></header-component>
+<<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" style="min-height: 100%; min-width: 97%; border: 1px solid lightgrey;border-radius: 10px; margin: 60px auto 80px auto; background-color: lightgray; padding-bottom: 30px">
+                <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1><i class="fas fa-shopping-cart"></i>  Carrito</h1>
+                </div>
+                <div class="row" ng-show="!carritoVacio">
+                    <div class="col-4">
+                        <button class="btn btn-success"><a href="/producto/plist"><b style="color: white">Añadir más productos</b></a></button>
+                        <button class="btn btn-danger" ng-click="emptyCart()"> <b>Vaciar el carrito</b></button>
+                        <a href="javascript:window.history.back()"> 
+                            <button type="button" class="btn btn-primary btn-xs">
+                                <i class="fa fa-reply"></i>  <b>Volver</b>
+                            </button></a>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row" style="margin-top: 25px;" ng-show="!carritoVacio">
+                    <div class="col-12">
+                        <table class="table table-hover table-dark">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        ID Producto
+                                    </th>
+                                    <th class="text-center">
+                                        Descripción
+                                    </th>
+                                    <th class="text-center">
+                                        Precio
+                                    </th>
+                                    <th class="text-center">
+                                        Cantidad
+                                    </th>
+                                    <th class="text-center">
+                                        Precio Total €
+                                    </th>
+                                    <th class="text-center">
+                                        Acciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="fila in ajaxCarrito track by $index">
+                                    <th class="text-center">{{fila.obj_producto.id}}</th>
+                                    <td class="text-center"><a href="/producto/view/{{fila.obj_producto.id}}">{{fila.obj_producto.desc}}</a></td>
+                                    <td class="text-center">{{fila.obj_producto.precio}} €</td>
+                                    <td class="text-center">{{fila.cantidad}}</td>
+                                    <td class="text-center">{{(fila.obj_producto.precio * fila.cantidad).toFixed(2)}} €</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-success btn-sm"  ng-click="addProducto(fila.obj_producto.id)" class="btn btn-light btn-sm">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        &nbsp;
+                                        <button type="button" class="btn btn-danger btn-sm" ng-click="deleteProducto(fila.obj_producto.id)" class="btn btn-light btn-sm">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-center">{{cantidadTotal}}</td>
+                                    <td class="text-center"><strong>{{precioTotalProd.toFixed(2)}} €</strong></td>
+                                    <td class="text-center"><button class="btn btn-sm" style="background-color:  darkorange" ng-show="carrito" ng-click="buyCart()"> <b>Comprar</b></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div ng-show="carritoVacio" class="row justify-content-md-center">        
+                    <div class="alert alert-dark col-5" style="text-align: center">
+                        ¡Tienes el carrito vacío! A que esperas para llenarlo. <a href="usr/producto/plist" class="badge badge-success"> Añadir productos. </a>
+                    </div>
+                </div>    
+                <div ng-show="carritoComprado" class="row justify-content-md-center">        
+                    <div class="alert alert-primary col-5" style="text-align: center">
+                        {{ajaxCarritoComprado.toUpperCase()}}<a href="usr/usuario/plistfactura/{{idusuario}}" class="badge badge-danger"> Factura creada. Revise sus facturas. </a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

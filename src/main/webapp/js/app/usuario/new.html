@@ -1,0 +1,119 @@
+<header-component></header-component>
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-9" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
+                <form class="form-horizontal" name="userForm" ng-show="!mensaje">
+                    <h1><i class="fas fa-user"></i>   Crear Usuario</h1>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <label>
+                                <img style="border-radius: 5px; width: 111%" src="../../../image/cliente.jpg" alt=""/>
+                            </label>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <h5>Nombre</h5>
+                                <input type="text" class="form-control" id="nombre" name="nombre" ng-model="ajaxDatoUsuario.nombre" ng-required="true" />
+                                <div ng-show="!userForm.nombre.$valid && !userForm.nombre.$pristine" class="alert alert-danger" role="alert">
+                                    Nombre obligatorio
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h5>1º Apellido</h5>
+                                <input type="text" class="form-control" id="ape1" name="ape1" ng-model="ajaxDatoUsuario.ape1" ng-required="true" />
+                                <div ng-show="!userForm.ape1.$valid && !userForm.ape1.$pristine" class="alert alert-danger" role="alert">
+                                    Primer apellido obligatorio
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h5>2º Apellido</h5>
+                                <input type="text" class="form-control" id="ape2" name="ape2" ng-model="ajaxDatoUsuario.ape2" ng-required="true" />
+                                <div ng-show="!userForm.ape2.$valid && !userForm.ape2.$pristine" class="alert alert-danger" role="alert">
+                                    Segundo apellido obligatorio
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group" ng-class="{ 'has-error' : userForm.dni.$invalid && !userForm.dni.$pristine }">
+                                <h5>DNI</h5>
+                                <input type="text" class="form-control" id="email" name="email" ng-required="true" ng-pattern="/^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]$/"
+                                       />
+                                <div ng-show="userForm.dni.$error.pattern" class="alert alert-danger" role="alert">
+                                    Formato dni no valido
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h5>Login</h5>
+                                <input type="text" class="form-control" id="login" name="login" ng-model="ajaxDatoUsuario.login" ng-minlength="6" ng-required="true" />
+                                <div ng-show="userForm.login.$error.minlength" class="alert alert-danger" role="alert">
+                                    La longitud del login es demasiado corta
+                                </div>
+                                <div ng-show="!userForm.login.$valid && !userForm.login.$pristine" class="alert alert-danger" role="alert">
+                                    Login obligatorio
+                                </div>
+                            </div>
+                            <tipousuario-selection class="modal fade" id="cadd-location-modal" obj="ajaxDatoUsuario.obj_tipoUsuario">
+                                
+                            </tipousuario-selection>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h5>Tipo Usuario</h5>
+                                    </div>
+                                    <div class="col-2" style="margin-left: -38px">
+                                        <span class="input-group-text fas fa-search"
+                                              data-toggle="modal"
+                                              data-target="#cadd-location-modal"></span>
+                                    </div>
+                                    <div class="col-3"></div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <input ng-model="ajaxDatoUsuario.obj_tipoUsuario.id"
+                                               ng-change="tipoUsuarioRefresh()"
+                                               id="obj_tipoUsuario_desc"
+                                               name="obj_tipoUsuario_desc"
+                                               aria-describedby="basic-addon2"
+                                               class="form-control"
+                                               type="text"
+                                               size="5"
+                                               ng-required="true"
+                                               ng-model-options="{debounce: 1000}"
+                                               maxlength="5">
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" ng-model="ajaxDatoUsuario.obj_tipoUsuario.desc"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="tipousuario" class="alert alert-danger" role="alert">
+                                Tipo Usuario no válido.
+                            </div>
+                        </div> 
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3">
+                <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
+                <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>
+                    </div>
+                </div>
+                <div class="alert alert-success" ng-model="resultado" ng-show="mensaje">
+                    Datos actualizados correctamente.
+                </div>
+                <div class="alert alert-danger" ng-show="mensajeError">
+                    Datos erroneos.
+                </div>
+            </main>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>
