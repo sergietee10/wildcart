@@ -27,42 +27,94 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
             });
         };
 
-        $(document).ready(function () {
-            // check change event of the text field
-            $("#login").keyup(function () {
-                // get text username text field value
-                var username = $("#login").val();
+//        $scope.checkMailStatus = function () {
+//            var email = $("#email").val();
+//            $.ajax({
+//                type: 'post',
+//                url: 'checkMail.php',
+//                data: {email: email},
+//                success: function (msg) {
+//                    alert(msg); 
+//                }
+//            });
+//        }
 
-                // check username name only if length is greater than or equal to 3
-                if (username.length >= 3)
-                {
-                    
-                    $("#status").html('Comprobando disponiblidad...');
-                    // check username
-                    $("username_check.php", {username: username}, function (data, status) {
-                        $("#status").html(data);
-                    });
-                }
-            });
-        });
-        
-        $(document).ready(function () {
-            // check change event of the text field
-            $("#dni").keyup(function () {
-                // get text username text field value
-                var email = $("#dni").val();
 
-                // check username name only if length is greater than or equal to 3
-                if (email.length >= 3)
-                {
-                    $("#status2").html('Comprobando disponiblidad...');
-                    // check username
-                    $("email_check.php", {email: email}, function (data, status) {
-                        $("#status2").html(data);
-                    });
-                }
-            });
-        });
+//       $scope.checkname = function()
+//        {
+//            var login = document.getElementById("login").value;
+//
+//            if (login)
+//            {
+//                $.ajax({
+//                    type: 'post',
+//                    url: 'checkdata.php',
+//                    data: {
+//                        login: login,
+//                    },
+//                    success: function (response) {
+//                        $('#status').html(response);
+//                        if (response == "OK")
+//                        {
+//                            return true;
+//                        } else
+//                        {
+//                            return false;
+//                        }
+//                    }
+//                });
+//            } else
+//            {
+//                $('#status').html("");
+//                return false;
+//            }
+//        }
+
+//        $scope.checkemail = function()
+//        {
+//            var email = document.getElementById("UserEmail").value;
+//
+//            if (email)
+//            {
+//                $.ajax({
+//                    type: 'post',
+//                    url: 'checkdata.php',
+//                    data: {
+//                        user_email: email,
+//                    },
+//                    success: function (response) {
+//                        $('#email_status').html(response);
+//                        if (response == "OK")
+//                        {
+//                            return true;
+//                        } else
+//                        {
+//                            return false;
+//                        }
+//                    }
+//                });
+//            } else
+//            {
+//                $('#email_status').html("");
+//                return false;
+//            }
+//        }
+//
+//        function checkall()
+//        {
+//            var namehtml = document.getElementById("name_status").innerHTML;
+//            var emailhtml = document.getElementById("email_status").innerHTML;
+//
+//            if ((namehtml && emailhtml) == "OK")
+//            {
+//                return true;
+//            } else
+//            {
+//                return false;
+//            }
+//        }
+//
+
 
 
     }]);
