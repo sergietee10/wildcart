@@ -6,7 +6,7 @@ if(isset($_POST['login']))
  
     $username = mysqli_real_escape_string($con, $_POST['login']);
  
-    $query = "SELECT usuario FROM  usuario WHERE login = '$login'";
+    $query = "SELECT login FROM  usuario WHERE login = '$login'";
     if(!$result = mysqli_query($con, $query))
     {
         exit(mysqli_error($con));

@@ -27,42 +27,7 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
             });
         };
 
-        $(document).ready(function () {
-            // check change event of the text field
-            $("#login").keyup(function () {
-                // get text username text field value
-                var username = $("#login").val();
-
-                // check username name only if length is greater than or equal to 3
-                if (username.length >= 3)
-                {
-                    
-                    $("#status").html('Comprobando disponiblidad...');
-                    // check username
-                    $("username_check.php", {username: username}, function (data, status) {
-                        $("#status").html(data);
-                    });
-                }
-            });
-        });
         
-        $(document).ready(function () {
-            // check change event of the text field
-            $("#dni").keyup(function () {
-                // get text username text field value
-                var email = $("#dni").val();
-
-                // check username name only if length is greater than or equal to 3
-                if (email.length >= 3)
-                {
-                    $("#status2").html('Comprobando disponiblidad...');
-                    // check username
-                    $("email_check.php", {email: email}, function (data, status) {
-                        $("#status2").html(data);
-                    });
-                }
-            });
-        });
 
 
     }]);
