@@ -52,6 +52,8 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
         return (UsuarioBean) super.create(oBean);
     }
 
+    //2 metodos
+    
     @Override
     public int update(BeanInterface oBean) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
@@ -90,5 +92,5 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
         }
         return oUsuarioBean;
     }
-
+    
 }

@@ -27,7 +27,94 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
             });
         };
 
-        
+//        $scope.checkMailStatus = function () {
+//            var email = $("#email").val();
+//            $.ajax({
+//                type: 'post',
+//                url: 'checkMail.php',
+//                data: {email: email},
+//                success: function (msg) {
+//                    alert(msg); 
+//                }
+//            });
+//        }
+
+
+//       $scope.checkname = function()
+//        {
+//            var login = document.getElementById("login").value;
+//
+//            if (login)
+//            {
+//                $.ajax({
+//                    type: 'post',
+//                    url: 'checkdata.php',
+//                    data: {
+//                        login: login,
+//                    },
+//                    success: function (response) {
+//                        $('#status').html(response);
+//                        if (response == "OK")
+//                        {
+//                            return true;
+//                        } else
+//                        {
+//                            return false;
+//                        }
+//                    }
+//                });
+//            } else
+//            {
+//                $('#status').html("");
+//                return false;
+//            }
+//        }
+
+//        $scope.checkemail = function()
+//        {
+//            var email = document.getElementById("UserEmail").value;
+//
+//            if (email)
+//            {
+//                $.ajax({
+//                    type: 'post',
+//                    url: 'checkdata.php',
+//                    data: {
+//                        user_email: email,
+//                    },
+//                    success: function (response) {
+//                        $('#email_status').html(response);
+//                        if (response == "OK")
+//                        {
+//                            return true;
+//                        } else
+//                        {
+//                            return false;
+//                        }
+//                    }
+//                });
+//            } else
+//            {
+//                $('#email_status').html("");
+//                return false;
+//            }
+//        }
+//
+//        function checkall()
+//        {
+//            var namehtml = document.getElementById("name_status").innerHTML;
+//            var emailhtml = document.getElementById("email_status").innerHTML;
+//
+//            if ((namehtml && emailhtml) == "OK")
+//            {
+//                return true;
+//            } else
+//            {
+//                return false;
+//            }
+//        }
+//
+
 
 
     }]);
