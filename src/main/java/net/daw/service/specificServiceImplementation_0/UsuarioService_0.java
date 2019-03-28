@@ -131,11 +131,19 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
             UsuarioDao_0 oDao_0 = (UsuarioDao_0) DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
             
             //comprobar email no se repita y username no se repita
-            
-            
-            oBean = (UsuarioBean) oDao_0.register(oBean);
-            
-            oReplyBean = new ReplyBean(200, oGson.toJson(oBean));
+        int oUsuarioBean = oDao_0.checkUsuario(oBean.getLogin());
+        int oUsuarioeBean = oDao_0.checkEmail(oBean.getEmail());
+        if (oUsuarioBean > 0) {
+            oReplyBean = new ReplyBean(400, "Ese usuario ya esta registrado");
+            return oReplyBean;
+        }
+         if (oUsuarioeBean > 0) {
+            oReplyBean = new ReplyBean(401, "Ese email ya esta registrado");
+            return oReplyBean;
+        }
+        oReplyBean = new ReplyBean(200, "Usuario creado correctamente");
+        
+        oConnectionPool.disposeConnection();       
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: register method: " + ob + " object", ex);
         } finally {

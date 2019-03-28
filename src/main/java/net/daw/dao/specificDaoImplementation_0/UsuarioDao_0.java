@@ -52,7 +52,57 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
         return (UsuarioBean) super.create(oBean);
     }
 
-    //2 metodos
+    public int checkUsuario(String strUserName)throws Exception {
+        String strSQL = "SELECT COUNT(login) FROM usuario WHERE login=?";
+        int resultado = 0;
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement.setString(1, strUserName);
+            oResultSet = oPreparedStatement.executeQuery();
+            while (oResultSet.next()) {
+                resultado = oResultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao get de " + ob, e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return resultado;
+
+    }
+    
+    public int checkEmail(String strUserEmail)throws Exception {
+        String strSQL = "SELECT COUNT(email) FROM usuario WHERE email=?";
+        int resultado = 0;
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement.setString(1, strUserEmail);
+            oResultSet = oPreparedStatement.executeQuery();
+            while (oResultSet.next()) {
+                resultado = oResultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao get de " + ob, e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return resultado;
+
+    }
     
     @Override
     public int update(BeanInterface oBean) throws Exception {
