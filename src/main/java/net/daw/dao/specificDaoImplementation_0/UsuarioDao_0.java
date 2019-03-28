@@ -61,7 +61,7 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
             oPreparedStatement = oConnection.prepareStatement(strSQL);
             oPreparedStatement.setString(1, strUserName);
             oResultSet = oPreparedStatement.executeQuery();
-            while (oResultSet.next()) {
+            if (oResultSet.next()) {
                 resultado = oResultSet.getInt(1);
             }
         } catch (SQLException e) {
