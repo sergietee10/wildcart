@@ -148,9 +148,10 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
+        Gson oGson;
         try {
             String strJsonFromClient = oRequest.getParameter("json");
-            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
+            oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             UsuarioBean oBean = (UsuarioBean) BeanFactory.getBeanFromJson("usuario", oGson, strJsonFromClient);
             oBean.setId_tipoUsuario(2);
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
@@ -160,23 +161,20 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
             //comprobar email no se repita y username no se repita
             int oUsuarioBean = oDao_0.checkUsuario(oBean.getLogin());
             int oUsuarioeBean = oDao_0.checkEmail(oBean.getEmail());
-            if (oUsuarioBean > 0) {
-                oReplyBean = new ReplyBean(400, "Ese usuario ya esta registrado");
-                //return oReplyBean;
-            }
-            if (oUsuarioeBean > 0) {
-                oReplyBean = new ReplyBean(401, "Ese email ya esta registrado");
-                //return oReplyBean;
-            }
-
             //si no existe el usuario ni el email entonces crear usuario y devolver reply bean
+            if (oUsuarioBean > 0 || oUsuarioeBean > 0) {
+                oReplyBean = new ReplyBean(400, "Ese usuario o correo ya esta registrado");
+            }else{
+                oBean = (UsuarioBean) oDao_0.register(oBean);                
+                oGson = new Gson();
+                oReplyBean = new ReplyBean(200, oGson.toJson("Usuario creado correctamente"));
+                //oReplyBean = new ReplyBean(200, "Usuario creado correctamente");
+                //return oReplyBean
+            }
             //el usuario creado tendra el campo active a false
             //generar numero guardar en la tabla y enviarlo por correo
             
             //http://localhost:8081/json?ob=usuario&op=validation&code=EDA453WRE667R494UV577D187
-            oReplyBean = new ReplyBean(200, "Usuario creado correctamente");
-
-            oConnectionPool.disposeConnection();
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: register method: " + ob + " object", ex);
         } finally {
