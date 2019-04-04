@@ -156,6 +156,7 @@ public class GenericDaoImplementation implements DaoInterface {
         }
         return oBean;
     }
+    
 
     @Override
     public int update(BeanInterface oBean) throws Exception {

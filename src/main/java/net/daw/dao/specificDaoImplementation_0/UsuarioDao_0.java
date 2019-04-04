@@ -47,7 +47,6 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
     
-    
     public UsuarioBean register(UsuarioBean oBean) throws Exception {
         return (UsuarioBean) super.create(oBean);
     }

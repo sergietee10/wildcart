@@ -36,52 +36,20 @@
                 <div class="row">
                     <div class="col-7"></div>
                     <div class="col-5">
-                        <button id="enviar" ng-click="guardar()" type="button" class="btn btn-primary btn-lg" ng-disabled="userForm.$invalid" style="right:inherit"><b>Enviar</b></button>
+                        <button id="enviar" ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-primary btn-lg" ng-disabled="userForm.$invalid" style="right:inherit"><b>Enviar</b></button>
                         <a href="/"> <button class="btn btn-warning btn-lg"><b style="color: white">Volver</b></button> </a>
                     </div>
                 </div>
             </form>
-            <div class="alert alert-success"ng-show="mensaje">
-                Usuario registrado correctamente.
-                <a href="/"> <button class="btn btn-warning btn-lg"><b style="color: white">Volver</b></button> </a>
+            <div class="alert alert-success" ng-show="mensaje">
+                {{mensajeDelServidor}}
+                <a href="/"> <button class="btn btn-warning btn-xs"><b style="color: white">Volver</b></button> </a>
             </div>
             <div class="alert alert-danger" ng-show="mensajeError">
-                Usuario ya registrado.
-            </div>
-            <div class="alert alert-danger" ng-show="mensajeError2">
-                Email ya registrado.
+                {{mensajeDelServidor}}
             </div>
         </div>
         <div class="col-3"></div>
     </div>
 </main>
-<!--<script>
-    function validarusuario(usuario){
-        var url = 'validarusuario.php';
-        var parametros = 'usuario=' + usuario.value;
-        var ajax = new Ajax.Updater('comprobarusuario', url,{method: 'get', parameters: parametros});
-    }
-</script>-->
-<!--<script>
-$(document).ready(function()
-{
-  $("#login").blur(function(){
-  $.post("usernameCheck.php",{user_name:$(this).val()},function(data)
-  {
-  if(data=="no"){
-  $(this).html("This username already exists");
-  }
-  else{
-  $(this).html("Username is available!");
-  }
-  });
-  });
-}
-</script>-->
-
-
-<!-- ENVIAR EMAIL 
-https://stackoverflow.com/questions/271171/sending-emails-with-javascript
-https://www.smtpjs.com/
-https://es.stackoverflow.com/questions/136913/c%C3%B3mo-enviar-un-correo-para-confirmar-una-cuenta-usando-node-js
--->
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

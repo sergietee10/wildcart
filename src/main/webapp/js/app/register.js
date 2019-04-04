@@ -3,12 +3,11 @@
 moduleRegister.controller('registerController', ['$scope', '$http', 'sessionService',
     function ($scope, $http, sessionService) {
         $scope.text = 'me@example.com';
-        $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
-        $scope.userFormat = /^[a-zA-Z0-9]{3,15}$/;
-        $scope.passFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/;
+//        $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+//        $scope.userFormat = /^[a-zA-Z0-9]{3,15}$/;
+//        $scope.passFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/;
         $scope.mensaje = false;
         $scope.mensajeError = false;
-        $scope.mensajeError2 = false;
 
         $scope.guardar = function () {
             var json = {
@@ -23,28 +22,26 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
                 params: {json: JSON.stringify(json)}
             }).then(function (response) {
                 $scope.status = response.status;
-                $scope.ajaxDatoRegistroUsuario = response.data.message;
+                $scope.mensajeDelServidor = response.data.message;
                 if (response.status === 200) {
+                    $scope.mensajeDelServidor = response.data.message;
+                    $scope.mensaje = true;
+                    $scope.mensajeError = false;
                     if (response.data.status === 400) {
+                        $scope.mensajeDelServidor = response.data.message;
                         $scope.mensajeError = true;
-                        $('#login').val('');
-                        $('#pass').val('');
-                        $('#email').val('');
+                        $scope.mensaje = false;
                     }
                     if (response.data.status === 401) {
-                        $scope.mensajeError2 = true;
-                        $scope.mensajeError = false;
-                        $('#login').val('');
-                        $('#password').val('');
-                        $('#email').val('');
-                    } 
-                }else {
-                        $scope.mensaje = true;
-                        $scope.mensajeError = false;
-                        $scope.mensajeError2 = false;
+                        $scope.mensajeDelServidor = response.data.message;
+                        $scope.mensajeError = true;
+                        $scope.mensaje = false;
                     }
+                }else {
+                    $scope.mensajeDelServidor = response.data.message;
+                    }
+                    
             }, function (response) {
-                $scope.mensajeError = true;
                 $scope.ajaxDatoRegistroUsuario = response.data.message || 'Request failed';
                 $scope.status = response.status;
             });

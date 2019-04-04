@@ -27,11 +27,6 @@
     margin-right: 0%;
     padding: 20px;
 }
-.btn-lg:hover{
-    animation-duration: 1s;
-    animation-name: c;
-    animation-fill-mode: forwards;
-}
 
 @keyframes c {
     from{
