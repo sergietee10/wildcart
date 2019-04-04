@@ -167,14 +167,19 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
             }else if (oUsuarioeBean > 0){
                 oReplyBean = new ReplyBean(401, "Ese correo ya esta registrado");
             }else{
-                oBean = (UsuarioBean) oDao_0.register(oBean);                
+                
+                //el usuario creado tendra el campo active a false
+            //generar numero guardar en la tabla y enviarlo por correo
+                oBean = (UsuarioBean) oDao_0.register(oBean);    
+                
+                //si graba ok entonces enviar email
+                
                 oGson = new Gson();
                 oReplyBean = new ReplyBean(200, oGson.toJson("Usuario creado correctamente"));
                 //oReplyBean = new ReplyBean(200, "Usuario creado correctamente");
                 //return oReplyBean
             }
-            //el usuario creado tendra el campo active a false
-            //generar numero guardar en la tabla y enviarlo por correo
+            
             
             //http://localhost:8081/json?ob=usuario&op=validation&code=EDA453WRE667R494UV577D187
         } catch (Exception ex) {
