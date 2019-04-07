@@ -169,7 +169,9 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
             }else{
                 
                 //el usuario creado tendra el campo active a false
+                
             //generar numero guardar en la tabla y enviarlo por correo
+            
                 oBean = (UsuarioBean) oDao_0.register(oBean);    
                 
                 //si graba ok entonces enviar email
