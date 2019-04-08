@@ -103,9 +103,52 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
 
     }
     
-    @Override
-    public int update(BeanInterface oBean) throws Exception {
-        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
+    public UsuarioBean validation(String code, Integer expand)throws Exception {
+        String strSQL = "SELECT * FROM usuario WHERE code=?";
+        UsuarioBean usuario;
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement.setString(1, code);
+            oResultSet = oPreparedStatement.executeQuery();
+            if (oResultSet.next()) {
+              usuario = new UsuarioBean();
+              usuario.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
+            } else {
+                usuario = null;
+            }
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao get de " + ob, e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return usuario;
+
+    }
+    
+    public int update(UsuarioBean oBean) throws Exception {
+        int iResult = 0;
+        strSQL_update = "UPDATE " + ob + " SET ";
+        strSQL_update += oBean.getPairsValidacion();
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL_update);
+            iResult = oPreparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao update de " + ob + ": " + e.getMessage(), e);
+        } finally {
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return iResult;
     }
 
     @Override

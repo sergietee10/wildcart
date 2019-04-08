@@ -40,6 +40,10 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
     @Expose(serialize = false)
     private String email;
     @Expose(serialize = false)
+    private boolean active;
+    @Expose(serialize = false)
+    private String code;
+    @Expose(serialize = false)
     private int id_tipoUsuario;
     @Expose(deserialize = false)
     private TipousuarioBean obj_tipoUsuario;
@@ -109,6 +113,22 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public String getCode() {
+        return code;
+    }
 
     public int getId_tipoUsuario() {
         return id_tipoUsuario;
@@ -136,6 +156,8 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         this.setLogin(oResultSet.getString("login"));
         this.setPass(oResultSet.getString("pass"));
         this.setEmail(oResultSet.getString("email"));
+        this.setActive(oResultSet.getBoolean("active"));
+        this.setCode(oResultSet.getString("code"));
 
         DaoInterface oFacturaDao = DaoFactory.getDao(oConnection, "factura", oUsuarioBeanSession);
         if (oFacturaDao != null) {
@@ -168,6 +190,8 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strColumns += "login,";
         strColumns += "pass,";
         strColumns += "email,";
+        strColumns += "active,";
+        strColumns += "code,";
         strColumns += "id_tipoUsuario";
         return strColumns;
     }
@@ -181,8 +205,10 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strColumns += EncodingHelper.quotate(ape1) + ",";
         strColumns += EncodingHelper.quotate(ape2) + ",";
         strColumns += EncodingHelper.quotate(login) + ",";
-        strColumns += EncodingHelper.quotate("DA8AB09AB4889C6208116A675CAD0B13E335943BD7FC418782D054B32FDFBA04") + ",";
+        strColumns += EncodingHelper.quotate(pass) + ",";
         strColumns += EncodingHelper.quotate(email) + ",";
+        strColumns += active + ",";
+        strColumns += EncodingHelper.quotate(code) + ",";
         strColumns += id_tipoUsuario;
         return strColumns;
     }
@@ -196,8 +222,19 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strPairs += "ape1=" + EncodingHelper.quotate(ape1) + ",";
         strPairs += "ape2=" + EncodingHelper.quotate(ape2) + ",";
         strPairs += "login=" + EncodingHelper.quotate(login) + ",";
-        strPairs += "email=" + EncodingHelper.quotate(login) + ",";
+        strPairs += "pass=" + EncodingHelper.quotate(pass) + ",";
+        strPairs += "email=" + EncodingHelper.quotate(email) + ",";
+        strPairs += "active=" + active + ",";
+        strPairs += "code=" + EncodingHelper.quotate(code) + ",";
         strPairs += "id_tipoUsuario=" + id_tipoUsuario;
+        strPairs += " WHERE id=" + id;
+        return strPairs;
+
+    }
+    
+    public String getPairsValidacion() {
+        String strPairs = "";
+        strPairs += "active=" + active;
         strPairs += " WHERE id=" + id;
         return strPairs;
 

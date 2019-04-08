@@ -7,6 +7,7 @@ package net.daw.service.specificServiceImplementation_0;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.security.SecureRandom;
 
 import java.sql.Connection;
 
@@ -16,6 +17,7 @@ import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.connection.publicinterface.ConnectionInterface;
 import net.daw.constant.ConnectionConstants;
+import net.daw.dao.genericDaoImplementation.GenericDaoImplementation;
 import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.dao.specificDaoImplementation_0.UsuarioDao_0;
 import net.daw.dao.specificDaoImplementation_1.UsuarioDao_1;
@@ -23,6 +25,9 @@ import net.daw.factory.BeanFactory;
 import net.daw.factory.ConnectionFactory;
 import net.daw.factory.DaoFactory;
 import net.daw.helper.EncodingHelper;
+import net.daw.helper.RandomString;
+import static net.daw.helper.RandomString.alphanum;
+import static net.daw.helper.SendEmailHelper.sendEmail;
 import net.daw.service.genericServiceImplementation.GenericServiceImplementation;
 import net.daw.service.publicServiceInterface.ServiceInterface;
 
@@ -31,12 +36,12 @@ import net.daw.service.publicServiceInterface.ServiceInterface;
  * @author Ramón
  */
 public class UsuarioService_0 extends GenericServiceImplementation implements ServiceInterface {
-
+    
     public UsuarioService_0(HttpServletRequest oRequest) {
         super(oRequest);
         ob = oRequest.getParameter("ob");
     }
-
+    
     public ReplyBean fill() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
@@ -65,21 +70,21 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         } finally {
             oConnectionPool.disposeConnection();
         }
-
+        
         return oReplyBean;
     }
-
+    
     public ReplyBean login() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         String strLogin = oRequest.getParameter("user");
         String strPassword = oRequest.getParameter("pass");
-
+        
         oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
         oConnection = oConnectionPool.newConnection();
         UsuarioDao_0 oUsuarioDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
-
+        
         UsuarioBean oUsuarioBean = oUsuarioDao.login(strLogin, strPassword);
         if (oUsuarioBean != null) {
             if (oUsuarioBean.getId() > 0) {
@@ -97,12 +102,12 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         oConnectionPool.disposeConnection();
         return oReplyBean;
     }
-
+    
     public ReplyBean logout() throws Exception {
         oRequest.getSession().invalidate();
         return new ReplyBean(200, EncodingHelper.quotate("OK"));
     }
-
+    
     public ReplyBean check() throws Exception {
         ReplyBean oReplyBean;
         //Aquí  no haría falta el usuarioBean de session, ya lo cogemos del generic, pero lo dejo por ahora:
@@ -116,26 +121,30 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         }
         return oReplyBean;
     }
-
+    
     public ReplyBean validation() throws Exception {
-        ReplyBean oReplyBean;
+        ReplyBean oReplyBean = null;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         try {
-            String strJsonFromClient = oRequest.getParameter("code");
-          
+            String code = oRequest.getParameter("code");
+            
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
-          
+            
             UsuarioDao_0 oDao_0 = (UsuarioDao_0) DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
 
             //si el id existe en la base de datos cambiar el campo active de false a true
-            
-            //enviar mail avisando de que se ha activado y que puede loguearse
-            
-            oReplyBean = new ReplyBean(200, "Usuario validado correctamente");
-
-            oConnectionPool.disposeConnection();
+            UsuarioBean usuario = oDao_0.validation(code, 0);
+            if (usuario != null) {
+                UsuarioBean user = new UsuarioBean();
+                user.setId(usuario.getId());
+                user.setActive(true);
+                oDao_0.update(user);
+                oReplyBean = new ReplyBean(200, "Usuario validado correctamente");
+                //enviar mail avisando de que se ha activado y que puede loguearse
+                sendEmail(usuario.getEmail(), null);
+            }
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: register method: " + ob + " object", ex);
         } finally {
@@ -143,7 +152,7 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         }
         return oReplyBean;
     }
-
+    
     public ReplyBean register() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
@@ -164,26 +173,26 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
             //si no existe el usuario ni el email entonces crear usuario y devolver reply bean
             if (oUsuarioBean > 0) {
                 oReplyBean = new ReplyBean(400, "Ese usuario ya esta registrado");
-            }else if (oUsuarioeBean > 0){
+            } else if (oUsuarioeBean > 0) {
                 oReplyBean = new ReplyBean(401, "Ese correo ya esta registrado");
-            }else{
-                
+            } else {
+
                 //el usuario creado tendra el campo active a false
+                oBean.setActive(false);
+                //generar numero guardar en la tabla y enviarlo por correo
+                String code = new RandomString(20, new SecureRandom(), alphanum).nextString();
+                oBean.setCode(code);
                 
-            //generar numero guardar en la tabla y enviarlo por correo
-            
-                oBean = (UsuarioBean) oDao_0.register(oBean);    
-                
+                oDao_0.register(oBean);
+
                 //si graba ok entonces enviar email
+                sendEmail(oBean.getEmail(), code);
                 
                 oGson = new Gson();
                 oReplyBean = new ReplyBean(200, oGson.toJson("Usuario creado correctamente"));
-                //oReplyBean = new ReplyBean(200, "Usuario creado correctamente");
-                //return oReplyBean
             }
-            
-            
-            //http://localhost:8081/json?ob=usuario&op=validation&code=EDA453WRE667R494UV577D187
+
+            //http://localhost:8080/json?ob=usuario&op=validation&code=EDA453WRE667R494UV577D187
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: register method: " + ob + " object", ex);
         } finally {

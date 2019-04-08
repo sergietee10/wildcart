@@ -10,16 +10,21 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendEmailHelper {
-
-    public static void sendEmail() {
+    
+    public static void sendEmail(String correo, String code) {
         try {
             String host = "smtp.gmail.com";
             String user = "fondoverdemilitar7@gmail.com";
             String pass = "tioverdemilitar7";
-            String to = "sergio_aries98@hotmail.com";
+            String to = correo;
             String from = "fondoverdemilitar7@gmail.com";
             String subject = "Hola soy la aplicacion de correo";
-            String messageText = "Esto funciona correctamente ;)";
+            String messageText;
+            if (code == null) {
+                messageText = "Email validado correctamente. Logueate";
+            } else {
+                messageText = "Dale a este enlace para validar tu cuenta: http://localhost:8080/json?ob=usuario&op=validation&code=" + code;
+            }
             boolean sessionDebug = false;
 
             Properties props = System.getProperties();

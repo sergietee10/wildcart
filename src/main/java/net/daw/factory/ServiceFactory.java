@@ -48,6 +48,9 @@ public class ServiceFactory {
                             case "register":
                                 oReplyBean = oUsuarioService.register();
                                 break;
+                            case "validation":
+                                oReplyBean = oUsuarioService.validation();
+                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;

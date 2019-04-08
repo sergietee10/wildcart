@@ -12,7 +12,7 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
         $scope.guardar = function () {
             var json = {
                 login: $scope.ajaxDatoRegistroUsuario.login,
-                pass: $scope.ajaxDatoRegistroUsuario.pass,
+                pass: forge_sha256($scope.ajaxDatoRegistroUsuario.pass),
                 email: $scope.ajaxDatoRegistroUsuario.email
             };
             $http({
