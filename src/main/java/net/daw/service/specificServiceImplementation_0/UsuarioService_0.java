@@ -36,12 +36,12 @@ import net.daw.service.publicServiceInterface.ServiceInterface;
  * @author Ramón
  */
 public class UsuarioService_0 extends GenericServiceImplementation implements ServiceInterface {
-    
+
     public UsuarioService_0(HttpServletRequest oRequest) {
         super(oRequest);
         ob = oRequest.getParameter("ob");
     }
-    
+
     public ReplyBean fill() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
@@ -70,22 +70,24 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         } finally {
             oConnectionPool.disposeConnection();
         }
-        
+
         return oReplyBean;
     }
-    
+
     public ReplyBean login() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         String strLogin = oRequest.getParameter("user");
         String strPassword = oRequest.getParameter("pass");
-        
+
         oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
         oConnection = oConnectionPool.newConnection();
         UsuarioDao_0 oUsuarioDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
-        
+
         UsuarioBean oUsuarioBean = oUsuarioDao.login(strLogin, strPassword);
+        
+        
         if (oUsuarioBean != null) {
             if (oUsuarioBean.getId() > 0) {
                 oRequest.getSession().setAttribute("user", oUsuarioBean);
@@ -102,12 +104,12 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         oConnectionPool.disposeConnection();
         return oReplyBean;
     }
-    
+
     public ReplyBean logout() throws Exception {
         oRequest.getSession().invalidate();
         return new ReplyBean(200, EncodingHelper.quotate("OK"));
     }
-    
+
     public ReplyBean check() throws Exception {
         ReplyBean oReplyBean;
         //Aquí  no haría falta el usuarioBean de session, ya lo cogemos del generic, pero lo dejo por ahora:
@@ -121,29 +123,34 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         }
         return oReplyBean;
     }
-    
+
     public ReplyBean validation() throws Exception {
         ReplyBean oReplyBean = null;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
         try {
             String code = oRequest.getParameter("code");
-            
+
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
-            
+
             UsuarioDao_0 oDao_0 = (UsuarioDao_0) DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
 
             //si el id existe en la base de datos cambiar el campo active de false a true
             UsuarioBean usuario = oDao_0.validation(code, 0);
             if (usuario != null) {
-                UsuarioBean user = new UsuarioBean();
-                user.setId(usuario.getId());
-                user.setActive(true);
-                oDao_0.update(user);
+                usuario.setActive(true);
+                oDao_0.update(usuario);
                 oReplyBean = new ReplyBean(200, "Usuario validado correctamente");
-                //enviar mail avisando de que se ha activado y que puede loguearse
                 sendEmail(usuario.getEmail(), null);
+
+//                UsuarioBean user = new UsuarioBean();
+//                user.setId(usuario.getId());
+//                user.setActive(true);
+//                oDao_0.update(user);
+//                oReplyBean = new ReplyBean(200, "Usuario validado correctamente");
+//                //enviar mail avisando de que se ha activado y que puede loguearse
+//                sendEmail(usuario.getEmail(), null);
             }
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: register method: " + ob + " object", ex);
@@ -152,7 +159,7 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
         }
         return oReplyBean;
     }
-    
+
     public ReplyBean register() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
@@ -182,12 +189,12 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
                 //generar numero guardar en la tabla y enviarlo por correo
                 String code = new RandomString(20, new SecureRandom(), alphanum).nextString();
                 oBean.setCode(code);
-                
+
                 oDao_0.register(oBean);
 
                 //si graba ok entonces enviar email
                 sendEmail(oBean.getEmail(), code);
-                
+
                 oGson = new Gson();
                 oReplyBean = new ReplyBean(200, oGson.toJson("Usuario creado correctamente"));
             }
