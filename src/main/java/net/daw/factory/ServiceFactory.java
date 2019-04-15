@@ -5,12 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.service.specificServiceImplementation_0.UsuarioService_0;
+import net.daw.service.specificServiceImplementation_1.BlogService_1;
 import net.daw.service.specificServiceImplementation_1.FacturaService_1;
 import net.daw.service.specificServiceImplementation_1.LineaService_1;
 import net.daw.service.specificServiceImplementation_1.ProductoService_1;
 import net.daw.service.specificServiceImplementation_1.TipoproductoService_1;
 import net.daw.service.specificServiceImplementation_1.TipousuarioService_1;
 import net.daw.service.specificServiceImplementation_1.UsuarioService_1;
+import net.daw.service.specificServiceImplementation_2.BlogService_2;
 import net.daw.service.specificServiceImplementation_2.CarritoService_2;
 import net.daw.service.specificServiceImplementation_2.FacturaService_2;
 import net.daw.service.specificServiceImplementation_2.LineaService_2;
@@ -154,6 +156,38 @@ public class ServiceFactory {
                                 break;
                             case "getcountfacuser":
                                 oReplyBean = oFacturaService.getcountXusuario();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "blog":
+                        BlogService_1 oBlogService = new BlogService_1(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oBlogService.get();
+                                break;
+                            case "create":
+                                oReplyBean = oBlogService.create();
+                                break;
+                            case "update":
+                                oReplyBean = oBlogService.update();
+                                break;
+                            case "remove":
+                                oReplyBean = oBlogService.remove();
+                                break;
+                            case "getcount":
+                                oReplyBean = oBlogService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oBlogService.getpage();
+                                break;
+                            case "getpagexusuario":
+                                oReplyBean = oBlogService.getpageXusuario();
+                                break;
+                            case "getcountfacuser":
+                                oReplyBean = oBlogService.getcountXusuario();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -317,6 +351,30 @@ public class ServiceFactory {
                                 break;
                             case "getcountfacuser":
                                 oReplyBean = oFacturaService.getcountXusuario();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "blog":
+                        BlogService_2 oBlogService = new BlogService_2(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oBlogService.get();
+                                break;
+
+                            case "getcount":
+                                oReplyBean = oBlogService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oBlogService.getpage();
+                                break;
+                            case "getpagexusuario":
+                                oReplyBean = oBlogService.getpageXusuario();
+                                break;
+                            case "getcountfacuser":
+                                oReplyBean = oBlogService.getcountXusuario();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

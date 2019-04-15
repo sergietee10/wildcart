@@ -6,6 +6,7 @@
 package net.daw.factory;
 
 import com.google.gson.Gson;
+import net.daw.bean.beanImplementation.BlogBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.bean.beanImplementation.TipoproductoBean;
 import net.daw.bean.beanImplementation.LineaBean;
@@ -41,6 +42,9 @@ public class BeanFactory {
             case "linea":
                 oBean = (BeanInterface) new LineaBean();
                 break;
+            case "blog":
+                oBean = (BeanInterface) new BlogBean();
+                break;
         }
         return oBean;
     }
@@ -65,6 +69,9 @@ public class BeanFactory {
                 break;
             case "linea":
                 oBean = oGson.fromJson(strJsonFromClient, LineaBean.class);
+                break;
+            case "blog":
+                oBean = oGson.fromJson(strJsonFromClient, BlogBean.class);
                 break;
         }
         return oBean;

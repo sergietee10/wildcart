@@ -91,6 +91,11 @@ trolleyes.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/factura/new', {templateUrl: 'js/app/factura/new.html', controller: 'facturaNewControllerAdm', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/factura/newfacturauser/:id?', {templateUrl: 'js/app/factura/newfacturauser.html', controller: 'facturaNewUserControllerAdm', resolve: {auth: autenticacionAdministrador}});
 
+        $routeProvider.when('/blog/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/blog/plist.html', controller: 'blogPlistControllerAdm', resolve: {auth: autenticacionAdministrador}});
+        $routeProvider.when('/blog/edit/:id?', {templateUrl: 'js/app/blog/edit.html', controller: 'blogEditControllerAdm', resolve: {auth: autenticacionAdministrador}});
+        $routeProvider.when('/blog/remove/:id?', {templateUrl: 'js/app/blog/remove.html', controller: 'blogRemoveControllerAdm', resolve: {auth: autenticacionAdministrador}});
+        $routeProvider.when('/blog/new', {templateUrl: 'js/app/blog/new.html', controller: 'blogNewControllerAdm', resolve: {auth: autenticacionAdministrador}});
+
         $routeProvider.when('/tipoproducto/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/tipoproducto/plist.html', controller: 'tipoproductoPlistControllerAdm', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/tipoproducto/edit/:id?', {templateUrl: 'js/app/tipoproducto/edit.html', controller: 'tipoproductoEditControllerAdm', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/tipoproducto/view/:id?', {templateUrl: 'js/app/tipoproducto/view.html', controller: 'tipoproductoViewControllerAdm', resolve: {auth: autenticacionAdministrador}});

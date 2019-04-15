@@ -23,8 +23,8 @@ public class SendEmailHelper {
             if (code == null) {
                 messageText = "Email validado correctamente. Logueate";
             } else {
-                messageText = "Dale a este enlace para validar tu cuenta: http://localhost:8081/json?ob=usuario&op=validation&code=" + code;
-           //MI CASA     messageText = "Dale a este enlace para validar tu cuenta: http://localhost:8080/json?ob=usuario&op=validation&code=" + code;
+                //messageText = "Dale a este enlace para validar tu cuenta: http://localhost:8081/json?ob=usuario&op=validation&code=" + code;
+            messageText = "Dale a este enlace para validar tu cuenta: http://localhost:8080/json?ob=usuario&op=validation&code=" + code;
             }
             boolean sessionDebug = false;
 

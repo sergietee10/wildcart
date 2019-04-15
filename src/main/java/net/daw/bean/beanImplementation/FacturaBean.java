@@ -100,7 +100,6 @@ public class FacturaBean extends GenericBeanImplementation implements BeanInterf
         Instant instant = fecha.toInstant();
 
         LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
-        //System.out.println("Local Date is: " + localDate);
 
         String strPairs = "";
         strPairs += "id=" + id + ",";

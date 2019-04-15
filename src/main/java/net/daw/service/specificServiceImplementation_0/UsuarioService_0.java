@@ -136,7 +136,6 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
 
             UsuarioDao_0 oDao_0 = (UsuarioDao_0) DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
 
-            //si el id existe en la base de datos cambiar el campo active de false a true
             UsuarioBean usuario = oDao_0.validation(code, 0);
             if (usuario != null) {
                 usuario.setActive(true);
