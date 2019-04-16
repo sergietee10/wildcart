@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-04-2019 a las 03:05:26
+-- Tiempo de generación: 16-04-2019 a las 05:57:39
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.26
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `wildcart`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `blog`
+--
+
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `contenido` varchar(255) DEFAULT NULL,
+  `etiquetas` varchar(255) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `blog`
+--
+
+INSERT INTO `blog` (`id`, `titulo`, `contenido`, `etiquetas`, `id_usuario`, `fecha`) VALUES
+(1, 'Nike 218', 'Las nuevas nike 218 deportivas tanto uso para running como para gimnasio y fitness', 'Nike, Zapatillas, Running, Fitness', 4, '2019-04-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -48,7 +70,9 @@ INSERT INTO `factura` (`id`, `fecha`, `iva`, `id_usuario`) VALUES
 (7, '2018-12-20 00:00:00', 21, 9),
 (8, '2018-12-20 00:00:00', 21, 9),
 (9, '2018-12-20 00:00:00', 21, 11),
-(10, '2018-12-20 00:00:00', 21, 11);
+(10, '2018-12-20 00:00:00', 21, 11),
+(11, '2019-04-15 00:00:00', 21, 4),
+(12, '2019-04-15 00:00:00', 21, 5);
 
 -- --------------------------------------------------------
 
@@ -107,7 +131,9 @@ INSERT INTO `linea` (`id`, `cantidad`, `id_producto`, `id_factura`) VALUES
 (37, 2, 6, 9),
 (38, 2, 8, 9),
 (39, 1, 14, 9),
-(40, 5, 6, 10);
+(40, 5, 6, 10),
+(41, 4, 6, 11),
+(42, 21, 7, 12);
 
 -- --------------------------------------------------------
 
@@ -131,7 +157,7 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `codigo`, `desc`, `existencias`, `precio`, `foto`, `id_tipoproducto`) VALUES
 (5, 'F5Q', 'sistema tren', 0, 555, 'PENE', 2),
-(6, 'DFVT52', 'soporte trenes', 2242, 47.8422, 'Fotos', 4),
+(6, 'DFVT52', 'soporte trenes', 2238, 47.8422, 'Fotos', 4),
 (7, 'F5Q', ' accesorio coche', 0, 85.0209, 'Foto', 4),
 (8, '63P', 'soporte tren', 1, 19.7761, 'Foto', 5),
 (9, 'D3Q', 'estación capilar', 0, 18.4308, 'Foto', 5),
@@ -244,8 +270,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `dni`, `nombre`, `ape1`, `ape2`, `login`, `pass`, `email`, `id_tipousuario`, `active`, `code`) VALUES
-(4, '14756425L', 'Sergio', 'Anyon', 'Sevilla', 'sergio', '8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92', '', 2, 0, ''),
-(5, '78245162A', 'Admin', 'Sergio', 'Anyon', 'admini', '8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92', '', 1, 0, ''),
+(4, '14756425L', 'Sergio', 'Anyon', 'Sevilla', 'sergio', '8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92', '', 2, 1, ''),
+(5, '78245162A', 'Admin', 'Sergio', 'Anyon', 'admini', '8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92', '', 1, 1, ''),
 (6, '04631408j', 'Maria', 'Perez', 'Gomez', 'jascas', '8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92', '', 1, 0, ''),
 (7, '04631408j', 'Marcos', 'Pozuelo', 'Perez', 'carlos', '8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92', '', 2, 0, ''),
 (8, '54698532o', 'Lidia', 'Perez', 'Escribano', 'javi', '8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92', '', 1, 0, ''),
@@ -442,11 +468,18 @@ INSERT INTO `usuario` (`id`, `dni`, `nombre`, `ape1`, `ape2`, `login`, `pass`, `
 (200, 'null', 'null', 'null', 'null', 'sergiolas', 'DA8AB09AB4889C6208116A675CAD0B13E335943BD7FC418782D054B32FDFBA04', 'sergiolas@gmail.com', 2, 0, ''),
 (201, 'null', 'null', 'null', 'null', 'sergjasko', 'asofljas', 'qlañskfasfas', 2, 0, 'null'),
 (203, 'null', 'null', 'null', 'null', 'Javier96', 'javier', 'javiroigdomenech@hotmail.com', 2, 0, 'zOgnrx0oB5hgNdqdNAHX'),
-(206, 'null', 'null', 'null', 'null', 'hola', 'b221d9dbb083a7f33428d7c2a3c3198ae925614d70210e28716ccaa7cd4ddb79', 'fondoverdemilitar8@gmail.com', 2, 1, '5rnT8FGu8G6dmQmACAW7');
+(207, 'null', 'null', 'null', 'null', 'fondoverde', '36033babfb48ec64e197c97fb40d65e6c79f81e04c61aeccef3009e01645ab8d', 'fondoverdemilitar8@gmail.com', 2, 1, 'BtaiR2sUrwTQZ6bUOAd9');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `factura`
@@ -494,16 +527,22 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `linea`
 --
 ALTER TABLE `linea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -527,7 +566,7 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- Restricciones para tablas volcadas
