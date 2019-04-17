@@ -142,14 +142,6 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
                 oDao_0.update(usuario);
                 oReplyBean = new ReplyBean(200, "Usuario validado correctamente");
                 sendEmail(usuario.getEmail(), null);
-
-//                UsuarioBean user = new UsuarioBean();
-//                user.setId(usuario.getId());
-//                user.setActive(true);
-//                oDao_0.update(user);
-//                oReplyBean = new ReplyBean(200, "Usuario validado correctamente");
-//                //enviar mail avisando de que se ha activado y que puede loguearse
-//                sendEmail(usuario.getEmail(), null);
             }
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: register method: " + ob + " object", ex);
@@ -173,32 +165,29 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
             oConnection = oConnectionPool.newConnection();
             UsuarioDao_0 oDao_0 = (UsuarioDao_0) DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
 
-            //comprobar email no se repita y username no se repita
             int oUsuarioBean = oDao_0.checkUsuario(oBean.getLogin());
             int oUsuarioeBean = oDao_0.checkEmail(oBean.getEmail());
-            //si no existe el usuario ni el email entonces crear usuario y devolver reply bean
+
             if (oUsuarioBean > 0) {
                 oReplyBean = new ReplyBean(400, "Ese usuario ya esta registrado");
             } else if (oUsuarioeBean > 0) {
                 oReplyBean = new ReplyBean(401, "Ese correo ya esta registrado");
             } else {
 
-                //el usuario creado tendra el campo active a false
                 oBean.setActive(false);
-                //generar numero guardar en la tabla y enviarlo por correo
+
                 String code = new RandomString(20, new SecureRandom(), alphanum).nextString();
                 oBean.setCode(code);
 
                 oDao_0.register(oBean);
 
-                //si graba ok entonces enviar email
                 sendEmail(oBean.getEmail(), code);
 
                 oGson = new Gson();
                 oReplyBean = new ReplyBean(200, oGson.toJson("Usuario creado correctamente"));
             }
 
-            //http://localhost:8080/json?ob=usuario&op=validation&code=EDA453WRE667R494UV577D187
+            //http://localhost:8081/json?ob=usuario&op=validation&code=EDA453WRE667R494UV577D187
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: register method: " + ob + " object", ex);
         } finally {

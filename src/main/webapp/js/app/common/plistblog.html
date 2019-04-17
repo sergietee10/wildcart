@@ -1,0 +1,92 @@
+<header-component></header-component>
+<div class="container-fluid">
+    <div class="container" style="min-height: 100%; min-width: 97%;">
+        <div class="row">
+            <div class="col-12" style="min-height: 100%; min-width: 97%; border: 1px solid lightgrey;border-radius: 10px; margin: 75px 0px 80px 0px; background-color: lightgray; padding-bottom: 30px">
+                <div style="padding-bottom: 20px" class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1><i class="fas fa-apple-alt"></i>  Blog</h1>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-3">
+                        <nav aria-label="paginacion" >
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 1" href="blog/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Anterior</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 2" href="blog/{{rpp}}/1/{{orderURLCliente}}">1</a>
+                                </li>
+                                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                    <a class="page-link" href="blog/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="blog/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">{{totalPages}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages" href="blog/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item" ng-repeat="fila in ajaxDataUsuarios track by $index">
+
+                        <a href="blog/{{fila.titulo}}">
+                            <div class="grid-contenido">
+                                <img ng-src="imagenes/{{fila.foto}}" style="width: 250px; height: 250px; margin-top: 20px">
+
+                            </div>
+
+                        </a>
+                        <div class="grid-contenido" style="margin-top: 15%; font-size: 20px">
+                            <p style="margin-top: 10px; color: black"><b>Contenido</b> {{fila.contenido}}</p>
+                        </div>
+                        <div class="grid-contenido">
+                            <p style="font-size: 20px"><b>Etiquetas</b> <span style="color: red">{{fila.etiquetas}}</span> </p>
+                        </div>
+                        <div class="grid-contenido" style="margin-top: 3px; font-size: 20px">
+                            <strong>{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</strong>
+                        </div>
+                        <div class="grid-contenido">
+                            <p style="font-size: 20px"><b>Fecha</b> <span style="color: red">{{fila.fecha}}</span> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-3">
+                        <nav aria-label="paginacion">
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 1" href="blog/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Anterior</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page > 2" href="blog/{{rpp}}/1/{{orderURLCliente}}">1</a>
+                                </li>
+                                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                    <a class="page-link" href="blog/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="blog/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">{{totalPages}}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" ng-show="page != totalPages" href="blog/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>
