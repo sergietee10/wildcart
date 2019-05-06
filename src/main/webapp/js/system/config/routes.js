@@ -65,6 +65,40 @@ var autenticacionUsuario = function ($q, $location, $http, sessionService, count
     return deferred.promise;
 };
 
+var autenticacionAll = function ($q, $location, $http, sessionService, countcarritoService, $routeParams) {
+    var deferred = $q.defer();
+    var usuario;
+    var nombreUsuario;
+    var idUsuarioLogeado;
+    var id = $routeParams.id;
+    $http({
+        method: 'GET',
+        url: 'json?ob=usuario&op=check'
+    }).then(function (response) {
+        if (response.data.status === 200) {
+
+            usuario = response.data.message.obj_tipoUsuario.id;
+            nombreUsuario = response.data.message.nombre + ' ' + response.data.message.ape1;
+            idUsuarioLogeado = response.data.message.id;
+            if (usuario === 1 || usuario === 2) {
+                countcarritoService.updateCarrito();
+                //hay que meter el usuario activo en el sessionService
+                sessionService.setTipoUserId(usuario);
+                sessionService.setUserId(idUsuarioLogeado);
+                sessionService.setUserName(nombreUsuario);
+                sessionService.setSessionActive();
+                deferred.resolve();
+            }
+        } else {
+             sessionService.setSessionInactive();
+             deferred.resolve();
+        }
+    }, function (response) {
+        $location.path('/home');
+    });
+    return deferred.promise;
+};
+
 
 
 trolleyes.config(['$routeProvider', function ($routeProvider) {
@@ -125,7 +159,7 @@ trolleyes.config(['$routeProvider', function ($routeProvider) {
         
         $routeProvider.when('/', {templateUrl: 'js/app/common/home.html', controller: 'homeController'});
         $routeProvider.when('/home', {templateUrl: 'js/app/common/home.html', controller: 'homeController'});
-        $routeProvider.when('/blog', {templateUrl: 'js/app/common/plistblog.html', controller: 'blogController'});
+        $routeProvider.when('/blog/plistblog', {templateUrl: 'js/app/common/plistblog.html', controller: 'blogController', resolve: {auth: autenticacionAll}});
         $routeProvider.when('/carrito', {templateUrl: 'js/app/common/carrito.html', controller: 'carritoController'});
 
 

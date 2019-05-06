@@ -56,16 +56,16 @@
 
                         </a>
                         <div class="grid-contenido" style="margin-top: 15%; font-size: 20px">
-                            <p style="margin-top: 10px; color: black"><b>Nombre:</b> {{(fila.desc).toUpperCase()}}</p>
+                            <p style="margin-top: 10px; color: black">{{(fila.desc).toUpperCase()}}</p>
                         </div>
                         <div class="grid-contenido">
-                            <p style="font-size: 20px"><b>Precio:</b> <span style="color: red">{{(fila.precio).toFixed(2)}} €</span> </p>
+                            <p style="font-size: 20px"><span style="color: red">{{(fila.precio).toFixed(2)}} €</span> </p>
                         </div>
                         <div class="grid-contenido" style="margin-top: 3px; font-size: 20px" ng-show="{{fila.existencias}}>0">
                 <strong>Quedan {{fila.existencias}} {{fila.desc}}</strong>
             </div>
                         <div class="grid-contenido" ng-show="{{fila.existencias}}> 0">
-                            <button class="btn btn-success" style="border-radius: 10px; font-family: sans-serif" ng-click="addProducto(fila.id)">
+                            <button class="btn btn-success" style="border-radius: 5px; font-family: sans-serif" ng-click="addProducto(fila.id)">
                                 <a><b>Añadir al carrito</b>
                                     <i class="fas fa-shopping-cart" style="font-size: 30px;" >
                                     </i>

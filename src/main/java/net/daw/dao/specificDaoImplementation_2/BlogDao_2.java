@@ -30,106 +30,18 @@ public class BlogDao_2 extends GenericDaoImplementation implements DaoInterface 
     }
 
     @Override
-    public BeanInterface get(int id, Integer expand) throws Exception {
-        BlogBean oBlogBean = (BlogBean) super.get(id, expand);
-        if (oBlogBean.getObj_Usuario().getId() == oUsuarioBeanSession.getId()) {
-            return oBlogBean;
-        } else {
-            throw new Exception("Error en Dao get de " + ob + ": No autorizado");
-        }
-    }
-
-    @Override
     public int remove(int id) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
 
     @Override
-    public int getcount() throws Exception {
-        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + oUsuarioBeanSession.getId();
-        return super.getcount();
+    public BeanInterface create(BeanInterface oBean) throws Exception {
+        throw new Exception("Error en Dao create de " + ob + ": No autorizado");
     }
+
     @Override
     public int update(BeanInterface oBean) throws Exception {
-        throw new Exception("Error en Dao update de " + ob + ": No autorizado");
-    }
-
-    @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
-        throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
-
-    }
-
-    public int getcountBlogUser(int idusuario) throws Exception {
-         if (idusuario == oUsuarioBeanSession.getId()) {
-        String strSQL = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=? ";
-
-        int res = 0;
-        ResultSet oResultSet = null;
-        PreparedStatement oPreparedStatement = null;
-        try {
-            oPreparedStatement = oConnection.prepareStatement(strSQL);
-            oPreparedStatement.setInt(1, idusuario);
-            oResultSet = oPreparedStatement.executeQuery();
-            if (oResultSet.next()) {
-                res = oResultSet.getInt(1);
-            }
-        } catch (SQLException e) {
-            throw new Exception("Error en Dao get de " + ob, e);
-        } finally {
-            if (oResultSet != null) {
-                oResultSet.close();
-            }
-            if (oPreparedStatement != null) {
-                oPreparedStatement.close();
-            }
-        }
-        return res;
-        } else {
-            throw new Exception("Tu no eres quien dices ser " + ob);
-        }
-    }
-
-    public ArrayList<BlogBean> getpageXusuario(int iRpp, int iPage, int idUsuario, Integer expand) throws Exception {
-        if (idUsuario == oUsuarioBeanSession.getId()) {
-            String strSQL = "SELECT * FROM " + ob;
-            ArrayList<BlogBean> alBlogBean;
-            if (iRpp > 0 && iRpp < 100000 && iPage > 0 && iPage < 100000000) {
-                strSQL += " WHERE id_usuario=? ";
-                strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
-                ResultSet oResultSet = null;
-                PreparedStatement oPreparedStatement = null;
-                try {
-
-                    oPreparedStatement = oConnection.prepareStatement(strSQL);
-                    oPreparedStatement.setInt(1, idUsuario);
-                    oResultSet = oPreparedStatement.executeQuery();
-                    alBlogBean = new ArrayList<BlogBean>();
-
-                    while (oResultSet.next()) {
-                        BlogBean oBlogBean = new BlogBean();
-                        oBlogBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
-                        alBlogBean.add(oBlogBean);
-                    }
-
-                } catch (SQLException e) {
-                    throw new Exception("Error en Dao getpage de " + ob, e);
-                } finally {
-                    if (oResultSet != null) {
-                        oResultSet.close();
-                    }
-                    if (oPreparedStatement != null) {
-                        oPreparedStatement.close();
-                    }
-                }
-            } else {
-                throw new Exception("Error en Dao getpage de " + ob);
-            }
-            return alBlogBean;
-
-        } else {
-            throw new Exception("Tu no eres quien dices ser " + ob);
-        }
+       throw new Exception("Error en Dao update de " + ob + ": No autorizado");
     }
 
 }

@@ -92,9 +92,13 @@ public class DaoFactory {
                 }
                 break;
             case 0:
-                if ("usuario".equals(ob)) {
-                    oDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
-                    break;
+                switch (ob){
+                    case "usuario":
+                        oDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "blog":
+                        oDao = new BlogDao_1(oConnection, ob, oUsuarioBeanSession);
+                        break;
                 }
                 break;
             default:

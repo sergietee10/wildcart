@@ -2,7 +2,7 @@
 <main  role="main" class="container">
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-6" style="margin-top:150px; border: 3px solid #253034; border-radius: 10px; background-color: #ADC8D1">
+        <div class="col-6" style="margin-top:150px; border: 3px solid #253034; border-radius: 10px; background-color: #B5BEC6">
             <form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
                 <h3 style="text-align: center">Sign in</h3>
                 <div class="form-group">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-unlock"></i>  Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password" ng-model="password" ng-required="true" />
+                    <input type="password" class="form-control" id="password" name="password" ng-model="password" ng-required="true"/>
                     <div ng-show="!userForm.password.$valid && !userForm.password.$pristine" class="alert alert-danger" role="alert">
                         Password obligatoria
                     </div>
@@ -37,3 +37,4 @@
         <div class="col-3"></div>
     </div>
 </main>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

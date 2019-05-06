@@ -183,11 +183,8 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oBlogService.getpage();
                                 break;
-                            case "getpagexusuario":
-                                oReplyBean = oBlogService.getpageXusuario();
-                                break;
-                            case "getcountfacuser":
-                                oReplyBean = oBlogService.getcountXusuario();
+                            case "fillblog":
+                                oReplyBean = oBlogService.fillBlog();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -363,18 +360,11 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oBlogService.get();
                                 break;
-
                             case "getcount":
                                 oReplyBean = oBlogService.getcount();
                                 break;
                             case "getpage":
                                 oReplyBean = oBlogService.getpage();
-                                break;
-                            case "getpagexusuario":
-                                oReplyBean = oBlogService.getpageXusuario();
-                                break;
-                            case "getcountfacuser":
-                                oReplyBean = oBlogService.getcountXusuario();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

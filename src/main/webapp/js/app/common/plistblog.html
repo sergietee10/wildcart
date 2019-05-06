@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12" style="min-height: 100%; min-width: 97%; border: 1px solid lightgrey;border-radius: 10px; margin: 75px 0px 80px 0px; background-color: lightgray; padding-bottom: 30px">
                 <div style="padding-bottom: 20px" class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1><i class="fas fa-apple-alt"></i>  Blog</h1>
+                    <h1><i class="fas fa-apple-alt"></i>  Noticias</h1>
                 </div>
                 <div class="row">
                     <div class="col-5"></div>
@@ -34,27 +34,25 @@
                     <div class="col-4"></div>
                 </div>
 
-                <div class="grid-container">
-                    <div class="grid-item" ng-repeat="fila in ajaxDataUsuarios track by $index">
-
-                        <a href="blog/{{fila.titulo}}">
-                            <div class="grid-contenido">
-                                <img ng-src="imagenes/{{fila.foto}}" style="width: 250px; height: 250px; margin-top: 20px">
-
-                            </div>
-
-                        </a>
-                        <div class="grid-contenido" style="margin-top: 15%; font-size: 20px">
-                            <p style="margin-top: 10px; color: black"><b>Contenido</b> {{fila.contenido}}</p>
-                        </div>
+                <div class="grid-containerb" style="border: 2px solid black; background-color: white; border-radius: 10px">
+                    <div ng-repeat="fila in ajaxDataUsuarios track by $index" style="border: 1px solid grey; border-radius: 5px">
                         <div class="grid-contenido">
-                            <p style="font-size: 20px"><b>Etiquetas</b> <span style="color: red">{{fila.etiquetas}}</span> </p>
+                            <img src="imagenes/{{fila.foto}}">
                         </div>
-                        <div class="grid-contenido" style="margin-top: 3px; font-size: 20px">
-                            <strong>{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</strong>
+                        <div class="grid-contenidob" style="margin-top: 2%; font-size: 30px">
+                            <p style="margin-top: 2px; color: black"><b>{{fila.titulo}}</b></p>
                         </div>
-                        <div class="grid-contenido">
-                            <p style="font-size: 20px"><b>Fecha</b> <span style="color: red">{{fila.fecha}}</span> </p>
+                        <div class="grid-contenidob" style="font-size: 15px">
+                            <p style="margin-top: 10px; color: black">{{fila.contenido}}</p>
+                        </div>
+                        <div class="grid-contenidob">
+                            <p style="font-size: 15px; color: black"><b>Etiquetas :</b> <span style="color: red">{{fila.etiquetas}}</span> </p>
+                        </div>
+                        <div class="grid-contenidob">
+                            <p style="margin-top: 3px; font-size: 15px; color: black"><b>Usuario :</b> {{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</p>
+                        </div>
+                        <div class="grid-contenidob">
+                            <p style="font-size: 15px; color: black"><b>Fecha :</b> <span>{{fila.fecha}}</span> </p>
                         </div>
                     </div>
                 </div>
