@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
+import net.daw.service.specificServiceImplementation_0.BlogService_0;
 import net.daw.service.specificServiceImplementation_0.UsuarioService_0;
 import net.daw.service.specificServiceImplementation_1.BlogService_1;
 import net.daw.service.specificServiceImplementation_1.FacturaService_1;
@@ -59,6 +60,24 @@ public class ServiceFactory {
                         }
                         break;
 
+                        case "blog":
+                        BlogService_0 oBlogService = new BlogService_0(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oBlogService.get();
+                                break;
+                            case "getcount":
+                                oReplyBean = oBlogService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oBlogService.getpage();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                        
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;

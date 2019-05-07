@@ -29,7 +29,12 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
 
    @Override
     public BeanInterface get(int id, Integer expand) throws Exception {
-        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
+        UsuarioBean oUsuario = (UsuarioBean) super.get(id, expand);
+        oUsuario.setDni("");
+        oUsuario.setLogin("");
+        oUsuario.setPass("");
+        oUsuario.setCode("");
+        return oUsuario;
     }
 
     @Override
