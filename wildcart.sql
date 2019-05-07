@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 16-04-2019 a las 05:57:39
+-- Tiempo de generación: 07-05-2019 a las 05:26:11
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.26
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `blog` (
   `id` int(11) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `titulo` varchar(255) DEFAULT NULL,
   `contenido` varchar(255) DEFAULT NULL,
   `etiquetas` varchar(255) DEFAULT NULL,
@@ -41,8 +42,10 @@ CREATE TABLE `blog` (
 -- Volcado de datos para la tabla `blog`
 --
 
-INSERT INTO `blog` (`id`, `titulo`, `contenido`, `etiquetas`, `id_usuario`, `fecha`) VALUES
-(1, 'Nike 218', 'Las nuevas nike 218 deportivas tanto uso para running como para gimnasio y fitness', 'Nike, Zapatillas, Running, Fitness', 4, '2019-04-15 00:00:00');
+INSERT INTO `blog` (`id`, `foto`, `titulo`, `contenido`, `etiquetas`, `id_usuario`, `fecha`) VALUES
+(1, '', 'Nike 218', 'Las nuevas nike 218 deportivas tanto uso para running como para gimnasio y fitness', 'Nike, Zapatillas, Running, Fitness', 4, '2019-04-15 00:00:00'),
+(2, '', 'Zapatillas Nike Element Ready 55', 'Las nuevas deportivas nike element ready con suela plana', 'Nike Zapatillas', 4, '2019-05-06 00:00:00'),
+(3, NULL, 'Nike NRE', 'asdfasdasasdas', 'saasf', 4, '2019-05-06 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -156,7 +159,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `codigo`, `desc`, `existencias`, `precio`, `foto`, `id_tipoproducto`) VALUES
-(5, 'F5Q', 'sistema tren', 0, 555, 'PENE', 2),
+(5, 'F5Q', 'sistema tren', 0, 555, 'NRE551.png', 2),
 (6, 'DFVT52', 'soporte trenes', 2238, 47.8422, 'Fotos', 4),
 (7, 'F5Q', ' accesorio coche', 0, 85.0209, 'Foto', 4),
 (8, '63P', 'soporte tren', 1, 19.7761, 'Foto', 5),
@@ -195,7 +198,8 @@ INSERT INTO `producto` (`id`, `codigo`, `desc`, `existencias`, `precio`, `foto`,
 (41, 'F5Q', 'estación capilar', 4, 87.4507, 'Foto', 1),
 (42, 'F5Q', ' accesorio coche', 5, 89.8129, 'Foto', 4),
 (43, 'DP5', 'soporte tubos', 5, 63.0283, 'Foto', 1),
-(44, '63P', 'sistema tren', 4, 23.6205, 'Foto', 3);
+(44, '63P', 'sistema tren', 4, 23.6205, 'Foto', 3),
+(45, '123454123', 'Nike React Element 55', 2551, 130, 'NRE551.png', 1);
 
 -- --------------------------------------------------------
 
@@ -530,7 +534,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
@@ -548,7 +552,7 @@ ALTER TABLE `linea`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoproducto`
