@@ -23,7 +23,9 @@ import net.daw.helper.EncodingHelper;
  *
  */
 public class BlogBean extends GenericBeanImplementation implements BeanInterface {
-
+    
+    @Expose
+    private String foto;
     @Expose
     private String titulo;
     @Expose
@@ -37,6 +39,13 @@ public class BlogBean extends GenericBeanImplementation implements BeanInterface
     @Expose(deserialize = false)
     private UsuarioBean obj_Usuario;
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }    
     public String getTitulo() {
         return titulo;
     }
@@ -90,6 +99,7 @@ public class BlogBean extends GenericBeanImplementation implements BeanInterface
     public BlogBean fill(ResultSet oResultSet, Connection oConnection, Integer expand, UsuarioBean oUsuarioBeanSession) throws Exception {
 
         this.setId(oResultSet.getInt("id"));
+        this.setFoto(oResultSet.getString("foto"));
         this.setTitulo(oResultSet.getString("titulo"));
         this.setContenido(oResultSet.getString("contenido"));
         this.setEtiquetas(oResultSet.getString("etiquetas"));
@@ -114,6 +124,7 @@ public class BlogBean extends GenericBeanImplementation implements BeanInterface
         LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
         
         String strPairs = "";
+        strPairs += "foto=" + EncodingHelper.quotate(foto) + ",";
         strPairs += "titulo=" + EncodingHelper.quotate(titulo) + ",";
         strPairs += "contenido=" + EncodingHelper.quotate(contenido) + ",";
         strPairs += "etiquetas=" + EncodingHelper.quotate(etiquetas) + ",";
@@ -128,6 +139,7 @@ public class BlogBean extends GenericBeanImplementation implements BeanInterface
     public String getColumns() {
         String strColumns = "";
         strColumns += "id,";
+        strColumns += "foto,";
         strColumns += "titulo,";
         strColumns += "contenido,";
         strColumns += "etiquetas,";
@@ -147,6 +159,7 @@ public class BlogBean extends GenericBeanImplementation implements BeanInterface
         
         String strColumns = "";
         strColumns += "null,";
+        strColumns += EncodingHelper.quotate(foto) + ",";
         strColumns += EncodingHelper.quotate(titulo) + ",";
         strColumns += EncodingHelper.quotate(contenido) + ",";
         strColumns += EncodingHelper.quotate(etiquetas) + ",";

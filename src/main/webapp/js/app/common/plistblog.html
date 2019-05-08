@@ -1,59 +1,40 @@
 <header-component></header-component>
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #161616">
     <div class="container" style="min-height: 100%; min-width: 97%;">
         <div class="row">
-            <div class="col-12" style="min-height: 100%; min-width: 97%; border: 1px solid lightgrey;border-radius: 10px; margin: 75px 0px 80px 0px; background-color: lightgray; padding-bottom: 30px">
-                <div style="padding-bottom: 20px" class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1><i class="fas fa-apple-alt"></i>  Noticias</h1>
+            <div class="col-2"></div>
+            <div class="col-8" style="background-color: white; min-height: 100%; min-width: 97%; margin: 69px 0px 80px 0px; padding: 30px">
+                <div style="text-align: center;  padding-bottom: 20px" class="d-flex justify-content-center flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 id="noticias" style="font-size: 50px"> NOTICIAS</h1>
                 </div>
-                <div class="row">
-                    <div class="col-5"></div>
-                    <div class="col-3">
-                        <nav aria-label="paginacion" >
-                            <ul class="pagination">
-
-                                <li class="page-item">
-                                    <a class="page-link" ng-show="page > 1" href="blog/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Anterior</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" ng-show="page > 2" href="blog/{{rpp}}/1/{{orderURLCliente}}">1</a>
-                                </li>
-                                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
-                                    <a class="page-link" href="blog/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="blog/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">{{totalPages}}</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" ng-show="page != totalPages" href="blog/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-4"></div>
-                </div>
-
-                <div class="grid-containerb" style="border: 2px solid black; background-color: white; border-radius: 10px">
-                    <div ng-repeat="fila in ajaxDataUsuarios track by $index" style="border: 1px solid grey; border-radius: 5px">
-                        <div class="grid-contenido">
-                            <img src="imagenes/{{fila.foto}}">
+                <div class="grid-containerb" style="background-color: white; border-radius: 10px">
+                    <div ng-repeat="fila in ajaxDataUsuarios track by $index">
+                        <div class="row" style="margin-bottom: 30px">
+                            <div class="col-4">
+                                <div class="grid-contenido">
+                                    <img ng-src="imagenes/{{fila.foto}}" style="width: 420px; height: 310px">
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="grid-contenidob" style=" font-size: 30px">
+                                    <p id="titulo" style=" color: black"><b>{{fila.titulo}}</b></p>
+                                </div>
+                                <div class="grid-contenidob" style="font-size: 15px">
+                                    <p style="margin-top: 5px; color: black">{{fila.contenido}}</p>
+                                </div>
+                                <div class="grid-contenidob">
+                                    <p style="font-size: 12px; color: red"><b>{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</b></p>
+                                </div>
+                                <div class="grid-contenidob">
+                                    <p style="font-size: 12px; color: black"><b>Etiquetas :</b> <span style="color: #708ada">{{fila.etiquetas}}</span> </p>
+                                </div>
+                                
+                                <div class="grid-contenidob">
+                                    <p style="font-size: 12px; color: black"><b>Fecha :</b> <span>{{fila.fecha}}</span> </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="grid-contenidob" style="margin-top: 2%; font-size: 30px">
-                            <p style="margin-top: 2px; color: black"><b>{{fila.titulo}}</b></p>
-                        </div>
-                        <div class="grid-contenidob" style="font-size: 15px">
-                            <p style="margin-top: 10px; color: black">{{fila.contenido}}</p>
-                        </div>
-                        <div class="grid-contenidob">
-                            <p style="font-size: 15px; color: black"><b>Etiquetas :</b> <span style="color: red">{{fila.etiquetas}}</span> </p>
-                        </div>
-                        <div class="grid-contenidob">
-                            <p style="margin-top: 3px; font-size: 15px; color: black"><b>Usuario :</b> {{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</p>
-                        </div>
-                        <div class="grid-contenidob">
-                            <p style="font-size: 15px; color: black"><b>Fecha :</b> <span>{{fila.fecha}}</span> </p>
-                        </div>
+                        <hr style="border: 0.5px solid grey">
                     </div>
                 </div>
                 <div class="row">
@@ -84,6 +65,7 @@
                     <div class="col-4"></div>
                 </div>
             </div>
+            <div class="col-2"></div>
         </div>
     </div>
 </div>

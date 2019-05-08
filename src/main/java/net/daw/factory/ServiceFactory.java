@@ -60,7 +60,7 @@ public class ServiceFactory {
                         }
                         break;
 
-                        case "blog":
+                    case "blog":
                         BlogService_0 oBlogService = new BlogService_0(oRequest);
                         switch (op) {
                             case "get":
@@ -72,12 +72,15 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oBlogService.getpage();
                                 break;
+                            case "loadimage":
+                                oReplyBean = oBlogService.loadimage();
+                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
                         }
                         break;
-                        
+
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;
@@ -201,6 +204,9 @@ public class ServiceFactory {
                                 break;
                             case "getpage":
                                 oReplyBean = oBlogService.getpage();
+                                break;
+                            case "loadimage":
+                                oReplyBean = oBlogService.loadimage();
                                 break;
                             case "fillblog":
                                 oReplyBean = oBlogService.fillBlog();
@@ -384,6 +390,9 @@ public class ServiceFactory {
                                 break;
                             case "getpage":
                                 oReplyBean = oBlogService.getpage();
+                                break;
+                                case "loadimage":
+                                oReplyBean = oBlogService.loadimage();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

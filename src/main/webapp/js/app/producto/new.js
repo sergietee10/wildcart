@@ -1,5 +1,4 @@
 'use strict';
-
 moduleProducto.controller('productoNewControllerAdm', ['$scope', '$http', '$routeParams', 'sessionService',
     function ($scope, $http, $routeParams, sessionService) {
         $scope.id = $routeParams.id;
@@ -86,7 +85,7 @@ moduleProducto.controller('productoNewControllerAdm', ['$scope', '$http', '$rout
                 headers: { 'Content-Type': undefined },
                 method: 'POST',
                 data: oFormData,
-                url: `json?ob=producto&op=loadimage`
+                url: `json?ob=blog&op=loadimage`
             }).then(function (response) {
                 console.log(response);
             }, function(response){

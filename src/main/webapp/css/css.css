@@ -9,8 +9,8 @@
 
 .grid-containerb {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(700px,1400px));     
-    grid-auto-rows: 400px;
+    grid-template-columns: repeat(auto-fill,minmax(650px,1400px));     
+    grid-auto-rows: 370px;
     grid-gap: 20px 3%;
     padding: 10px;    
     justify-content: left;    
@@ -54,4 +54,12 @@
     margin-left: 15px;
     align-items: left;
 
+}
+
+#noticias{
+    font-family: 'Russo One', sans-serif;
+}
+
+#titulo{
+    font-family: 'Passion One', cursive;
 }

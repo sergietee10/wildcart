@@ -30,22 +30,6 @@
                     </div>
                     <usuario-selection class="modal fade " id="cadd-location-modal" obj="ajaxDatoFactura.obj_Usuario"></usuario-selection>
 
-                    <div class="form-group">
-                        <h5>Usuario</h5>
-                        <span class="input-group-text fas fa-search"
-
-                              data-toggle="modal"
-                              data-target="#cadd-location-modal"></span>
-                        <div class="row">
-                                <div class="col-2">
-                                    <input type="text" class="form-control" id="obj_tipoUsuario_desc" name="obj_tipoUsuario_desc" ng-model="ajaxDatoFactura.obj_Usuario.id"ng-change="usuarioRefresh()"/>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" ng-model="ajaxDatoFactura.obj_Usuario.nombre"  placeholder="Seleccione un usuario"/>
-                                </div>
-                            </div>
-                    </div>
-                    
                 </form>
                 <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
                 <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>
