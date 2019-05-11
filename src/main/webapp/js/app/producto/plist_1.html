@@ -39,7 +39,7 @@
                                         <a class="page-link" ng-show="page != totalPages" href="producto/plist_1/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
                                     </li>
                                     <li>
-                                        <button type="button" class="btn btn-xs btn-dark" style="margin-left: 10px" ng-click="resetOrder()">
+                                        <button type="button" class="btn btn-xs btn-primary" style="margin-left: 10px; background-color:#212529; border-color: #212529" ng-click="resetOrder()">
                                             <i class="fas fa-redo-alt"></i>    Reset Order
                                         </button>
                                     </li>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-2"></div>
                         <div class="col-2">
-                            <a href="/producto/new" style="color: white"><button type="button" class="btn btn-dark btn-xs">Añadir Producto</button></a>
+                            <a href="/producto/new" style="color: white"><button type="button" style="background-color:#212529; border-color: #212529" class="btn btn-primary btn-xs">Añadir Producto</button></a>
                         </div>
                     </div>
                 <div class="table-responsive">
@@ -71,22 +71,9 @@
                             </th>
                             <th>
                                 Código
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('codigo', 'asc')">
-                                    <i class="fas fa-long-arrow-alt-up"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('codigo', 'desc')">
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                </button>
                             </th>
                             <th>
                                 Descripción
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('desc', 'asc')">
-                                    <a class="fas fa-long-arrow-alt-up"></a>
-
-                                </button>
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('desc', 'desc')">
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                </button>
                             </th>
                             <th>
                                 Existencias
@@ -108,21 +95,9 @@
                             </th>
                             <th>
                                 Foto
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('foto', 'asc')">
-                                    <i class="fas fa-long-arrow-alt-up"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('foto', 'desc')">
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                </button>
                             </th>
                             <th>
                                 Tipo de producto
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('id_tipoproducto', 'asc')">
-                                    <i class="fas fa-long-arrow-alt-up"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('id_tipoproducto', 'desc')">
-                                    <i class="fas fa-long-arrow-alt-down"></i>
-                                </button>
                             </th>
                             <th>
                                 Acciones

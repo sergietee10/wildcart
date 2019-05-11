@@ -42,7 +42,7 @@
                                         <a class="page-link" ng-show="page != totalPages" href="factura/plist/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
                                     </li>
                                     <li>
-                                        <button type="button" class="btn btn-xs btn-dark" style="margin-left: 10px" ng-click="resetOrder()">
+                                        <button type="button" class="btn btn-xs btn-primary" style="margin-left: 10px; background-color:#212529; border-color: #212529" ng-click="resetOrder()">
                                             <i class="fas fa-redo-alt"></i>    Reset Order
                                         </button>
                                     </li>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-2"></div>
                         <div class="col-2">
-                            <a href="/factura/new/{{id}}" style="color: white"><button type="button" class="btn btn-dark btn-xs">Añadir Factura</button></a>
+                            <a href="/factura/new/{{id}}" style="color: white"><button type="button" style="background-color:#212529; border-color: #212529" class="btn btn-primary btn-xs">Añadir Factura</button></a>
                         </div>
                     </div>
                     
@@ -89,13 +89,6 @@
                                         </th>
                                         <th class="text-center">
                                             IVA
-                                            <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('iva', 'asc')">
-                                                <a class="fas fa-long-arrow-alt-up"></a>
-
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('iva', 'desc')">
-                                                <i class="fas fa-long-arrow-alt-down"></i>
-                                            </button>
                                         </th>
                                         <th class="text-center">
                                             Usuario

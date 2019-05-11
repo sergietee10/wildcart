@@ -42,11 +42,11 @@
                                            type="text"
                                            size="5"
                                            ng-model-options="{debounce: 1000}"
-                                           maxlength="5" class="form-control"
+                                           maxlength="5" disabled="disabled" class="form-control"
                                            ng-class="{ 'is-invalid' : userForm.id_producto.$invalid && !userForm.id_producto.$pristine, 'is-valid': userForm.id_producto.$valid}"/>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" class="form-control" ng-model="ajaxDatoTipoUsuario.obj_Producto.desc"/>
+                                    <input type="text" disabled="disabled" class="form-control" ng-model="ajaxDatoTipoUsuario.obj_Producto.desc"/>
                                 </div>   
                             </div>
                         </div>

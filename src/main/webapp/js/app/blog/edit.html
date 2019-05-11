@@ -8,52 +8,40 @@
                     <form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
                         <h1><i class="fas fa-file-invoice-dollar"></i>  Editar Noticia Nº{{ajaxDatoBlog.id}}</h1>
                         <hr>
+
                         <div class="form-group">
-                            <h5>ID</h5>
-                            <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoBlog.id" />
-                        </div>
-                        <div class="form-group">
-                            <h5>Titulo</h5>
-                            <input type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
-                        </div>
-                        <div class="form-group">
-                            <h5>Contenido</h5>
-                            <input type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true" />
-                        </div>
-                        <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
-                            <div class="row">
-                                <div class="col-6">
-                                    <h5>Fecha</h5> 
-                                    <div style="background-color: #A5BEDE; border-radius: 10px; width: 74%">                                        <md-datepicker ng-model="dt" md-placeholder="Fecha" ng-readonly="true"></md-datepicker></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <h5>Etiquetas</h5>
-                                    <input type="text" class="form-control" id="etiquetas" name="iva" ng-model="ajaxDatoBlog.etiquetas" ng-required="true" />
-                                </div>
+                        <h5>ID</h5>
+                        <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoBlog.id" />
+                    </div>
+                    <div class="form-group">
+                        <h5>Título <span style="font-size: 12px">(50 caracteres)</span></h5>
+                        <input type="text" class="form-control" maxlength="50" id="id" name="id" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <h5>Fecha</h5>
+                            <div style="background-color: #A5BEDE; border-radius: 10px">
+                                <md-datepicker ng-model="dt" md-placeholder="Fecha" ng-readonly="true" style="margin-left: -40px;"></md-datepicker></textarea>
                             </div>
                         </div>
-
-                        <usuario-selection class="modal fade" id="cadd-location-modal" obj="ajaxDatoBlog.obj_Usuario">
-
-                        </usuario-selection>
-
+                    </div>
                         <div class="form-group">
-                            <h5>Usuario</h5>
-                            <span class="input-group-text fas fa-search"
-                                  data-toggle="modal"
-                                  data-target="#cadd-location-modal"></span>
-                            <div class="row">
-                                <div class="col-2">
-                                    <input type="text" class="form-control" id="obj_tipoUsuario_desc" name="obj_tipoUsuario_desc" ng-model="ajaxDatoBlog.obj_Usuario.id"/>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" ng-model="ajaxDatoBlog.obj_Usuario.nombre"/>
-                                </div>
-                            </div>                        </div>
+                            <h5>Contenido  <span style="font-size: 12px">(400 caracteres)</span></h5> 
+                            <textarea style="height: 126px" maxlength="400" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
+                            <h5>Etiquetas</h5>
+                            <input type="text" class="form-control" maxlength="100" id="etiquetas" name="etiquetas" ng-model="ajaxDatoBlog.etiquetas" />
+                        </div>
+                    <usuario-selection class="modal fade " id="cadd-location-modal" obj="ajaxDatoBlog.obj_Usuario"></usuario-selection>
                     </form>
-                    <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
-                    <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Enviar</button>
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
+                            <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>
+                        </div>
+                    </div>
                     <div class="alert alert-success" ng-model="resultado" ng-show="mensaje">
                         Datos actualizados correctamente.
                     </div>

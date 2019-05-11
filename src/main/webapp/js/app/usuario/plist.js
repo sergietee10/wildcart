@@ -44,12 +44,12 @@ moduleUsuario.controller('usuarioPlistControllerAdm', ['$scope', '$http', '$loca
                 $scope.orderURLServidor = "&order=" + order + "," + align;
                 $scope.orderURLCliente = order + "," + align;
             } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+                    window.alert("Solo puedes ordenar por un campo. Resetea el orden.");
             }
             $location.url(`usuario/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
+            $('.btn-dark').hide();
         }
-
+        
         $http({
             method: 'GET',
             url: '/json?ob=usuario&op=getcount'

@@ -24,7 +24,7 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 contenido: $scope.ajaxDatoBlog.contenido,
                 etiquetas: $scope.ajaxDatoBlog.etiquetas,
                 fecha: $scope.myDate,
-                id_usuario: $scope.ajaxDatoBlog.obj_Usuario.id                
+                id_usuario: $scope.idUsuariologeado
             };
             $http({
                 method: 'GET',

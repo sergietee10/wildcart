@@ -41,11 +41,11 @@ moduleProducto.controller('productoPlistControllerAdm', ['$scope', '$http', '$lo
             if ($scope.orderURLServidor == "") {
                 $scope.orderURLServidor = "&order=" + order + "," + align;
                 $scope.orderURLCliente = order + "," + align;
-            } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+            }else {
+                    window.alert("Solo puedes ordenar por un campo. Resetea el orden.");
             }
             $location.url(`producto/plist_1/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
+            $('.btn-dark').hide();
         }
 
 

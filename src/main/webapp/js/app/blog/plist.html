@@ -42,7 +42,7 @@
                                         <a class="page-link" ng-show="page != totalPages" href="blog/plist/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Siguiente</a>
                                     </li>
                                     <li>
-                                        <button type="button" class="btn btn-xs btn-dark" style="margin-left: 10px" ng-click="resetOrder()">
+                                        <button type="button" class="btn btn-xs btn-primary" style="margin-left: 10px; background-color:#212529; border-color: #212529" ng-click="resetOrder()">
                                             <i class="fas fa-redo-alt"></i>    Reset Order
                                         </button>
                                     </li>
@@ -59,8 +59,8 @@
                             
                         </div>
                         <div class="col-3">
-                            <a href="/blog/plistblog" style="color: white"><button type="button" class="btn btn-dark btn-xs">Vista Blog</button></a>                            
-                            <a href="/blog/new/{{id}}" style="color: white"><button type="button" class="btn btn-dark btn-xs">Añadir Noticia</button></a>
+                            <a href="/blog/plistblog" style="color: white"><button type="button" style="background-color:#212529; border-color: #212529" class="btn btn-primary btn-xs">Vista Blog</button></a>                            
+                            <a href="/blog/new/{{id}}" style="color: white"><button type="button" style="background-color:#212529; border-color: #212529" class="btn btn-primary btn-xs">Añadir Noticia</button></a>
                         </div>
                     </div>
                     
@@ -83,21 +83,9 @@
                                         </th>
                                         <th class="text-center">
                                             Título
-                                            <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('id', 'asc')">
-                                                <i class="fas fa-long-arrow-alt-up"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('id', 'desc')">
-                                                <i class="fas fa-long-arrow-alt-down"></i>
-                                            </button>
                                         </th>
                                         <th class="text-center">
                                             Contenido
-                                            <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('id', 'asc')">
-                                                <i class="fas fa-long-arrow-alt-up"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-dark" ng-click="ordena('id', 'desc')">
-                                                <i class="fas fa-long-arrow-alt-down"></i>
-                                            </button>
                                         </th>
                                         <th class="text-center">
                                             Usuario

@@ -47,10 +47,10 @@ moduleTipousuario.controller('tipousuarioPlistControllerAdm', ['$scope', '$http'
                 $scope.orderURLServidor = "&order=" + order + "," + align;
                 $scope.orderURLCliente = order + "," + align;
             } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+                    window.alert("Solo puedes ordenar una vez. Resetea el orden.");
             }
             $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
+            $('.btn-dark').hide();
         }
 
         $http({
@@ -110,13 +110,13 @@ moduleTipousuario.controller('tipousuarioPlistControllerAdm', ['$scope', '$http'
                     }
                 }
             }
-        };
+        }
+        ;
 
 
 
 
         $scope.isActive = toolService.isActive;
-
 
 
     }

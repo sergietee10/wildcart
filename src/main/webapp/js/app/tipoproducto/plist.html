@@ -42,7 +42,7 @@
                                     <li class="page-item">
                                         <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="{{ob}}/plist/{{rpp}}/{{totalPages}}/{{order}}/{{align}}">Last</a>
                                     </li><li>
-                                        <button type="button" class="btn btn-xs btn-dark" style="margin-left: 10px" ng-click="resetOrder()">
+                                        <button type="button" class="btn btn-xs btn-primary" style="margin-left: 10px; background-color:#212529; border-color: #212529" ng-click="resetOrder()">
                                             <i class="fas fa-redo-alt"></i>    Reset Order
                                         </button>
                                     </li>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-2"></div>
                         <div class="col-2">
-                            <a href="/tipoproducto/new" style="color: white"><button type="button" class="btn btn-dark btn-xs">Añadir Tipo Producto</button></a>
+                            <a href="/tipoproducto/new" style="color: white"><button type="button" style="background-color:#212529; border-color: #212529" class="btn btn-primary btn-xs">Añadir Tipo Producto</button></a>
                         </div>
                     </div>
 
@@ -79,12 +79,6 @@
                                 </th>
                                 <th>
                                     Descripción
-                                    <button type="button" class="btn btn-dark" ng-click="ordena('tipoproducto.desc', 'asc')">
-                                        <i class="fas fa-long-arrow-alt-up"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-dark" ng-click="ordena('tipoproducto.desc', 'desc')">
-                                        <i class="fas fa-long-arrow-alt-down"></i>
-                                    </button>
                                 </th>
                                 <th>
                                     Acciones

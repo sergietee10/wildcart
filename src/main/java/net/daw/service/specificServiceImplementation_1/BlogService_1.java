@@ -74,6 +74,7 @@ public class BlogService_1 extends GenericServiceImplementation implements Servi
 
     }
     
+    
     public ReplyBean fillBlog() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
@@ -84,10 +85,10 @@ public class BlogService_1 extends GenericServiceImplementation implements Servi
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
-            String[] titulo1 = {"La huerta", "El campo", "La cosecha", "El clima"};
-            String[] titulo2 = {"de hoy", "este año", "mejora", "empeora", "en la ciudad"};
+            String[] titulo1 = {"Nike"};
+            String[] titulo2 = {"Adidas"};
             String mensaje = lorem.getParagraphs(3, 4);
-            String[] foto = {"noticias1.jpeg", "noticias2.jpeg", "noticias3.jpeg", "noticias4.jpeg", "noticias5.jpeg"};
+            String[] foto = {"notice.jpeg"};
             int[] id_usuario = {52, 53, 54, 55, 56};
 
             ArrayList<BlogBean> resultado = new ArrayList<>();
