@@ -30,21 +30,9 @@
                     <tr>
                         <th>
                             ID
-                            <button type="button" class="btn btn-light" ng-click="c.ordena('id', 'asc')">
-                                <i class="fas fa-long-arrow-alt-up"></i>
-                            </button>
-                            <button type="button" class="btn btn-light" ng-click="c.ordena('id', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
-                            </button>
                         </th>
                         <th>
                             Nombre
-                            <button type="button" class="btn btn-light" ng-click="c.ordena('usuario.nombre', 'asc')">
-                                <i class="fas fa-long-arrow-alt-up"></i>
-                            </button>
-                            <button type="button" class="btn btn-light" ng-click="c.ordena('usuario.nombre', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
-                            </button>
                         </th>
                         <th>
                             Selección
@@ -91,9 +79,7 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" ng-click="c.resetOrder()">Reset</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" ng-click="c.save()">Save</button>
         </div>
     </div>
 </div>

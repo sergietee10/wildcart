@@ -8,7 +8,7 @@
                 </div>
                 <div class="row" ng-show="!carritoVacio">
                     <div class="col-4">
-                        <button class="btn btn-success"><a href="/producto/plist"><b style="color: white">Añadir más productos</b></a></button>
+                        <button class="btn btn-success"><a href="usr/producto/plist"><b style="color: white">Añadir más productos</b></a></button>
                         <button class="btn btn-danger" ng-click="emptyCart()"> <b>Vaciar el carrito</b></button>
                         <a href="javascript:window.history.back()"> 
                             <button type="button" class="btn btn-primary btn-xs">
@@ -46,7 +46,7 @@
                             <tbody>
                                 <tr ng-repeat="fila in ajaxCarrito track by $index">
                                     <th class="text-center">{{fila.obj_producto.id}}</th>
-                                    <td class="text-center"><a href="/producto/view/{{fila.obj_producto.id}}">{{fila.obj_producto.desc}}</a></td>
+                                    <td class="text-center"><a href="usr/producto/view/{{fila.obj_producto.id}}">{{fila.obj_producto.desc}}</a></td>
                                     <td class="text-center">{{fila.obj_producto.precio}} €</td>
                                     <td class="text-center">{{fila.cantidad}}</td>
                                     <td class="text-center">{{(fila.obj_producto.precio * fila.cantidad).toFixed(2)}} €</td>

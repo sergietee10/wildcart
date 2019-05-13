@@ -45,6 +45,9 @@ function cController($http) {
         }, function (response) {
             self.status = response.status;
             self.data = response.data.message || 'Request failed';
+            if (($fila.existencias === 0) || ($fila.existencias === null)) {
+                $fila.existencias = false;
+            }
         });
     };
 

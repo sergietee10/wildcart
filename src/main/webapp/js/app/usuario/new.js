@@ -2,6 +2,7 @@
 
 moduleUsuario.controller('usuarioNewControllerAdm', ['$scope', '$http', '$routeParams', 'sessionService',
     function ($scope, $http, $routeParams, sessionService) {
+        $scope.idC = $routeParams.id;
         if (sessionService) {
             $scope.usuariologeado = sessionService.getUserName();
             $scope.idUsuariologeado = sessionService.getUserId();
