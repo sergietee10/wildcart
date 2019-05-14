@@ -56,6 +56,15 @@
                             </div>
                         </th>
                         <th>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>
+                                        Tipo Producto
+                                    </p>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
                             Selección
                         </th>
                     </tr>
@@ -63,9 +72,7 @@
                         <td>{{fila.id}}</td>
                         <td>{{fila.desc}}</td>
                         <td>{{fila.precio}}</td>
-                        <td>
-                            <a href="tipoproducto/view/{{fila.obj_tipoProducto.id}}">{{fila.obj_tipoProducto.desc}}</a>
-                        </td>
+                        <td>{{fila.obj_tipoProducto.desc}}</td>
                         <td>
                             <div class="btn-toolbar" role="toolbar">
                                 <div class="btn-group">
@@ -104,7 +111,6 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" ng-click="c.resetOrder()">Reset</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>            
         </div>
     </div>
