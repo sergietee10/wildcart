@@ -108,7 +108,6 @@ trolleyes.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usuario/view/:id?', {templateUrl: 'js/app/usuario/view.html', controller: 'usuarioViewControllerAdm', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/usuario/edit/:id?', {templateUrl: 'js/app/usuario/edit.html', controller: 'usuarioEditControllerAdm', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/usuario/remove/:id?', {templateUrl: 'js/app/usuario/remove.html', controller: 'usuarioRemoveControllerAdm', resolve: {auth: autenticacionAdministrador}});
-        $routeProvider.when('/usuario/create/', {templateUrl: 'js/app/usuario/create.html', controller: 'usuarioCreateControllerAdm', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/usuario/plistfactura/:id?/:rpp?/:page?/:order?', {templateUrl: 'js/app/usuario/plistfactura.html', controller: 'usuarioPlistFacturaControllerAdm', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/usuario/new', {templateUrl: 'js/app/usuario/new.html', controller: 'usuarioNewControllerAdm', resolve: {auth: autenticacionAdministrador}});
 

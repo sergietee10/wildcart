@@ -12,8 +12,8 @@
                         <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoBlog.id" />
                     </div>
                     <div class="form-group">
-                        <h5>Título <span style="font-size: 12px">(50 caracteres)</span></h5>
-                        <input type="text" class="form-control" maxlength="50" id="id" name="id" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
+                        <h5>Título <span style="font-size: 12px">(250 caracteres)</span></h5>
+                        <input type="text" class="form-control" maxlength="250" id="id" name="id" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
                     </div>
                     <div class="row">
                         <div class="col-4">
@@ -25,17 +25,17 @@
                         <div class="col-8" >
                             <div class="form-group">
                                 <h5>Imagen</h5>
-                                <input type = "file" file-model = "myFile"/>
+                                <input type = "file" file-model = "myFile" ng-required="true"/>
                             </div>
                         </div>
                     </div>
                         <div class="form-group">
-                            <h5>Contenido  <span style="font-size: 12px">(400 caracteres)</span></h5> 
-                            <textarea style="height: 126px" maxlength="400" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
+                            <h5>Contenido  <span style="font-size: 12px">(1600 caracteres)</span></h5> 
+                            <textarea style="height: 126px" maxlength="1600" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
                             <h5>Etiquetas</h5>
-                            <input type="text" class="form-control" maxlength="100" id="etiquetas" name="etiquetas" ng-model="ajaxDatoBlog.etiquetas" />
+                            <input type="text" class="form-control" maxlength="250" id="etiquetas" name="etiquetas" ng-model="ajaxDatoBlog.etiquetas" />
                         </div>
                     <usuario-selection class="modal fade " id="cadd-location-modal" obj="ajaxDatoBlog.obj_Usuario"></usuario-selection>
 
