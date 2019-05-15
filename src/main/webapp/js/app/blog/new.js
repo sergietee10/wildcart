@@ -35,6 +35,7 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 $scope.status = response.status;
                 $scope.mensaje = true;
             }, function (response) {
+                alert("Error...");
                 $scope.ajaxDatoBlog = response.data.message || 'Request failed';
                 $scope.status = response.status;
             });
@@ -56,6 +57,8 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 url: 'json?ob=tipousuario&op=update&id=2',
                 data: {json: JSON.stringify($scope.obj)}
             }).then(function (response) {
+                //detectar error
+                
                 $scope.status = response.status;
                 $scope.ajaxData = response.data.message;
             }, function (response) {
