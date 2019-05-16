@@ -81,7 +81,7 @@
                                         <th class="text-center">
                                             Título
                                         </th>
-                                        <th class="contenido" style="width:500px; background-color:orange; color:white; font-size:18pt;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;">
+                                        <th class="contenido">
                                             Contenido
                                         </th>
                                         <th class="text-center">
@@ -105,7 +105,7 @@
                                     <tr ng-repeat="fila in ajaxDataUsuarios">
                                         <th class="text-center">{{fila.id}}</th>
                                         <td class="text-center">{{fila.titulo}}</td>
-                                        <td class="text-center">{{fila.contenido}}</td>
+                                        <td class="text-center" style="width:500px; font-size:12pt;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;">{{fila.contenido}}</td>
                                         <td class="text-center"><a href="/blog/view/{{fila.obj_Usuario.id}}">{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</a></td>
                                         <td class="text-center">{{fila.fecha| date:'d-M-y'}}</td>
                                         <td class="text-center">

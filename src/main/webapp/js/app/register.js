@@ -4,7 +4,7 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
     function ($scope, $http, sessionService) {
         $scope.text = 'me@example.com';
         $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
-        $scope.userFormat = /^[a-zA-Z0-9]{3,15}$/;
+        $scope.userFormat = /^[a-zA-Z0-9]{3,25}$/;
         $scope.passFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/;
         $scope.mensaje = false;
         $scope.mensajeError = false;
