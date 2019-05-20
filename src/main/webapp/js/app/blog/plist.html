@@ -78,10 +78,10 @@
                                                 <i class="fas fa-long-arrow-alt-down"></i>
                                             </button>
                                         </th>
-                                        <th class="text-center">
+                                        <th class="text-left">
                                             Título
                                         </th>
-                                        <th class="contenido">
+                                        <th class="left">
                                             Contenido
                                         </th>
                                         <th class="text-center">
@@ -104,8 +104,8 @@
                                 <tbody>
                                     <tr ng-repeat="fila in ajaxDataUsuarios">
                                         <th class="text-center">{{fila.id}}</th>
-                                        <td class="text-center">{{fila.titulo}}</td>
-                                        <td class="text-center" style="width:500px; font-size:12pt;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;">{{fila.contenido}}</td>
+                                        <td class="text-left" style="max-width: 200px;">{{fila.titulo}}</td>
+                                        <td class="text-left" style="max-width: 600px;font-size:12pt;">{{fila.contenido}}</td>
                                         <td class="text-center"><a href="/blog/view/{{fila.obj_Usuario.id}}">{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</a></td>
                                         <td class="text-center">{{fila.fecha| date:'d-M-y'}}</td>
                                         <td class="text-center">

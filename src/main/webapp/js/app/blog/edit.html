@@ -14,20 +14,24 @@
                         <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoBlog.id" />
                     </div>
                     <div class="form-group">
-                        <h5>Título <span style="font-size: 12px">(50 caracteres)</span></h5>
-                        <input type="text" class="form-control" maxlength="50" id="id" name="id" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
+                        <h5>Título <span style="font-size: 12px">(60 caracteres)</span></h5>
+                        <input type="text" class="form-control" maxlength="60" id="id" name="id" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
                     </div>
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-4">
                             <h5>Fecha</h5>
                             <div style="background-color: #A5BEDE; border-radius: 10px">
                                 <md-datepicker ng-model="dt" md-placeholder="Fecha" ng-readonly="true" style="margin-left: -40px;"></md-datepicker></textarea>
                             </div>
                         </div>
+                        <div class="col-8" >
+                                <h5>Imagen</h5>
+                                <input type = "file" file-model = "myFile" ng-required="true"/>
+                        </div>
                     </div>
                         <div class="form-group">
-                            <h5>Contenido  <span style="font-size: 12px">(400 caracteres)</span></h5> 
-                            <textarea style="height: 126px" maxlength="400" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
+                            <h5>Contenido  <span style="font-size: 12px">(1600 caracteres)</span></h5> 
+                            <textarea style="height: 126px" maxlength="1600" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
                             <h5>Etiquetas</h5>

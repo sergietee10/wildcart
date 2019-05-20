@@ -35,8 +35,16 @@ moduleBlog.controller('blogEditControllerAdm', ['$scope', '$http', '$routeParams
         });
 
         $scope.guardar = function () {
+            $scope.uploadFile();
+            var nombreFoto;
+            if ($scope.myFile === undefined) {
+                nombreFoto = "default.jpg";
+            } else {
+                nombreFoto = $scope.myFile.name
+            }
             var json = {
                 id: $scope.ajaxDatoBlog.id,
+                foto: nombreFoto,
                 titulo: $scope.ajaxDatoBlog.titulo,
                 contenido: $scope.ajaxDatoBlog.contenido,
                 etiquetas: $scope.ajaxDatoBlog.etiquetas,
@@ -98,4 +106,35 @@ moduleBlog.controller('blogEditControllerAdm', ['$scope', '$http', '$routeParams
                 $scope.myDate.getDate());
 
 
+$scope.uploadFile = function () {
+            var file;
+            file = $scope.myFile;
+            
+            var oFormData = new FormData();
+            oFormData.append('file', file);
+            $http({
+                headers: { 'Content-Type': undefined },
+                method: 'POST',
+                data: oFormData,
+                url: `json?ob=blog&op=loadimage`
+            }).then(function (response) {
+                console.log(response);
+            }, function(response){
+                    console.log(response);
+                });
+        };
+    }]).directive('fileModel', ['$parse', function ($parse) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var model = $parse(attrs.fileModel);
+                var modelSetter = model.assign;
+    
+                element.bind('change', function () {
+                    scope.$apply(function () {
+                        modelSetter(scope, element[0].files[0]);
+                    });
+                });
+            }
+        }
     }]);

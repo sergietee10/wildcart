@@ -1,26 +1,36 @@
 <header-component></header-component>
-<div class="container-fluid" style="background-color: #161616">
+<div class="container-fluid" style="background-color: #161616;">
     <div class="container" style="min-height: 100%; min-width: 97%;">
         <div class="row">
             <div class="col-2"></div>
-            <div class="col-8" style="background-color: white; min-height: 100%; min-width: 97%; margin: 69px 0px 80px 0px; padding: 30px">
-                <div style="text-align: center;  padding-bottom: 20px" class="d-flex justify-content-center flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 id="noticias" style="font-size: 50px"> NOTICIAS</h1>
+            <div class="col-8" style="background-color: white; min-height: 100%; min-width: 97%;border-radius: 10px; margin: 69px 0px 80px 0px; padding: 30px">
+                <div class="row" >
+                    <div clas="col-5" style="float: none; margin-left: auto; margin-right: auto;"><img src="../../../image/nike100px.png" alt=""/></div>
+
+                    <div clas="col-2" style="float: none; margin-left: auto; margin-right: auto;"><img src="../../../image/adidas80px.png" alt=""/></div>
+
+                    <div clas="col-4" style="float: none; margin-left: auto; margin-right: auto;">
+                        <h1 id="noticias" style="font-size: 50px; margin-top: 25px"> NOTICIAS</h1>
+                    </div>
+                    <div clas="col-2" style="float: none; margin-left: auto; margin-right: auto;"><img src="../../../image/puma120px.png" alt=""/></div>
+
+                    <div clas="col-2" style="float: none; margin-left: auto; margin-right: auto; margin-top: 10px"><img src="../../../image/new-balance120px.png" alt=""/></div>
                 </div>
+                <hr>
                 <div class="grid-containerb" style="background-color: white; border-radius: 10px">
                     <div ng-repeat="fila in ajaxDataUsuarios track by $index">
-                        <div class="row" style="margin-bottom: 30px">
+                        <div class="row">
                             <div class="col-4">
                                 <div class="grid-contenido">
-                                    <img ng-src="imagenes/{{fila.foto}}" style="width: 420px; height: 310px">
+                                    <img id="imgb" ng-src="imagenes/{{fila.foto}}" style="width: 100%; height: 100%; min-height: 185px; min-width: 236px;">
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-md-8 col-md-offset-4">
                                 <div class="grid-contenidob" style=" font-size: 30px">
                                     <p id="titulo" style=" color: black"><b>{{fila.titulo}}</b></p>
                                 </div>
                                 <div class="grid-contenidob" style="font-size: 15px">
-                                    <p style="margin-top: 5px; color: black">{{fila.contenido}}</p>
+                                    <p style="margin-top: 5px; color: black; word-break: break-all; word-wrap: break-word;">{{fila.contenido}}</p>
                                 </div>
                                 <div class="grid-contenidob">
                                     <p style="font-size: 12px; color: red"><b>{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</b></p>
@@ -28,13 +38,12 @@
                                 <div class="grid-contenidob">
                                     <p style="font-size: 12px; color: black"><b>Etiquetas :</b> <span style="color: #708ada">{{fila.etiquetas}}</span> </p>
                                 </div>
-                                
+
                                 <div class="grid-contenidob">
                                     <p style="font-size: 12px; color: black"><b>Fecha :</b> <span>{{fila.fecha}}</span> </p>
                                 </div>
                             </div>
-                        </div>
-                        <hr style="border: 0.5px solid grey">
+                        </div><hr style="width: 95%;margin: 0; border: 0.5px solid grey;">
                     </div>
                 </div>
                 <div class="row">
