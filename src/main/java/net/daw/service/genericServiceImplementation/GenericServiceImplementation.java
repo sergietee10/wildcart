@@ -37,7 +37,6 @@ public class GenericServiceImplementation implements ServiceInterface {
         super();
         this.oRequest = oRequest;
         ob = oRequest.getParameter("ob");
-        //comprobar si falta el if para evitar NPE:
         oUsuarioBeanSession = (UsuarioBean) oRequest.getSession().getAttribute("user");
     }
 

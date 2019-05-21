@@ -333,7 +333,6 @@ public class ServiceFactory {
                             case "get":
                                 oReplyBean = oUsuarioService.get();
                                 break;
-
                             case "update":
                                 oReplyBean = oUsuarioService.update();
                                 break;
@@ -391,7 +390,7 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oBlogService.getpage();
                                 break;
-                                case "loadimage":
+                            case "loadimage":
                                 oReplyBean = oBlogService.loadimage();
                                 break;
                             default:

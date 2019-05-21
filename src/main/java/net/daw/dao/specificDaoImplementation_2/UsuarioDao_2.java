@@ -27,39 +27,36 @@ public class UsuarioDao_2 extends GenericDaoImplementation implements DaoInterfa
         super(oConnection, ob, oUsuarioBeanSession);
 
     }
-    
+
     @Override
     public BeanInterface get(int id, Integer expand) throws Exception {
 
-        if (id == oUsuarioBeanSession.getId()) {
-            return (UsuarioBean) super.get(id, expand);
-        } else {
-            throw new Exception("Error en Dao get de " + ob + ": No autorizado");
-        }
+        //if (id == oUsuarioBeanSession.getId()) {
+        return (UsuarioBean) super.get(id, expand);
+        //} else {
+        //    throw new Exception("Error en Dao get de " + ob + ": No autorizado");
+        //}
 
     }
 
-    
     @Override
     public int remove(int id) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
-    
+
     @Override
     public int getcount() throws Exception {
         throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
     }
 
-    
     @Override
     public UsuarioBean create(BeanInterface oBean) throws Exception {
         throw new Exception("Error en Dao create de " + ob + ": No autorizado");
     }
 
-    
     @Override
     public int update(BeanInterface oBean) throws Exception {
-        int id=oBean.getId();
+        int id = oBean.getId();
         if (id == oUsuarioBeanSession.getId()) {
             return super.update(oBean);
         } else {
@@ -72,17 +69,18 @@ public class UsuarioDao_2 extends GenericDaoImplementation implements DaoInterfa
         throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
 
     }
-   public int updatePass(Integer id, String pass, UsuarioBean usuarioSession) throws Exception {
+
+    public int updatePass(Integer id, String pass, UsuarioBean usuarioSession) throws Exception {
         int iResult = 0;
         String strSQL = "UPDATE " + ob + " SET pass = " + EncodingHelper.quotate(pass) + " WHERE id =" + id + ";";
         ResultSet oResultSet = null;
         PreparedStatement oPreparedStatement = null;
         try {
-            if(usuarioSession.getId() == id){
-            oPreparedStatement = oConnection.prepareStatement(strSQL);
-            iResult = oPreparedStatement.executeUpdate();
-            }else{
-            iResult = 0;
+            if (usuarioSession.getId() == id) {
+                oPreparedStatement = oConnection.prepareStatement(strSQL);
+                iResult = oPreparedStatement.executeUpdate();
+            } else {
+                iResult = 0;
             }
         } catch (Exception e) {
             throw new Exception(e);

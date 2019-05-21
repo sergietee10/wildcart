@@ -17,6 +17,8 @@ import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.dao.genericDaoImplementation.GenericDaoImplementation;
 import net.daw.dao.publicDaoInterface.DaoInterface;
+import net.daw.factory.BeanFactory;
+import net.daw.helper.SqlBuilder;
 
 /**
  *
@@ -44,4 +46,43 @@ public class BlogDao_2 extends GenericDaoImplementation implements DaoInterface 
        throw new Exception("Error en Dao update de " + ob + ": No autorizado");
     }
 
+    
+    
+    @Override
+    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
+        
+        strSQL_getpage += SqlBuilder.buildSqlOrder(hmOrder);
+        ArrayList<BeanInterface> alBean;
+        if (iRpp > 0 && iRpp < 100000 && iPage > 0 && iPage < 100000000) {
+            strSQL_getpage += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
+            ResultSet oResultSet = null;
+            PreparedStatement oPreparedStatement = null;
+            try {
+                oPreparedStatement = oConnection.prepareStatement(strSQL_getpage);
+                oResultSet = oPreparedStatement.executeQuery();
+                alBean = new ArrayList<BeanInterface>();
+                while (oResultSet.next()) {
+                    BeanInterface oBean = BeanFactory.getBean(ob);
+                    oBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
+                    alBean.add(oBean);
+                }
+            } catch (SQLException e) {
+                throw new Exception("Error en Dao getpage de " + ob, e);
+            } finally {
+                if (oResultSet != null) {
+                    oResultSet.close();
+                }
+                if (oPreparedStatement != null) {
+                    oPreparedStatement.close();
+                }
+            }
+        } else {
+            throw new Exception("Error en Dao getpage de " + ob);
+        }
+        return alBean;
+
+    }
+    
+    
+    
 }

@@ -3,11 +3,6 @@
 moduleBlog.controller('blogController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
     function ($scope, $http, $location, toolService, $routeParams, sessionService) {
 
-        $scope.totalPages = 1;
-        if (sessionService.getTipoUserId() === 1) {
-            $scope.isAdmin = true;
-        }
-
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
@@ -61,8 +56,21 @@ moduleBlog.controller('blogController', ['$scope', '$http', '$location', 'toolSe
         });
 
         $scope.actulizar = function () {
-            $location.url(`blog/` + $scope.rpp + `/` + $scope.page + '/' + $scope.orderURLCliente);
+            $location.url(`blog/plistblog/` + $scope.rpp + `/` + $scope.page + '/' + $scope.orderURLCliente);
         };
+
+        $scope.logout = function () {
+            $http({
+                method: 'GET',
+                url: '/json?ob=usuario&op=logout'
+            }).then(function (response) {
+                if (response.status === 200) {
+                    sessionService.setSessionInactive();
+                    sessionService.setUserName("");
+                }
+            });
+        };
+
         function pagination2() {
             $scope.list2 = [];
             $scope.neighborhood = 1;

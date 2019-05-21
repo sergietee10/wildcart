@@ -105,12 +105,18 @@ public class BlogBean extends GenericBeanImplementation implements BeanInterface
         this.setEtiquetas(oResultSet.getString("etiquetas"));
         this.setId_usuario(oResultSet.getInt("id_usuario"));
         this.setFecha(oResultSet.getDate("fecha"));
+        
+        
+        
         if (expand > 0) {
             DaoInterface oUsuarioDao = DaoFactory.getDao(oConnection, "usuario", oUsuarioBeanSession);
             this.setObj_Usuario((UsuarioBean) oUsuarioDao.get(oResultSet.getInt("id_usuario"), expand - 1));
         } else {
             this.setId_usuario(oResultSet.getInt("id_usuario"));
         }
+        
+        
+        
         return this;
     }
 
