@@ -35,7 +35,6 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 $scope.status = response.status;
                 $scope.mensaje = true;
             }, function (response) {
-                alert("Error...");
                 $scope.ajaxDatoBlog = response.data.message || 'Request failed';
                 $scope.status = response.status;
             });
@@ -58,7 +57,7 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 data: {json: JSON.stringify($scope.obj)}
             }).then(function (response) {
                 //detectar error
-                
+
                 $scope.status = response.status;
                 $scope.ajaxData = response.data.message;
             }, function (response) {
@@ -66,10 +65,52 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 $scope.status = response.status;
             });
         };
-        
-        
-        
-        
+
+        (function ($) {
+            $.fn.checkFileType = function (options) {
+                var defaults = {
+                    allowedExtensions: [],
+                    success: function () {},
+                    error: function () {}
+                };
+                options = $.extend(defaults, options);
+
+                return this.each(function () {
+
+                    $(this).on('change', function () {
+                        var value = $(this).val(),
+                                file = value.toLowerCase(),
+                                extension = file.substring(file.lastIndexOf('.') + 1);
+
+                        if ($.inArray(extension, options.allowedExtensions) == -1) {
+                            options.error();
+                            $(this).focus();
+                        } else {
+                            options.success();
+
+                        }
+
+                    });
+
+                });
+            };
+
+        })(jQuery);
+
+        $(function () {
+            $('#image').checkFileType({
+                allowedExtensions: ['jpg', 'jpeg', 'png'],
+                success: function () {
+                    alert('Has seleccionado una foto.');
+                },
+                error: function () {
+                    alert('NO TIENES NINGUNA FOTO SELECCIONADA.');
+                }
+            });
+
+        });
+
+
         $scope.usuarioRefresh = function () {
             $http({
                 method: 'GET',
@@ -84,7 +125,7 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
         $scope.plist = function () {
             $location.path('/blog/plist');
         };
-        
+
         $scope.myDate = new Date();
 
         $scope.minDate = new Date(
@@ -96,24 +137,24 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 $scope.myDate.getFullYear(),
                 $scope.myDate.getMonth() + 2,
                 $scope.myDate.getDate());
-                
-                
-    $scope.uploadFile = function () {
+
+
+        $scope.uploadFile = function () {
             var file;
             file = $scope.myFile;
-            
+
             var oFormData = new FormData();
             oFormData.append('file', file);
             $http({
-                headers: { 'Content-Type': undefined },
+                headers: {'Content-Type': undefined},
                 method: 'POST',
                 data: oFormData,
                 url: `json?ob=blog&op=loadimage`
             }).then(function (response) {
                 console.log(response);
-            }, function(response){
-                    console.log(response);
-                });
+            }, function (response) {
+                console.log(response);
+            });
         };
     }]).directive('fileModel', ['$parse', function ($parse) {
         return {
@@ -121,7 +162,7 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
             link: function (scope, element, attrs) {
                 var model = $parse(attrs.fileModel);
                 var modelSetter = model.assign;
-    
+
                 element.bind('change', function () {
                     scope.$apply(function () {
                         modelSetter(scope, element[0].files[0]);

@@ -74,46 +74,5 @@ public class BlogService_1 extends GenericServiceImplementation implements Servi
 
     }
     
-    
-    public ReplyBean fillBlog() throws Exception {
-        ReplyBean oReplyBean;
-        ConnectionInterface oConnectionPool = null;
-        Connection oConnection;
-        Lorem lorem = LoremIpsum.getInstance();
-        try {
-            int numero = Integer.parseInt(oRequest.getParameter("num"));
-            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
-            oConnection = oConnectionPool.newConnection();
-            String[] titulo1 = {"Nike"};
-            String[] titulo2 = {"Adidas"};
-            String mensaje = lorem.getParagraphs(3, 4);
-            String[] foto = {"notice.jpeg"};
-            int[] id_usuario = {52, 53, 54, 55, 56};
 
-            ArrayList<BlogBean> resultado = new ArrayList<>();
-
-            DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
-            for (int i = 0; i < numero; i++) {
-                BlogBean oBean = (BlogBean) BeanFactory.getBean(ob);
-                oBean.setTitulo(titulo1[randomMath(titulo1.length)] + " " + titulo2[randomMath(titulo2.length)]);
-                oBean.setContenido(mensaje);
-                oBean.setEtiquetas(mensaje);
-                oBean.setId_usuario(id_usuario[randomMath(id_usuario.length)]);
-                resultado.add(oBean);
-                oDao.create(oBean);
-            }
-            oReplyBean = new ReplyBean(200, oGson.toJson(resultado));
-        } catch (Exception e) {
-            throw new Exception("ERROR: Service level: create method: " + ob + " object: " + e.getMessage(), e);
-        } finally {
-            oConnectionPool.disposeConnection();
-        }
-
-        return oReplyBean;
-    }
-
-    private int randomMath(int number) {
-        return (int) (Math.random() * number);
-    }
 }

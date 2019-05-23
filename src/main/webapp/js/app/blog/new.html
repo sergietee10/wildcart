@@ -5,6 +5,7 @@
         <div class="col-5" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
                 <form name="userForm" ng-show="!mensaje">
+
                     <h1><i class="fas fa-file-invoice-dollar"></i>   Crear Noticia</h1>
                     <hr>
                     <div class="form-group">
@@ -25,18 +26,25 @@
                         <div class="col-8" >
                             <div class="form-group">
                                 <h5>Imagen</h5>
-                                <input type = "file" file-model = "myFile" ng-required="true"/>
+                                <!--<input name="checkbox" type="checkbox" ng-model="myVar" checked><br>-->
+                                <input id="image" name="image" type = "file" file-model = "myFile" ng-required="myVar"/>
+                                <div class="alert alert-success" ng-show="mensajeA">
+                                    Foto Seleccionada.
+                                </div>
+                                <div class="alert alert-danger" ng-show="mensajeB">
+                                    No has seleccionado una foto.
+                                </div>
                             </div>
                         </div>
                     </div>
-                        <div class="form-group">
-                            <h5>Contenido  <span style="font-size: 12px">(1600 caracteres)</span></h5> 
-                            <textarea style="height: 126px" maxlength="1600" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
-                        </div>
-                        <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
-                            <h5>Etiquetas</h5>
-                            <input type="text" class="form-control" maxlength="250" id="etiquetas" name="etiquetas" ng-model="ajaxDatoBlog.etiquetas" />
-                        </div>
+                    <div class="form-group">
+                        <h5>Contenido  <span style="font-size: 12px">(1600 caracteres)</span></h5> 
+                        <textarea style="height: 126px" maxlength="1600" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
+                        <h5>Etiquetas</h5>
+                        <input type="text" class="form-control" maxlength="250" id="etiquetas" name="etiquetas" ng-model="ajaxDatoBlog.etiquetas" ng-required="true" />
+                    </div>
                     <usuario-selection class="modal fade " id="cadd-location-modal" obj="ajaxDatoBlog.obj_Usuario"></usuario-selection>
 
                 </form>

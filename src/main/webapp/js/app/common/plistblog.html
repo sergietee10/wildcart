@@ -19,17 +19,17 @@
                 <hr>
                 <div class="grid-containerb" style="background-color: white; border-radius: 10px; margin-top: 20px;">
                     <div ng-repeat="fila in ajaxDataUsuarios track by $index">
-                        <div class="row">
+                        <div class="row" style="background-color:  #cccccc; border-radius: 10px; padding: 15px">
                             <div class="col-4">
                                 <div>
                                 <div class="grid-contenido">
-                                    <img id="imgb" ng-src="imagenes/{{fila.foto}}" style="width: 90%; height: 90%; min-height: 185px; min-width: 236px;">
+                                    <img id="imgb" ng-src="imagenes/{{fila.foto}}" style="width: 90%; height: 90%; min-height: 185px; min-width: 236px; border-radius: 5px">
                                 </div>
                                 </div>
                             </div>
                             <div class="col-md-8 col-md-offset-4">
                                 <div class="grid-contenidob" style=" font-size: 30px">
-                                    <p id="titulo" style=" color: black"><b>{{fila.titulo}}</b></p>
+                                    <p id="titulo" style=" color: black; word-break: break-all; word-wrap: break-word;"><b>{{fila.titulo}}</b></p>
                                 </div>
                                 <div class="grid-contenidob" style="font-size: 15px">
                                     <p style="margin-top: 5px; color: black; word-break: break-all; word-wrap: break-word;">{{fila.contenido}}</p>
@@ -45,7 +45,7 @@
                                     <p style="font-size: 12px; color: black"><b>Fecha :</b> <span>{{fila.fecha}}</span> </p>
                                 </div>
                             </div>
-                        </div><hr style="width: 95%;margin: 0; border: 0.5px solid grey;">
+                        </div>
                     </div>
                 </div>
                 <div class="row">

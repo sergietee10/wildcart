@@ -208,9 +208,6 @@ public class ServiceFactory {
                             case "loadimage":
                                 oReplyBean = oBlogService.loadimage();
                                 break;
-                            case "fillblog":
-                                oReplyBean = oBlogService.fillBlog();
-                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;
