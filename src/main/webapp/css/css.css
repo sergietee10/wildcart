@@ -9,12 +9,15 @@
 
 .grid-containerb {
     display: grid;
-    grid-template: repeat(4) / repeat(3); 
     grid-gap: 20px 3%;
     padding: 10px;    
     justify-content: left;
-
 }
+
+body{
+    min-width: 407px;
+}
+
 
 
 .item-a{

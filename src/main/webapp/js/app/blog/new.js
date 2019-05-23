@@ -101,10 +101,14 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
             $('#image').checkFileType({
                 allowedExtensions: ['jpg', 'jpeg', 'png'],
                 success: function () {
-                    alert('Has seleccionado una foto.');
+                    $scope.mensajeB = true;
+                    $scope.mensajeA = false;
+                    
                 },
                 error: function () {
-                    alert('NO TIENES NINGUNA FOTO SELECCIONADA.');
+                    $scope.mensajeA = true;
+                    $scope.mensajeB = false;
+                    
                 }
             });
 
