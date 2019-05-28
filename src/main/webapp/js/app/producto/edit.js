@@ -51,6 +51,7 @@ moduleProducto.controller('productoEditControllerAdm', ['$scope', '$http', '$rou
             }).then(function (response) {
                 $scope.status = response.status;
                 $scope.mensaje = true;
+                $scope.mensajeError = false;
             }, function (response) {
                 $scope.mensajeError = true;
                 $scope.ajaxDatoProducto = response.data.message || 'Request failed';

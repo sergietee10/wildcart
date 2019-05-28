@@ -4,27 +4,29 @@
         <div class="col-2"></div>
         <div class="col-6" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
-                <form name="userForm" ng-show="!mensaje">
+                <form class="form-horizontal" name="userForm" ng-show="!mensaje">
                     <h1><i class="fas fa-file-invoice-dollar"></i>   Crear Factura</h1>
                     <hr>
                     <div class="form-group">
                         <h5>ID</h5>
                         <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoFactura.id" />
                     </div>
-                    <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
-                        <div class="row">
-                            <div class="col-6">
-                        <h5>Fecha</h5>
-                        <div style="background-color: #A5BEDE; border-radius: 10px; width: 74%">
-                                <md-datepicker ng-model="dt" md-placeholder="Fecha" ng-readonly="true"></md-datepicker></textarea>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
+                                <h5>Fecha</h5>
+                                <div style="background-color: #A5BEDE; border-radius: 10px; width: 74%">
+                                    <md-datepicker ng-model="dt" md-placeholder="Fecha" ng-readonly="true"></md-datepicker></textarea>
+                                </div>
                             </div>
-                            </div>
-                            <div class="col-6">
-                                <h5>IVA</h5>
-                        <input type="text" class="form-control" id="iva" name="iva" ng-model="ajaxDatoFactura.iva" ng-required="true" />
-                        <div ng-show="!userForm.iva.$valid && !userForm.iva.$pristine" class="alert alert-danger" role="alert">
-                            IVA obligatorio
                         </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <h5>IVA</h5>
+                                <input type="text" class="form-control" id="iva" name="iva" ng-model="ajaxDatoFactura.iva" ng-pattern="/^[0-9]/" ng-required="true" />
+                                <div ng-show="!userForm.iva.$valid && !userForm.iva.$pristine" class="alert alert-danger" role="alert">
+                                    IVA incorrecto
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,15 +39,15 @@
                               data-toggle="modal"
                               data-target="#cadd-location-modal"></span>
                         <div class="row">
-                                <div class="col-2">
-                                    <input type="text" class="form-control" id="obj_tipoUsuario_desc" disabled="disabled" name="obj_tipoUsuario_desc" ng-model="ajaxDatoFactura.obj_Usuario.id"ng-change="usuarioRefresh()"/>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" ng-model="ajaxDatoFactura.obj_Usuario.nombre" disabled="disabled" placeholder="Seleccione un usuario"/>
-                                </div>
+                            <div class="col-2">
+                                <input type="text" class="form-control" id="obj_tipoUsuario_desc" disabled="disabled" name="obj_tipoUsuario_desc" ng-model="ajaxDatoFactura.obj_Usuario.id"ng-change="usuarioRefresh()"/>
                             </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" ng-model="ajaxDatoFactura.obj_Usuario.nombre" disabled="disabled" placeholder="Seleccione un usuario"/>
+                            </div>
+                        </div>
                     </div>
-                    
+
                 </form>
                 <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
                 <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>

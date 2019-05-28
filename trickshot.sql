@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 21-05-2019 a las 06:26:03
+-- Tiempo de generación: 28-05-2019 a las 06:11:03
 -- Versión del servidor: 5.7.23
 -- Versión de PHP: 7.1.26
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `wildcart`
+-- Base de datos: `trickshot`
 --
 
 -- --------------------------------------------------------
@@ -43,9 +43,30 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `foto`, `titulo`, `contenido`, `etiquetas`, `id_usuario`, `fecha`) VALUES
-(6, 'NRE555.png', 'Las nuevas Nike F18', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure', 'Nike, Deportivas', 5, '2019-05-20 00:00:00'),
-(8, 'NRE555.png', 'aaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssss', 'aaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssss', 'AASAS aSASDA', 5, '2019-05-20 00:00:00'),
-(9, 'NRE555.png', 'Lorem Ipsum is simply dummy text of the printing and typeset', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\nWhy do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n\nWhere does it come from?\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the w', 'Lorem Impsum', 5, '2019-05-20 00:00:00');
+(6, 'fondo6.jpg', 'Las nuevas Nike F18', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure', 'Nike, Deportivas', 5, '2019-05-20 00:00:00'),
+(8, 'fondo6.jpg', 'aaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssss', 'aaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaassssssssssssssssss', 'AASAS aSASDA', 5, '2019-05-20 00:00:00'),
+(9, 'default.jpg', 'Lorem Ipsum is simply dummy text of the printing and typeset', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\nWhy do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n\nWhere does it come from?\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the w', 'Lorem Impsum', 5, '2019-05-20 00:00:00'),
+(10, 'fondo6.jpg', 'aasdasd', 'asdasdas', 'asdasdas', 5, '2019-05-23 00:00:00'),
+(11, 'fondo6.jpg', 'dasdasda', 'asdasdas', 'asdasdas', 5, '2019-05-23 00:00:00'),
+(12, 'default.jpg', 'asdas', 'asdasd', 'sadasd', 5, '2019-05-23 00:00:00'),
+(13, 'default.jpg', 'asdas', 'asdasdas', 'asdasd', 5, '2019-05-23 00:00:00'),
+(14, 'default.jpg', 'asdasd', 'asdasdasd', 'asdasd', 5, '2019-05-23 00:00:00'),
+(15, 'default.jpg', 'sadasd', 'asdasd', 'asdas', 5, '2019-05-23 00:00:00'),
+(16, 'default.jpg', 'asdasd', 'sadasd', 'asdasd', 5, '2019-05-23 00:00:00'),
+(17, 'default.jpg', 'asdasdas', 'asdasd', 'asdasd', 5, '2019-05-23 00:00:00'),
+(18, 'default.jpg', 'asdasd', 'asdasd', 'asdasd', 5, '2019-05-23 00:00:00'),
+(19, 'default.jpg', 'sadas', 'asdas', 'asdasd', 5, '2019-05-23 00:00:00'),
+(20, 'null', 'sadasdas', 'asdasd', 'asdasd', 5, '2019-05-23 00:00:00'),
+(21, 'null', 'sadasda', 'asdasd', 'asdasd', 5, '2019-05-23 00:00:00'),
+(22, 'default.jpg', 'asdasdasd', 'asdasdas', 'asdasdas', 5, '2019-05-27 00:00:00'),
+(23, 'default.jpg', 'asdasd', 'asdasd', 'asdasd', 5, '2019-05-27 00:00:00'),
+(24, 'default.jpg', 'asdasdasd', 'asdasd', 'asdasd', 5, '2019-05-27 00:00:00'),
+(25, 'fondo7.jpg', 'zxczx', 'zxczx', 'zxczxc', 5, '2019-05-27 00:00:00'),
+(26, 'default.jpg', 'asdas', 'asdas', 'asdasd', 5, '2019-05-27 00:00:00'),
+(27, 'default.jpg', 'asd', 'asd', 'asd', 5, '2019-05-27 00:00:00'),
+(28, 'default.jpg', 'zssz', 'zzszs', 'zszs', 5, '2019-05-27 00:00:00'),
+(29, 'default.jpg', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdasd asdasda', 5, '2019-05-28 00:00:00'),
+(30, 'foto1º.png', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdasd asdasda', 5, '2019-05-28 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -78,9 +99,11 @@ INSERT INTO `factura` (`id`, `fecha`, `iva`, `id_usuario`) VALUES
 (13, '2019-05-08 00:00:00', 21, 7),
 (14, '2019-05-08 00:00:00', 32, 6),
 (16, '2019-05-13 00:00:00', 21, 6),
-(19, '2019-05-13 00:00:00', 21, 4),
-(26, '2019-05-13 00:00:00', 231, NULL),
-(27, '2019-05-13 00:00:00', 321, NULL);
+(33, '2019-05-27 00:00:00', 21, 4),
+(39, '2019-05-28 00:00:00', 21, 234),
+(40, '2019-05-28 00:00:00', 21, 246),
+(41, '2019-05-28 00:00:00', 21, 247),
+(42, '2019-05-28 00:00:00', 21, 6);
 
 -- --------------------------------------------------------
 
@@ -146,10 +169,21 @@ INSERT INTO `linea` (`id`, `cantidad`, `id_producto`, `id_factura`) VALUES
 (47, 1000, 6, 16),
 (48, 50, 25, 16),
 (49, 324, 6, NULL),
-(50, 6, 6, 19),
-(51, 241, 45, 26),
-(52, 21, 6, 26),
-(53, 24, 6, 27);
+(50, 6, 6, NULL),
+(51, 241, 45, NULL),
+(52, 21, 6, NULL),
+(53, 24, 6, NULL),
+(54, 4, 6, NULL),
+(55, 1, 8, NULL),
+(56, 3, 6, NULL),
+(57, 2, 6, NULL),
+(58, 2, 6, NULL),
+(59, 6, 6, 33),
+(60, 1, 15, 33),
+(61, 3, 6, NULL),
+(62, 7, 6, 39),
+(63, 2, 6, 40),
+(64, 2, 6, 41);
 
 -- --------------------------------------------------------
 
@@ -172,16 +206,16 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `codigo`, `desc`, `existencias`, `precio`, `foto`, `id_tipoproducto`) VALUES
-(5, 'F5Q', 'sistema tren', 0, 555, 'NRE551.png', 2),
-(6, 'DFVT52', 'soporte trenes', 2232, 47.8422, 'fondo7.jpg', 4),
-(8, '63P', 'soporte tren', 1, 19.7761, 'Foto', 5),
+(5, 'F5Q', 'sistema tren', 22, 555, 'fondo7.jpg', 2),
+(6, 'DFVT52', 'soporte trenes', 2203, 47.8422, 'fondo7.jpg', 4),
+(8, '63P', 'soporte tren', 0, 19.7761, 'foto1º.png', 5),
 (9, 'D3Q', 'estación capilar', 0, 18.4308, 'Foto', 5),
 (10, 'DP5', 'soporte trabajo', 0, 59.195, 'Foto', 5),
 (11, 'D3Q', 'estación capilar', 0, 7.28635, 'Foto', 3),
 (12, '84D', 'soporte coche', 0, 99.2651, 'Foto', 5),
 (13, '63P', 'estación capilar', 0, 54.5215, 'Foto', 1),
 (14, 'F5Q', 'estación capilar', 1, 48.6204, 'Foto', 3),
-(15, 'D3Q', 'estación coche', 4, 81.4187, 'Foto', 4),
+(15, 'D3Q', 'estación coche', 3, 81.4187, 'Foto', 4),
 (16, 'DP5', 'estación capilar', 1, 36.5949, 'Foto', 2),
 (17, 'DP5', 'sistema tubos', 5, 78.5043, 'Foto', 4),
 (18, 'F5Q', 'sistema coche', 4, 48.0388, 'Foto', 1),
@@ -211,7 +245,21 @@ INSERT INTO `producto` (`id`, `codigo`, `desc`, `existencias`, `precio`, `foto`,
 (42, 'F5Q', ' accesorio coche', 5, 89.8129, 'Foto', 4),
 (43, 'DP5', 'soporte tubos', 5, 63.0283, 'Foto', 1),
 (44, '63P', 'sistema tren', 4, 23.6205, 'Foto', 3),
-(45, '123454123', 'Nike React Element 55', 2551, 130, 'NRE551.png', 1);
+(45, '123454123', 'Nike React Element 55', 2551, 130, 'NRE551.png', 1),
+(46, 'SADASDASD', 'ASDASDASD', 213, 123, 'default.jpg', 2),
+(47, 'asdasd', 'asdasd', 123, 123, 'default.jpg', 2),
+(48, 'asdasd', 'asdasd', 123, 123, 'default.jpg', 2),
+(49, 'asdasd', 'asdasd', 123, 123, 'default.jpg', 2),
+(50, 'asdasd', 'asdasd', 123, 123, 'default.jpg', 2),
+(51, 'asdasd', 'asdasd', 123, 13, 'default.jpg', 3),
+(52, 'sadas', 'asdasd', 12312, 123, 'default.jpg', 3),
+(53, 'sadas', 'asdasd', 12312, 123, 'fondo7.jpg', 3),
+(54, '23423423AAS', 'Patata', 58, 0.43, 'fondo6.jpg', 2),
+(55, 'asdasdas', 'aasdasdsa', 214, 2, 'default.jpg', 2),
+(56, 'asdasdas', 'aasdasdsa', 214, 2, 'foto1º.png', 2),
+(57, 'dasdasd', 'asdasd', 21, 123, 'default.jpg', 1),
+(59, '21312', '123123', 0, 12321, 'default.jpg', 2),
+(60, '21312', '123123', 0, 12321, 'fondo6.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -487,7 +535,19 @@ INSERT INTO `usuario` (`id`, `dni`, `nombre`, `ape1`, `ape2`, `login`, `pass`, `
 (203, 'null', 'null', 'null', 'null', 'Javier96', 'javier', 'javiroigdomenech@hotmail.com', 2, 0, 'zOgnrx0oB5hgNdqdNAHX'),
 (207, 'null', 'null', 'null', 'null', 'fondoverde', '36033babfb48ec64e197c97fb40d65e6c79f81e04c61aeccef3009e01645ab8d', 'fondoverdemilitar8@gmail.com', 2, 1, 'BtaiR2sUrwTQZ6bUOAd9'),
 (209, 'null', 'sdfgsdf', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'null', 'null', 2, 0, 'null'),
-(210, 'null', 'sadas', 'asdasd', 'asdasd', 'asdasd', 'null', 'null', 2, 0, 'null');
+(210, 'null', 'sadas', 'asdasd', 'asdasd', 'asdasd', 'null', 'null', 2, 0, 'null'),
+(211, '21232131A', 'asdasd', 'asdasd', '213123123', 'asdassd', 'null', 'null', 2, 0, 'null'),
+(212, 'null', 'null', 'null', 'null', 'sergioas98', 'd04862e82901e105156279e4378d852b412bafa3cf4bde902460d2a9c9fa5293', 'cemi201505@gmail.com', 2, 1, 'zrseotL0ryjU9Wu8A2MW'),
+(213, 'null', 'asd', 'asd', 'sada', 'asd', 'ea1fcd40af622e3e89e436476364d159e6b3269a5ee2c02355668cafc37385d2', 'asda@gmail.com', 2, 0, 'sIgul0LSXKqkrsWGoSxi'),
+(214, '23315568P', 'asdas', 'asdas', 'asdasd', 'sergioas91', '5e2ef2e2c7e6b0fcb7460182f39ef0681e5c367d577be13fe81a167a7b2e8e7e', 'sergio_aries98asdas@hotmail.com', 2, 0, 'lwTtL8KwHj7Cxdw1oRfn'),
+(215, '23315518P', 'asdasd', 'asdas', 'asdasd', 'sergioas98ds', '3039b8e58627aa77874841380f74f231d7a56969e72c92cd9eef24cb8dc538da', 'sergio_aries9fgjh8@hotmail.com', 2, 0, 'NFP4HDUfR1152hvfXSbm'),
+(217, '23215568P', 'Sergio', 'Garcia', 'Soler', 'sergio98', 'd04862e82901e105156279e4378d852b412bafa3cf4bde902460d2a9c9fa5293', 'sergietee10@gmail.com', 2, 1, 'nCsyCO1ixZBeoeoqzCCJ'),
+(234, '23315122S', 'prueba', 'uno', 'uno', 'prueba', '5b5a277f1c907154a6452c99b6470ec81a70b7a5f83e79559f37cc18441010dc', 'fondoverdemilitar4@gmail.com', 2, 1, 'Eh1ENEYb7L4bB6cYLm1Z'),
+(243, '21312412A', 'asfasd', 'asdasdas', 'dasdasd', 'adefesio', '69b1bdb1394aacc31431d7eada04384638a9cb5a709d5a4a6dcaae0cb72f2813', 'fondoverdemilitar4@gmail.com', 2, 0, 'null'),
+(244, '12341233A', 'asfasa', 'asdasd', 'asfasfa', 'alemagno', '667ae24f6af445a6ab8e581d2f929d1f29d222a6e6bacaf4543337d61130fdf3', 'fondoverdemilitar4@gmail.com', 2, 1, 'null'),
+(245, '12312312A', 'sadasfd', 'asdasd', 'asdasd', 'sergito', '4ce671a9ecc9d250eb6a4ae3c1452b15e44466e5a4c6cf7e6b9d2eb57fb36cf3', 'sergio_aries98@hotmail.com', 2, 1, 'null'),
+(246, '12312423A', 'adasdas', 'dasdsa', 'asdasd', 'acortado', '2e07dd0708c8b71ac943e0489ecc1763eeba9e958ca3d6b511c89a00bf09f4ef', 'sergio_aries98@hotmail.com', 2, 1, 'null'),
+(247, '15562124A', 'Gerardo', 'Garcio', 'Solano', 'gerardo19', 'null', 'null', 2, 1, 'null');
 
 --
 -- Índices para tablas volcadas
@@ -549,25 +609,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `linea`
 --
 ALTER TABLE `linea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoproducto`
@@ -585,7 +645,7 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- Restricciones para tablas volcadas

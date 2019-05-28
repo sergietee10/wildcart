@@ -8,6 +8,7 @@ package net.daw.dao.specificDaoImplementation_1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import net.daw.helper.EncodingHelper;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.dao.genericDaoImplementation.GenericDaoImplementation;
@@ -23,6 +24,8 @@ public class UsuarioDao_1  extends GenericDaoImplementation implements DaoInterf
         super(oConnection, ob, oUsuarioBeanSession);
 
     }
+ 
+ 
   public int updatePass(Integer id, String pass, UsuarioBean usuarioSession) throws Exception {
         int iResult = 0;
         String strSQL = "UPDATE " + ob + " SET pass = " + EncodingHelper.quotate(pass) + " WHERE id =" + id + ";";

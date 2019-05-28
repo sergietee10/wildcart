@@ -7,18 +7,26 @@ package net.daw.service.specificServiceImplementation_1;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.security.SecureRandom;
 
 import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
+import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.connection.publicinterface.ConnectionInterface;
 import net.daw.constant.ConnectionConstants;
+import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.dao.specificDaoImplementation_0.UsuarioDao_0;
 import net.daw.dao.specificDaoImplementation_1.UsuarioDao_1;
+import net.daw.factory.BeanFactory;
 import net.daw.factory.ConnectionFactory;
+import net.daw.factory.DaoFactory;
 import net.daw.helper.EncodingHelper;
+import net.daw.helper.RandomString;
+import static net.daw.helper.RandomString.alphanum;
+import static net.daw.helper.SendEmailHelper.sendEmail;
 import net.daw.service.genericServiceImplementation.GenericServiceImplementation;
 import net.daw.service.publicServiceInterface.ServiceInterface;
 
@@ -33,6 +41,41 @@ public class UsuarioService_1 extends GenericServiceImplementation implements Se
         ob = oRequest.getParameter("ob");
     }
 
+    @Override
+    public ReplyBean create() throws Exception {
+        ReplyBean oReplyBean;
+        ConnectionInterface oConnectionPool = null;
+        Connection oConnection;
+        
+        
+        oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
+        oConnection = oConnectionPool.newConnection();
+        UsuarioDao_0 oUsuarioDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
+        
+        try {
+            String code = oRequest.getParameter("code");
+            String strJsonFromClient = oRequest.getParameter("json");
+            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
+            BeanInterface oBean = BeanFactory.getBeanFromJson(ob, oGson, strJsonFromClient);
+            UsuarioBean oBeand = (UsuarioBean) BeanFactory.getBeanFromJson("usuario", oGson, strJsonFromClient);
+            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
+            oConnection = oConnectionPool.newConnection();
+            DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
+           
+            code = new RandomString(20, new SecureRandom(), alphanum).nextString();
+            oBeand.setCode(code);
+            oBean = oDao.create(oBean);
+            oBeand.setActive(true);
+            oReplyBean = new ReplyBean(200, oGson.toJson(oBeand));
+        } catch (Exception ex) {
+            throw new Exception("ERROR: Service level: create method: " + ob + " object", ex);
+        } finally {
+            oConnectionPool.disposeConnection();
+        }
+        return oReplyBean;
+    }
+
+    
     public ReplyBean fill() throws Exception {
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;

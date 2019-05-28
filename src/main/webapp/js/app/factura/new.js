@@ -25,6 +25,7 @@ moduleFactura.controller('facturaNewControllerAdm', ['$scope', '$http', '$routeP
                 $scope.status = response.status;
                 $scope.mensaje = true;
             }, function (response) {
+                $scope.mensajeError = true;
                 $scope.ajaxDatoFactura = response.data.message || 'Request failed';
                 $scope.status = response.status;
             });

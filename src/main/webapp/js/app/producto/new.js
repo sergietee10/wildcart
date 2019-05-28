@@ -31,6 +31,7 @@ moduleProducto.controller('productoNewControllerAdm', ['$scope', '$http', '$rout
                 } else {
                 $scope.status = response.status;
                 $scope.mensaje = true;
+                $scope.mensajeError = false;
                 }
             }, function (response) {
                 $scope.mensajeError = true;

@@ -246,7 +246,7 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strColumns += EncodingHelper.quotate(login) + ",";
         strColumns += EncodingHelper.quotate(pass) + ",";
         strColumns += EncodingHelper.quotate(email) + ",";
-        strColumns += active + ",";
+        strColumns += true + ",";
         strColumns += EncodingHelper.quotate(code) + ",";
         strColumns += id_tipoUsuario;
         return strColumns;
@@ -263,7 +263,7 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strPairs += "login=" + EncodingHelper.quotate(login) + ",";
         strPairs += "pass=" + EncodingHelper.quotate(pass) + ",";
         strPairs += "email=" + EncodingHelper.quotate(email) + ",";
-        strPairs += "active=" + active + ",";
+        strPairs += "active=" + true + ",";
         strPairs += "code=" + EncodingHelper.quotate(code) + ",";
         strPairs += "id_tipoUsuario=" + id_tipoUsuario;
         strPairs += " WHERE id=" + id;
