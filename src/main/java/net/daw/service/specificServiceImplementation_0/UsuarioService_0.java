@@ -167,11 +167,14 @@ public class UsuarioService_0 extends GenericServiceImplementation implements Se
 
             int oUsuarioBean = oDao_0.checkUsuario(oBean.getLogin());
             int oUsuarioeBean = oDao_0.checkEmail(oBean.getEmail());
-
+            int oUsuariodBean = oDao_0.checkDni(oBean.getDni());
+            
             if (oUsuarioBean > 0) {
                 oReplyBean = new ReplyBean(400, "Ese usuario ya esta registrado");
             } else if (oUsuarioeBean > 0) {
                 oReplyBean = new ReplyBean(401, "Ese correo ya esta registrado");
+            } else if (oUsuariodBean > 0){
+                oReplyBean = new ReplyBean(402, "Ese Dni ya esta registrado");
             } else {
 
                 oBean.setActive(false);

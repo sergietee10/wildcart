@@ -3,6 +3,12 @@
 moduleUsuario.controller('usuarioNewControllerAdm', ['$scope', '$http', '$routeParams', 'sessionService',
     function ($scope, $http, $routeParams, sessionService) {
         $scope.idC = $routeParams.id;
+        $scope.text = 'me@example.com';
+        $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+        $scope.userFormat = /^[a-zA-Z0-9]{3,25}$/;
+        $scope.passFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/;
+        
+       
         if (sessionService) {
             $scope.usuariologeado = sessionService.getUserName();
             $scope.idUsuariologeado = sessionService.getUserId();
@@ -17,6 +23,8 @@ moduleUsuario.controller('usuarioNewControllerAdm', ['$scope', '$http', '$routeP
                 ape1: $scope.ajaxDatoUsuario.ape1,
                 ape2: $scope.ajaxDatoUsuario.ape2,
                 login: $scope.ajaxDatoUsuario.login,
+                pass: forge_sha256($scope.ajaxDatoUsuario.pass),
+                email: $scope.ajaxDatoUsuario.email,
                 id_tipoUsuario: $scope.ajaxDatoUsuario.obj_tipoUsuario.id
             };
             $http({

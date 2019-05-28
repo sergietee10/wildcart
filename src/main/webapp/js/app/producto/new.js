@@ -26,8 +26,12 @@ moduleProducto.controller('productoNewControllerAdm', ['$scope', '$http', '$rout
                 url: '/json?ob=producto&op=create',
                 params: { json: JSON.stringify(json) }
             }).then(function (response) {
+                if ($scope.myFile === undefined) {
+                    $scope.mensajeB = true;
+                } else {
                 $scope.status = response.status;
                 $scope.mensaje = true;
+                }
             }, function (response) {
                 $scope.mensajeError = true;
                 $scope.ajaxDatoProducto = response.data.message || 'Request failed';

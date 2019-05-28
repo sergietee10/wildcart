@@ -4,7 +4,7 @@
         <div class="col-1"></div>
         <div class="col-10" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
-                <form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
+                <form name="userForm" ng-show="!mensaje">
                     <h1><i class="fas fa-apple-alt"></i>  Editar Producto</h1>
                     <hr>
 
@@ -15,6 +15,7 @@
                                     <img style="border-radius: 5px; width: 250px; height: 250px" ng-src="imagenes/{{ajaxDatoProducto.foto}}">
                                 </label>
                             </div>
+                            <h6>Cambiar Imagen</h6>
                             <input type="file" file-model="foto"/>
                         </div>
                         <div class="col-4">
@@ -94,7 +95,7 @@
                     <div class="col-9"></div>
                     <div class="col-3">
                         <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
-                        <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Enviar</button>
+                        <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>
                     </div>
                 </div>
                 <div class="alert alert-success" ng-show="mensaje">

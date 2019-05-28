@@ -13,6 +13,10 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
             var json = {
                 login: $scope.ajaxDatoRegistroUsuario.login,
                 pass: forge_sha256($scope.ajaxDatoRegistroUsuario.pass),
+                nombre: $scope.ajaxDatoRegistroUsuario.nombre,
+                ape1: $scope.ajaxDatoRegistroUsuario.ape1,
+                ape2: $scope.ajaxDatoRegistroUsuario.ape2,
+                dni: $scope.ajaxDatoRegistroUsuario.dni,
                 email: $scope.ajaxDatoRegistroUsuario.email
             };
             $http({
@@ -33,6 +37,11 @@ moduleRegister.controller('registerController', ['$scope', '$http', 'sessionServ
                         $scope.mensaje = false;
                     }
                     if (response.data.status === 401) {
+                        $scope.mensajeDelServidor = response.data.message;
+                        $scope.mensajeError = true;
+                        $scope.mensaje = false;
+                    }
+                    if (response.data.status === 402) {
                         $scope.mensajeDelServidor = response.data.message;
                         $scope.mensajeError = true;
                         $scope.mensaje = false;

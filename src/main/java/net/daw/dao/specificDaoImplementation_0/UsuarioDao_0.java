@@ -82,6 +82,33 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
 
     }
     
+    public int checkDni(String strDni)throws Exception {
+        String strSQL = "SELECT COUNT(dni) FROM usuario WHERE dni=?";
+        int resultado = 0;
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL);
+            oPreparedStatement.setString(1, strDni);
+            oResultSet = oPreparedStatement.executeQuery();
+            if (oResultSet.next()) {
+                resultado = oResultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao get de " + ob, e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return resultado;
+
+    }
+    
+    
     public int checkEmail(String strUserEmail)throws Exception {
         String strSQL = "SELECT COUNT(email) FROM usuario WHERE email=?";
         int resultado = 0;

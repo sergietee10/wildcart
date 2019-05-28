@@ -1,7 +1,7 @@
 'use strict'
 
-moduleBlog.controller('blogPlistControllerAdm', ['$scope', 'toolService', '$http', 'sessionService', '$routeParams','$location',
-    function ($scope, toolService, $http, sessionService, $routeParams,$location) {
+moduleBlog.controller('blogPlistControllerAdm', ['$scope', 'toolService', '$http', 'sessionService', '$routeParams', '$location',
+    function ($scope, toolService, $http, sessionService, $routeParams, $location) {
         $scope.totalPages = 1;
 
         if (!$routeParams.order) {
@@ -10,6 +10,7 @@ moduleBlog.controller('blogPlistControllerAdm', ['$scope', 'toolService', '$http
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $('.btn-dark').hide();
         }
 
         if (!$routeParams.rpp) {
@@ -34,12 +35,9 @@ moduleBlog.controller('blogPlistControllerAdm', ['$scope', 'toolService', '$http
 
 
         $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
-            } else {
-                    window.alert("Solo puedes ordenar por un campo. Resetea el orden.");
-            }
+            $scope.orderURLServidor == ""
+            $scope.orderURLServidor = "&order=" + order + "," + align;
+            $scope.orderURLCliente = order + "," + align;
             $location.url(`blog/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
             $('.btn-dark').hide();
         }
@@ -109,7 +107,8 @@ moduleBlog.controller('blogPlistControllerAdm', ['$scope', 'toolService', '$http
                     }
                 }
             }
-        };
+        }
+        ;
 
 
         $scope.isActive = toolService.isActive;

@@ -11,6 +11,7 @@ moduleFactura.controller('facturaViewControllerAdm', ['$scope', 'toolService', '
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $('.btn-dark').hide();
         }
 
         if (!$routeParams.rpp) {

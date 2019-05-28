@@ -15,6 +15,9 @@
                             </div>
                             <br>
                             <input type = "file" file-model = "myFile"/>
+                            <div class="alert alert-danger" ng-show="mensajeB">
+                                Selecciona una foto.
+                            </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
@@ -55,13 +58,13 @@
                                     <div class="col-7">
                                         <h5>Tipo Producto</h5>
                                     </div>
-                                <tipoproducto-selection class="modal fade" id="cadd-location-modal" obj="ajaxDatoProducto.obj_tipoProducto"></tipoproducto-selection>
-                                <div class="col-2" style="margin-left: -30px">
-                                <span class="input-group-text fas fa-search"
-                                      data-toggle="modal"
-                                      data-target="#cadd-location-modal"></span>
-                                </div>
-                                <div class="col-3"></div>
+                                    <tipoproducto-selection class="modal fade" id="cadd-location-modal" obj="ajaxDatoProducto.obj_tipoProducto"></tipoproducto-selection>
+                                    <div class="col-2" style="margin-left: -30px">
+                                        <span class="input-group-text fas fa-search"
+                                              data-toggle="modal"
+                                              data-target="#cadd-location-modal"></span>
+                                    </div>
+                                    <div class="col-3"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-3">

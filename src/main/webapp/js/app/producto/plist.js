@@ -2,10 +2,10 @@
 
 moduleProducto.controller('productoPlistControllerAdm', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
     function ($scope, $http, $location, toolService, $routeParams, sessionService) {
-        
+
 
         $scope.totalPages = 1;
-        if(sessionService.getTipoUserId() === 1){
+        if (sessionService.getTipoUserId() === 1) {
             $scope.isAdmin = true;
         }
 
@@ -15,6 +15,7 @@ moduleProducto.controller('productoPlistControllerAdm', ['$scope', '$http', '$lo
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $('.btn-dark').hide();
         }
 
         if (!$routeParams.rpp) {
@@ -38,12 +39,10 @@ moduleProducto.controller('productoPlistControllerAdm', ['$scope', '$http', '$lo
 
 
         $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
-            } else {
-                    window.alert("Solo puedes ordenar por un campo. Resetea el orden.");
-            }
+            $scope.orderURLServidor == ""
+            $scope.orderURLServidor = "&order=" + order + "," + align;
+            $scope.orderURLCliente = order + "," + align;
+
             $location.url(`producto/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
             $('.btn-dark').hide();
         }
@@ -72,7 +71,7 @@ moduleProducto.controller('productoPlistControllerAdm', ['$scope', '$http', '$lo
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;
             $scope.comprar = true;
-             if (($scope.ajaxDataUsuarios.existencias === 0) || ($scope.ajaxDataUsuarios.existencias === null)){
+            if (($scope.ajaxDataUsuarios.existencias === 0) || ($scope.ajaxDataUsuarios.existencias === null)) {
                 $scope.comprar = false;
             }
         }, function (response) {
@@ -120,7 +119,8 @@ moduleProducto.controller('productoPlistControllerAdm', ['$scope', '$http', '$lo
                     }
                 }
             }
-        };
+        }
+        ;
 
 
         $scope.isActive = toolService.isActive;

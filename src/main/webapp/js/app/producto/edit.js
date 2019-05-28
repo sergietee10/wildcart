@@ -57,20 +57,7 @@ moduleProducto.controller('productoEditControllerAdm', ['$scope', '$http', '$rou
                 $scope.status = response.status;
             });
         };
-
-        $scope.save = function () {
-            $http({
-                method: 'GET',
-                url: 'json?ob=tipoproducto&op=update&id=2',
-                data: { json: JSON.stringify($scope.obj) }
-            }).then(function (response) {
-                $scope.status = response.status;
-                $scope.ajaxData = response.data.message;
-            }, function (response) {
-                $scope.ajaxData = response.data.message || 'Request failed';
-                $scope.status = response.status;
-            });
-        };
+        
         $scope.tipoProductoRefresh = function () {
             $scope.tipoproducto = false;
             $http({

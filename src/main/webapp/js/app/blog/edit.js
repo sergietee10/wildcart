@@ -48,7 +48,7 @@ moduleBlog.controller('blogEditControllerAdm', ['$scope', '$http', '$routeParams
                 titulo: $scope.ajaxDatoBlog.titulo,
                 contenido: $scope.ajaxDatoBlog.contenido,
                 etiquetas: $scope.ajaxDatoBlog.etiquetas,
-                id_usuario:$scope.ajaxDatoBlog.obj_Usuario.id,
+                id_usuario: $scope.ajaxDatoBlog.obj_Usuario.id,
                 fecha: $scope.dt
             };
             $http({
@@ -57,27 +57,17 @@ moduleBlog.controller('blogEditControllerAdm', ['$scope', '$http', '$routeParams
                 url: '/json?ob=blog&op=update',
                 params: {json: JSON.stringify(json)}
             }).then(function (response) {
-                $scope.status = response.status;
-                $scope.mensaje = true;
+                    $scope.status = response.status;
+                    $scope.mensaje = true;
             }, function (response) {
                 $scope.ajaxDatoBlog = response.data.message || 'Request failed';
                 $scope.status = response.status;
             });
         };
 
-        $scope.save = function () {
-            $http({
-                method: 'GET',
-                url: 'json?ob=usuario&op=update&id=2',
-                data: {json: JSON.stringify($scope.obj)}
-            }).then(function (response) {
-                $scope.status = response.status;
-                $scope.ajaxData = response.data.message;
-            }, function (response) {
-                $scope.ajaxData = response.data.message || 'Request failed';
-                $scope.status = response.status;
-            });
-        };
+        
+
+
         $scope.tipoUsuarioRefresh = function () {
             $http({
                 method: 'GET',
@@ -106,22 +96,22 @@ moduleBlog.controller('blogEditControllerAdm', ['$scope', '$http', '$routeParams
                 $scope.myDate.getDate());
 
 
-$scope.uploadFile = function () {
+        $scope.uploadFile = function () {
             var file;
             file = $scope.myFile;
-            
+
             var oFormData = new FormData();
             oFormData.append('file', file);
             $http({
-                headers: { 'Content-Type': undefined },
+                headers: {'Content-Type': undefined},
                 method: 'POST',
                 data: oFormData,
                 url: `json?ob=blog&op=loadimage`
             }).then(function (response) {
                 console.log(response);
-            }, function(response){
-                    console.log(response);
-                });
+            }, function (response) {
+                console.log(response);
+            });
         };
     }]).directive('fileModel', ['$parse', function ($parse) {
         return {
@@ -129,7 +119,7 @@ $scope.uploadFile = function () {
             link: function (scope, element, attrs) {
                 var model = $parse(attrs.fileModel);
                 var modelSetter = model.assign;
-    
+
                 element.bind('change', function () {
                     scope.$apply(function () {
                         modelSetter(scope, element[0].files[0]);

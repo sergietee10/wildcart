@@ -154,6 +154,8 @@ trolleyes.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usr/producto/view/:id?', {templateUrl: 'js/app/usr/producto/view.html', controller: 'productoViewControllerUsr', resolve: {auth: autenticacionUsuario}});
         $routeProvider.when('/usr/producto/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/usr/producto/plist.html', controller: 'productoPlistUsrControllerUsr', resolve: {auth: autenticacionUsuario}});
         $routeProvider.when('/usr/usuario/plistfactura/:id?/:rpp?/:page?/:order?', {templateUrl: 'js/app/usr/usuario/plistfactura.html', controller: 'usuarioPlistFacturaControllerUsr', resolve: {auth: autenticacionUsuario}});
+        $routeProvider.when('/usr/usuario/registro/:id?/:rpp?/:page?/:order?', {templateUrl: 'js/app/usr/usuario/registro.html', controller: 'registerUserControllerUsr', resolve: {auth: autenticacionUsuario}});
+
 
         $routeProvider.when('/login', {templateUrl: 'js/app/login.html', controller: 'loginController'});
         $routeProvider.when('/register', {templateUrl: 'js/app/register.html', controller: 'registerController'});

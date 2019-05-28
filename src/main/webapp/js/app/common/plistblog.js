@@ -26,7 +26,7 @@ moduleBlog.controller('blogController', ['$scope', '$http', '$location', 'toolSe
                 $scope.page = 1;
             }
         }
-
+        
         $http({
             method: 'GET',
             url: '/json?ob=blog&op=getcount'

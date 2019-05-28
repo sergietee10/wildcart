@@ -14,6 +14,7 @@ moduleTipoproducto.controller('tipoproductoPlistControllerAdm', ['$scope', '$htt
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $('.btn-dark').hide();
         }
 
         if (!$routeParams.rpp) {
@@ -43,12 +44,9 @@ moduleTipoproducto.controller('tipoproductoPlistControllerAdm', ['$scope', '$htt
 
 
         $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
-            } else {
-                    window.alert("Solo puedes ordenar por un campo. Resetea el orden.");
-            }
+            $scope.orderURLServidor == ""
+            $scope.orderURLServidor = "&order=" + order + "," + align;
+            $scope.orderURLCliente = order + "," + align;
             $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
             $('.btn-dark').hide();
         }
@@ -106,7 +104,8 @@ moduleTipoproducto.controller('tipoproductoPlistControllerAdm', ['$scope', '$htt
                     }
                 }
             }
-        };
+        }
+        ;
 
         $scope.isActive = toolService.isActive;
 

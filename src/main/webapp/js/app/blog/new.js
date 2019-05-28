@@ -32,8 +32,12 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 url: '/json?ob=blog&op=create',
                 params: {json: JSON.stringify(json)}
             }).then(function (response) {
-                $scope.status = response.status;
-                $scope.mensaje = true;
+                if ($scope.myFile === undefined) {
+                    $scope.mensajeB = true;
+                } else {
+                    $scope.status = response.status;
+                    $scope.mensaje = true;
+                }
             }, function (response) {
                 $scope.ajaxDatoBlog = response.data.message || 'Request failed';
                 $scope.status = response.status;
@@ -50,70 +54,6 @@ moduleBlog.controller('blogNewControllerAdm', ['$scope', '$http', '$routeParams'
                 }
             });
         };
-        $scope.save = function () {
-            $http({
-                method: 'GET',
-                url: 'json?ob=tipousuario&op=update&id=2',
-                data: {json: JSON.stringify($scope.obj)}
-            }).then(function (response) {
-                //detectar error
-
-                $scope.status = response.status;
-                $scope.ajaxData = response.data.message;
-            }, function (response) {
-                $scope.ajaxData = response.data.message || 'Request failed';
-                $scope.status = response.status;
-            });
-        };
-
-        (function ($) {
-            $.fn.checkFileType = function (options) {
-                var defaults = {
-                    allowedExtensions: [],
-                    success: function () {},
-                    error: function () {}
-                };
-                options = $.extend(defaults, options);
-
-                return this.each(function () {
-
-                    $(this).on('change', function () {
-                        var value = $(this).val(),
-                                file = value.toLowerCase(),
-                                extension = file.substring(file.lastIndexOf('.') + 1);
-
-                        if ($.inArray(extension, options.allowedExtensions) == -1) {
-                            options.error();
-                            $(this).focus();
-                        } else {
-                            options.success();
-
-                        }
-
-                    });
-
-                });
-            };
-
-        })(jQuery);
-
-        $(function () {
-            $('#image').checkFileType({
-                allowedExtensions: ['jpg', 'jpeg', 'png'],
-                success: function () {
-                    $scope.mensajeB = true;
-                    $scope.mensajeA = false;
-                    
-                },
-                error: function () {
-                    $scope.mensajeA = true;
-                    $scope.mensajeB = false;
-                    
-                }
-            });
-
-        });
-
 
         $scope.usuarioRefresh = function () {
             $http({

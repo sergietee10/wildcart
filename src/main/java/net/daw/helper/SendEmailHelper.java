@@ -17,14 +17,14 @@ public class SendEmailHelper {
             String user = "fondoverdemilitar7@gmail.com";
             String pass = "tioverdemilitar7";
             String to = correo;
-            String from = "fondoverdemilitar7@gmail.com";
-            String subject = "Hola soy la aplicacion de correo";
+            String from = "Trickshot.com";
+            String subject = "Verificacion de correo.";
             String messageText;
             if (code == null) {
-                messageText = "Email validado correctamente. Logueate";
+                messageText = "Tu Email ha sido validado correctamente. Pincha aqui y logueate: http://localhost:8080/login";
             } else {
                 //messageText = "Dale a este enlace para validar tu cuenta: http://localhost:8081/json?ob=usuario&op=validation&code=" + code;
-            messageText = "Dale a este enlace para validar tu cuenta: http://localhost:8080/json?ob=usuario&op=validation&code=" + code;
+            messageText = "Pincha en este enlace para validar tu correo y cuenta: http://localhost:8080/json?ob=usuario&op=validation&code=" + code;
             }
             boolean sessionDebug = false;
 

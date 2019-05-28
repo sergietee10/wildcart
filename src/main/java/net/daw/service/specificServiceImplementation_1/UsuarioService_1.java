@@ -51,7 +51,9 @@ public class UsuarioService_1 extends GenericServiceImplementation implements Se
                 oUsuarioBean.setApe2("Gómez");
                 oUsuarioBean.setLogin("ripego");
                 oUsuarioBean.setPass("hola");
+                oUsuarioBean.setEmail("rigoberto@gmail.com");
                 oUsuarioBean.setId_tipoUsuario(2);
+                oUsuarioBean.setCode("sIgul0LSXKqkrsWGoSsi");
                 oUsuarioBean = (UsuarioBean) oUsuarioDao.create(oUsuarioBean);
             }
             oReplyBean = new ReplyBean(200, oGson.toJson(number));
