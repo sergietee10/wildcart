@@ -2,60 +2,62 @@
 <div class="container">
     <div class="row">
         <div class="col-1"></div>
-        <div class="col-10" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+        <div class="col-11" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
                 <form name="userForm" ng-show="!mensaje">
                     <h1><i class="fas fa-apple-alt"></i>   Añadir Producto</h1>
                     <hr>
 
                     <div class="row">
-                        <div class="col-4">
-                            <div style="border-radius: 5px; width: 225px; height: 235px; background-color: #A5BEDE; text-align: center">
+                        <div class="col-3">
+                            <div style="border-radius: 5px; width: 255px; height: 235px; background-color: #A5BEDE;">
                                 <h3>Inserta una Imagen</h3>
                             </div>
                             <br>
+                            <h6>Añade una imagen</h6>
                             <input type = "file" file-model = "myFile"/>
                             <div class="alert alert-danger" ng-show="mensajeB">
                                 Selecciona una foto.
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4" style="padding-left: 40px">
                             <div class="form-group">
                                 <h5>ID</h5>
                                 <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoProducto.id" />
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : userForm.codigo.$invalid && !userForm.codigo.$pristine }">
-                                <h5>Código</h5>
-                                <input type="text" class="form-control" id="codigo" name="codigo" ng-model="ajaxDatoProducto.codigo" ng-required="true"/>
-                            </div>
-                            <div class="form-group">
-                                <h5>Descripción</h5>
-                                <input type="text" class="form-control" id="desc" name="desc" ng-model="ajaxDatoProducto.desc" ng-required="true" />
-                                <div ng-show="!userForm.desc.$valid && !userForm.desc.$pristine" class="alert alert-danger" role="alert">
-                                    Descripción obligatoria
+                                <h5>Modelo</h5>
+                                <input type="text" ng-pattern="/[A-Za-z0-9]/" maxlength="25" class="form-control" id="codigo" name="codigo"  ng-model="ajaxDatoProducto.codigo" ng-required="true"/>
+                                <div ng-show="!userForm.codigo.$valid && !userForm.codigo.$pristine" class="alert alert-danger" role="alert">
+                                    Modelo erroneo
                                 </div>
-
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5>Existencias</h5>
+                                        <input type="text" maxlength="10" ng-pattern="/^[0-9]*$/" class="form-control" id="existencias" name="existencias" ng-model="ajaxDatoProducto.existencias" ng-required="true" placeholder="1000"/>
+                                        <div ng-show="!userForm.existencias.$valid && !userForm.existencias.$pristine" class="alert alert-danger" role="alert">
+                                            Existencias erroneas
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5>Precio</h5>
+                                        <input type="text" maxlength="7" ng-pattern="/^[0-9]{1,4}(\.[0-9][0-9])?$/" class="form-control" id="precio" name="precio" ng-model="ajaxDatoProducto.precio" ng-required="true" placeholder="10.99"/>
+                                        <div ng-show="!userForm.precio.$valid && !userForm.precio.$pristine" class="alert alert-danger" role="alert">
+                                            Precio erroneo
+                                        </div>
+                                    </div>
+                                </div>
                             </div> 
                         </div>
-                        <div class="col-4">
+                        <div class="col-5">
                             <div class="form-group">
-                                <h5>Existencias</h5>
-                                <input type="text" class="form-control" id="existencias" name="existencias" ng-model="ajaxDatoProducto.existencias" ng-required="true" />
-                                <div ng-show="!userForm.existencias.$valid && !userForm.existencias.$pristine" class="alert alert-danger" role="alert">
-                                    Por lo menos 1 en existencias.
+                                <h5>Descripción</h5>
+                                <textarea style="height: 162px" maxlength="1600" type="text" class="form-control" id="desc" name="desc" ng-model="ajaxDatoProducto.desc" ng-required="true"></textarea>
+                                <div ng-show="!userForm.desc.$valid && !userForm.desc.$pristine" class="alert alert-danger" role="alert">
+                                    Descripción erronea
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <h5>Precio</h5>
-                                <input type="text" class="form-control" id="precio" name="precio" ng-model="ajaxDatoProducto.precio" ng-required="true" />
-                                <div ng-show="!userForm.precio.$valid && !userForm.precio.$pristine" class="alert alert-danger" role="alert">
-                                    Precio obligatorio
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-7">
+                                    <div class="col-5">
                                         <h5>Tipo Producto</h5>
                                     </div>
                                     <tipoproducto-selection class="modal fade" id="cadd-location-modal" obj="ajaxDatoProducto.obj_tipoProducto"></tipoproducto-selection>
@@ -64,7 +66,7 @@
                                               data-toggle="modal"
                                               data-target="#cadd-location-modal"></span>
                                     </div>
-                                    <div class="col-3"></div>
+                                    <div class="col-5"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-3">
@@ -86,7 +88,7 @@
                                 </div>
                             </div>
                             <div ng-show="tipoproducto" class="alert alert-danger" role="alert">
-                                Tipo Producto no válido.
+                                Tipo Producto erroneo
                             </div>
                         </div> 
                     </div>

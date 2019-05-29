@@ -162,7 +162,7 @@ trolleyes.config(['$routeProvider', function ($routeProvider) {
         
         $routeProvider.when('/', {templateUrl: 'js/app/common/home.html', controller: 'homeController'});
         $routeProvider.when('/home', {templateUrl: 'js/app/common/home.html', controller: 'homeController'});
-        $routeProvider.when('/blog/plistblog', {templateUrl: 'js/app/common/plistblog.html', controller: 'blogController', resolve: {auth: autenticacionAll}});
+        $routeProvider.when('/blog/plistblog/:rpp?/:page?/:order?', {templateUrl: 'js/app/common/plistblog.html', controller: 'blogController', resolve: {auth: autenticacionAll}});
         $routeProvider.when('/carrito', {templateUrl: 'js/app/common/carrito.html', controller: 'carritoController'});
 
 

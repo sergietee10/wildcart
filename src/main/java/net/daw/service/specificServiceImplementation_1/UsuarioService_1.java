@@ -46,12 +46,9 @@ public class UsuarioService_1 extends GenericServiceImplementation implements Se
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
-        
-        
         oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
         oConnection = oConnectionPool.newConnection();
         UsuarioDao_0 oUsuarioDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
-        
         try {
             String code = oRequest.getParameter("code");
             String strJsonFromClient = oRequest.getParameter("json");
@@ -61,11 +58,10 @@ public class UsuarioService_1 extends GenericServiceImplementation implements Se
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
-           
             code = new RandomString(20, new SecureRandom(), alphanum).nextString();
-            oBeand.setCode(code);
             oBean = oDao.create(oBean);
             oBeand.setActive(true);
+            oBeand.setCode(code);
             oReplyBean = new ReplyBean(200, oGson.toJson(oBeand));
         } catch (Exception ex) {
             throw new Exception("ERROR: Service level: create method: " + ob + " object", ex);

@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        Descripción
+                                        Modelo
                                     </p>
                                 </div>
                                 <div class="col-12">
@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        Precio
+                                        Precio/Unidad
                                     </p>
                                 </div>
                             </div>
@@ -70,8 +70,8 @@
                     </tr>
                     <tr ng-repeat="fila in c.data">
                         <td>{{fila.id}}</td>
-                        <td>{{fila.desc}}</td>
-                        <td>{{fila.precio}}</td>
+                        <td>{{fila.codigo}}</td>
+                        <td>{{fila.precio}}€</td>
                         <td>{{fila.obj_tipoProducto.desc}}</td>
                         <td>
                             <div class="btn-toolbar" role="toolbar">

@@ -70,8 +70,6 @@ moduleUsuario.controller('usuarioPlistFacturaControllerUsr', ['$scope', 'toolSer
             }).then(function (response) {
                 $scope.status = response.status;
                 $scope.ajaxDataUsuarios = response.data.message;
-                $scope.usuarioId = response.data.message[0].obj_Usuario.id;
-                //$scope.nombre = $scope.data.message.obj_Usuario.nombre + ' ' + $scope.data.message.obj_Usuario.ape1;
 
             }, function (response) {
                 $scope.status = response.status;
@@ -168,19 +166,18 @@ moduleUsuario.controller('usuarioPlistFacturaControllerUsr', ['$scope', 'toolSer
                     doc.text(145, 65, fecha);
                     doc.rect(8, 100, 195, 210);
                     doc.setFontSize(15);
-                    doc.text(12, 90, 'Codigo');
-                    doc.text(50, 90, 'Descripcion');
-                    doc.text(125, 90, 'Cantidad');
+                    doc.text(12, 90, 'Producto');
+                    doc.text(120, 90, 'Cantidad');
                     doc.text(170, 90, 'Precio');
                     doc.setFillColor(0, 0, 0);
                     doc.rect(9, 92, 193, 5, 'F');
                     doc.setFontSize(15);
 
-                    //Lineas
-                    var linea = 107;
-                    var precio = 0;
-                    var cantidad = 0;
-                    for (var x = 0; x <= lineasTotales - 1; x++) {
+                //Lineas
+                var linea = 107;
+                var precio = 0;
+                var cantidad = 0;
+                for (var x = 0; x <= lineasTotales - 1; x++) {
                         if (x % 14 === 0 && x !== 0) {
                             doc.setFontSize(30);
                             doc.setFontType('bold');
@@ -204,24 +201,22 @@ moduleUsuario.controller('usuarioPlistFacturaControllerUsr', ['$scope', 'toolSer
                             doc.text(145, 65, fecha);
                             doc.rect(8, 110, 195, 210);
                             doc.setFontSize(15);
-                            doc.text(12, 90, 'Codigo');
-                            doc.text(50, 90, 'Descripcion');
-                            doc.text(125, 90, 'Cantidad');
+                            doc.text(12, 90, 'Modelo');
+                            doc.text(120, 90, 'Cantidad');
                             doc.text(170, 90, 'Precio');
                             doc.setFillColor(0, 0, 0);
                             doc.rect(9, 108, 193, 5, 'F');
                             doc.setFontSize(15);
                             linea = 107;
                         }
-                        doc.text(12, linea, $scope.ajaxLineasFactura[x].obj_Producto.codigo);
-                        doc.text(50, linea, $scope.ajaxLineasFactura[x].obj_Producto.desc);
-                        doc.text(125, linea, ($scope.ajaxLineasFactura[x].cantidad).toString());
-                        doc.text(170, linea, (parseFloat(($scope.ajaxLineasFactura[x].obj_Producto.precio)).toFixed(2).toString()));
-                        linea = linea + 13;
-                        precio = (precio + $scope.ajaxLineasFactura[x].obj_Producto.precio);
-                        cantidad = cantidad + $scope.ajaxLineasFactura[x].cantidad;
-                    }
-
+                    doc.text(12, linea, $scope.ajaxLineasFactura[x].obj_Producto.codigo);
+                    doc.text(120, linea, ($scope.ajaxLineasFactura[x].cantidad).toString());
+                    doc.text(170, linea, (parseFloat(($scope.ajaxLineasFactura[x].obj_Producto.precio)).toFixed(2).toString()));
+                    
+                    linea = linea + 13;
+                    precio = (precio + $scope.ajaxLineasFactura[x].obj_Producto.precio);
+                    cantidad = cantidad + $scope.ajaxLineasFactura[x].cantidad;
+                }
                     //Abajo
                     doc.setFillColor(0, 0, 0);
                     doc.rect(9, 260, 193, 5, 'F');

@@ -8,12 +8,16 @@ moduleCommon.controller('homeController', ['$scope', '$location', 'toolService',
             url: '/json?ob=usuario&op=check'
         }).then(function (response) {
             if (response.status === 200) {
+                $scope.register = true;
                 if (sessionService.isSessionActive) {
                     $scope.usuariologeado = sessionService.getUserName();
                     if ($scope.usuariologeado === "") {
                         $scope.ocultar = false;
+                        
                     } else {
                         $scope.ocultar = true;
+                        $scope.register = false
+                        
                     }
                 }
             } else if (response.status === 401 || response.status === 500) {

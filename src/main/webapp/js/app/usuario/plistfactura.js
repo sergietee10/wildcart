@@ -163,9 +163,8 @@ moduleUsuario.controller('usuarioPlistFacturaControllerAdm', ['$scope', 'toolSer
                     doc.text(145, 65, fecha);
                     doc.rect(8, 100, 195, 210);
                     doc.setFontSize(15);
-                    doc.text(12, 90, 'Codigo');
-                    doc.text(50, 90, 'Descripcion');
-                    doc.text(125, 90, 'Cantidad');
+                    doc.text(12, 90, 'Producto');
+                    doc.text(120, 90, 'Cantidad');
                     doc.text(170, 90, 'Precio');
                     doc.setFillColor(0, 0, 0);
                     doc.rect(9, 92, 193, 5, 'F');
@@ -199,9 +198,8 @@ moduleUsuario.controller('usuarioPlistFacturaControllerAdm', ['$scope', 'toolSer
                             doc.text(145, 65, fecha);
                             doc.rect(8, 110, 195, 210);
                             doc.setFontSize(15);
-                            doc.text(12, 90, 'Codigo');
-                            doc.text(50, 90, 'Descripcion');
-                            doc.text(125, 90, 'Cantidad');
+                            doc.text(12, 90, 'Modelo');
+                            doc.text(120, 90, 'Cantidad');
                             doc.text(170, 90, 'Precio');
                             doc.setFillColor(0, 0, 0);
                             doc.rect(9, 108, 193, 5, 'F');
@@ -209,9 +207,9 @@ moduleUsuario.controller('usuarioPlistFacturaControllerAdm', ['$scope', 'toolSer
                             linea = 107;
                         }
                     doc.text(12, linea, $scope.ajaxLineasFactura[x].obj_Producto.codigo);
-                    doc.text(50, linea, $scope.ajaxLineasFactura[x].obj_Producto.desc);
-                    doc.text(125, linea, ($scope.ajaxLineasFactura[x].cantidad).toString());
+                    doc.text(120, linea, ($scope.ajaxLineasFactura[x].cantidad).toString());
                     doc.text(170, linea, (parseFloat(($scope.ajaxLineasFactura[x].obj_Producto.precio)).toFixed(2).toString()));
+                    
                     linea = linea + 13;
                     precio = (precio + $scope.ajaxLineasFactura[x].obj_Producto.precio);
                     cantidad = cantidad + $scope.ajaxLineasFactura[x].cantidad;

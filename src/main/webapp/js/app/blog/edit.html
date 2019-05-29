@@ -1,66 +1,75 @@
 <header-component></header-component>
 <div class="container-fluid">
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
-                    <form name="userForm" ng-show="!mensaje">
-                        <h1><i class="fas fa-file-invoice-dollar"></i>  Editar Noticia Nº{{ajaxDatoBlog.id}}</h1>
-                        <hr>
-                        <div class="row">
-                            <div class="col-4">
-                                <h5>Imagen</h5>
-                                <label>
-                                    <img style="border-radius: 5px; width: 300px; height: 250px" ng-src="imagenes/{{ajaxDatoBlog.foto}}">
-                                </label>
-                                <h6>Cambiar Imagen</h6>
-                                <input type = "file" file-model = "myFile" ng-required="true"/>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <h5>ID</h5>
-                                    <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoBlog.id" />
-                                </div>
-                                <div class="form-group">
-                                    <h5>Título <span style="font-size: 12px">(60 caracteres)</span></h5>
-                                    <input type="text" class="form-control" maxlength="60" id="id" name="id" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
-                                </div>
-                                <div class="form-group">
-                                    <h5>Fecha</h5>
-                                    <div style="background-color: #A5BEDE; border-radius: 10px">
-                                        <md-datepicker ng-model="dt" md-placeholder="Fecha" ng-readonly="true" style="margin-left: -40px;"></md-datepicker></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <h5>Contenido  <span style="font-size: 12px">(1600 caracteres)</span></h5> 
-                                    <textarea style="height: 156px" maxlength="1600" type="text" class="form-control" id="id" name="id" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
-                                </div>
-                                <div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
-                                    <h5>Etiquetas</h5>
-                                    <input type="text" class="form-control" maxlength="100" id="etiquetas" name="etiquetas" ng-model="ajaxDatoBlog.etiquetas" />
-                                </div>
-                                <usuario-selection class="modal fade " id="cadd-location-modal" obj="ajaxDatoBlog.obj_Usuario"></usuario-selection>
-                            </div>
-                        </div>
-                    </form>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8" style="min-height: 50%; min-width: 57%; border: 3px solid black;border-radius: 10px; margin: 80px 20px 80px 20px; background-color: lightgrey">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 20px; margin-bottom: 20px">
+                <form name="userForm" ng-show="!mensaje">
+                    <h1><i class="fas fa-file-invoice-dollar"></i>  Editar Noticia Nº{{ajaxDatoBlog.id}}</h1>
+                    <hr>
                     <div class="row">
-                        <div class="col-9"></div>
-                        <div class="col-3" style="padding-left: 70px">
-                            <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
-                            <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>
+                        <div class="col-4">
+                            <h5>Imagen</h5>
+                            <label>
+                                <img style="border-radius: 5px; width: 300px; height: 250px" ng-src="imagenes/{{ajaxDatoBlog.foto}}">
+                            </label>
+                            <h6>Cambiar Imagen</h6>
+                            <input type = "file" file-model = "myFile" ng-required="true" value="{{ajaxDatoBlog.foto}}"/>
                         </div>
-                    </div>
-                    <div class="alert alert-success" ng-model="resultado" ng-show="mensaje">
-                        Datos actualizados correctamente.
-                    </div>
-                    <div class="alert alert-danger" ng-show="mensajeError">
-                        Datos erroneos.
-                    </div>
-                </main>
-            </div>
-            <div class="col-2"></div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <h5>ID</h5>
+                                <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoBlog.id" />
+                            </div>
+                            <div class="form-group">
+                                <h5>Título <span style="font-size: 12px">(60 caracteres)</span></h5>
+                                <input type="text" ng-pattern="/[A-Za-z0-9]/" class="form-control" maxlength="60" id="titulo" name="titulo" ng-model="ajaxDatoBlog.titulo" ng-required="true" />
+    <div ng-show="!userForm.titulo.$valid && !userForm.titulo.$pristine" class="alert alert-danger" role="alert">
+        Titulo erroneo
+    </div>
+</div>
+<div class="form-group" ng-class="{ 'has-error' : userForm.fecha.$invalid && !userForm.fecha.$pristine }">
+    <h5>Fecha</h5>
+    <div style="background-color: #A5BEDE; border-radius: 10px">
+        <md-datepicker ng-model="dt" md-placeholder="Fecha" ng-readonly="true" style="margin-left: -40px;"></md-datepicker></textarea>
+    </div>
+</div>
+</div>
+<div class="col-4">
+    <div class="form-group">
+        <h5>Contenido  <span style="font-size: 12px">(1600 caracteres)</span></h5> 
+        <textarea id="txtArea" onkeypress="onTestChange();" style="height: 156px" maxlength="1600" ng-pattern="/[A-Za-z0-9]/" type="text" class="form-control" id="contenido" name="contenido" ng-model="ajaxDatoBlog.contenido" ng-required="true"></textarea>
+        <div ng-show="!userForm.contenido.$valid && !userForm.contenido.$pristine" class="alert alert-danger" role="alert">
+            Contenido erroneo
         </div>
+    </div>
+    <div class="form-group">
+        <h5>Etiquetas</h5>
+        <input type="text" class="form-control" ng-pattern="/[A-Za-z0-9]/" maxlength="250" id="etiquetas" name="etiquetas" ng-model="ajaxDatoBlog.etiquetas" ng-required="true"/>
+        <div ng-show="!userForm.etiquetas.$valid && !userForm.etiquetas.$pristine" class="alert alert-danger" role="alert">
+            Etiqueta erronea
+        </div>
+    </div>
+    <usuario-selection class="modal fade " id="cadd-location-modal" obj="ajaxDatoBlog.obj_Usuario"></usuario-selection>
+</div>
+</div>
+</form>
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col-3" style="padding-left: 60px">
+        <a href="javascript:window.history.back();"> <button class="btn btn-danger">Volver</button> </a>
+        <button ng-click="guardar()" ng-show="!mensaje" type="button" class="btn btn-success" ng-disabled="userForm.$invalid">Guardar</button>
+    </div>
+</div>
+<div class="alert alert-success" ng-model="resultado" ng-show="mensaje">
+                    Datos actualizados correctamente.
+                </div>
+                <div class="alert alert-danger" ng-show="mensajeError">
+                    Datos erroneos.
+                </div>
+            </main>
+        </div>
+        <div class="col-2"></div>
+    </div>
 </div>
 <footer class="footer" ng-include="'js/app/footer.html'"></footer>

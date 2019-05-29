@@ -35,37 +35,44 @@ moduleBlog.controller('blogEditControllerAdm', ['$scope', '$http', '$routeParams
         });
 
         $scope.guardar = function () {
-            $scope.uploadFile();
-            var nombreFoto;
             if ($scope.myFile === undefined) {
-                nombreFoto = "default.jpg";
+                var json = {
+                    id: $scope.ajaxDatoBlog.id,
+                    foto: $scope.ajaxDatoBlog.foto,
+                    titulo: $scope.ajaxDatoBlog.titulo,
+                    contenido: $scope.ajaxDatoBlog.contenido,
+                    etiquetas: $scope.ajaxDatoBlog.etiquetas,
+                    id_usuario: $scope.ajaxDatoBlog.obj_Usuario.id,
+                    fecha: $scope.dt
+                };
             } else {
+                var nombreFoto;
                 nombreFoto = $scope.myFile.name
+                var json = {
+                    id: $scope.ajaxDatoBlog.id,
+                    foto: nombreFoto,
+                    titulo: $scope.ajaxDatoBlog.titulo,
+                    contenido: $scope.ajaxDatoBlog.contenido,
+                    etiquetas: $scope.ajaxDatoBlog.etiquetas,
+                    id_usuario: $scope.ajaxDatoBlog.obj_Usuario.id,
+                    fecha: $scope.dt
+                };
             }
-            var json = {
-                id: $scope.ajaxDatoBlog.id,
-                foto: nombreFoto,
-                titulo: $scope.ajaxDatoBlog.titulo,
-                contenido: $scope.ajaxDatoBlog.contenido,
-                etiquetas: $scope.ajaxDatoBlog.etiquetas,
-                id_usuario: $scope.ajaxDatoBlog.obj_Usuario.id,
-                fecha: $scope.dt
-            };
             $http({
                 method: 'GET',
                 withCredentials: true,
                 url: '/json?ob=blog&op=update',
                 params: {json: JSON.stringify(json)}
             }).then(function (response) {
-                    $scope.status = response.status;
-                    $scope.mensaje = true;
+                $scope.status = response.status;
+                $scope.mensaje = true;
             }, function (response) {
                 $scope.ajaxDatoBlog = response.data.message || 'Request failed';
                 $scope.status = response.status;
             });
         };
 
-        
+
 
 
         $scope.tipoUsuarioRefresh = function () {
