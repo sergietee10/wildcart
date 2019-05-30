@@ -1,6 +1,6 @@
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(300px,320px));     
+    grid-template-columns: repeat(auto-fill,minmax(300px,370px));     
     grid-auto-rows: 500px;
     padding: 10px;
     grid-gap: 20px 5px;
@@ -93,6 +93,11 @@ textarea{
 
 td {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+p {
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;

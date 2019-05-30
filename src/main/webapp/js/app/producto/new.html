@@ -50,7 +50,7 @@
                         <div class="col-5">
                             <div class="form-group">
                                 <h5>Descripción</h5>
-                                <textarea style="height: 162px" maxlength="1600" type="text" class="form-control" id="desc" name="desc" ng-model="ajaxDatoProducto.desc" ng-required="true"></textarea>
+                                <textarea style="height: 162px" maxlength="1600" type="text" ng-pattern="/^[a-zA-Z\s]*$/" class="form-control" id="desc" name="desc" ng-model="ajaxDatoProducto.desc" ng-required="true"></textarea>
                                 <div ng-show="!userForm.desc.$valid && !userForm.desc.$pristine" class="alert alert-danger" role="alert">
                                     Descripción erronea
                                 </div>

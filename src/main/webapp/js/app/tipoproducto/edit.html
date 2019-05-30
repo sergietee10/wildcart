@@ -14,7 +14,7 @@
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : userForm.desc.$invalid && !userForm.desc.$pristine }">
                             <h5>Descripción</h5>
-                            <input type="text" class="form-control" id="desc" name="desc" ng-model="ajaxDatoTipoUsuario.desc" ng-required="true"/>
+                            <input type="text" maxlength="40" class="form-control" id="desc" name="desc" ng-model="ajaxDatoTipoUsuario.desc" ng-required="true"/>
                             <div ng-show="!userForm.desc.$valid && !userForm.desc.$pristine" class="alert alert-danger" role="alert">
                                 Descripción obligatoria
                             </div>

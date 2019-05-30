@@ -50,7 +50,7 @@
 
                         <a href="usr/producto/view/{{fila.id}}">
                             <div class="grid-contenido">
-                                <img ng-src="imagenes/{{fila.foto}}" style="width: 285px; height: 260px; margin-top: 20px; border-radius: 3px">
+                                <img ng-src="imagenes/{{fila.foto}}" style="width: 340px; height: 260px; margin-top: 20px; border-radius: 3px">
 
                             </div>
 
@@ -59,19 +59,19 @@
                             <p style="font-family: 'Passion One', cursive; color: black"><b>{{(fila.codigo).toUpperCase()}}</b></p>
                         </div>
                         <div class="grid-contenido" style="text-align: left; padding: 0px 10px 0px 10px">
-                            <p style="font-size: 11px"><span style="color: grey;">{{(fila.desc)}}</span> </p>
+                            <p style="font-size: 14px; max-width: 350px; max-height: 100px; margin: 0"><span style="color: grey;">{{(fila.desc)}}</span> </p>
                         </div>
                         <div class="grid-contenido" >
-                            <p style="font-size: 16px"><span style="color: red">{{(fila.precio).toFixed(2)}} €</span> </p>
+                            <p style="font-size: 16px; margin: 0px 25px 0px 0px; text-align: right"><span style="color: #277FAF"><b>{{(fila.precio).toFixed(2)}} €</b></span> </p>
                         </div>
                         <div class="grid-contenido" ng-show="{{fila.existencias}}> 0">
                             <div class="row">
                                 <div class="col-6">
                                     <div style="font-size: 15px; color: red; text-align: right; margin-top: 10px" ng-show="{{fila.existencias}}> 0">
-                                        <strong>¡Quedan {{fila.existencias}}!</strong>
+                                        <strong>¡Solo quedan {{fila.existencias}}!</strong>
                                     </div></div>
                                 <div class="col-6">
-                                    <button class="btn btn-success" style="border-radius: 5px; font-family: sans-serif" ng-click="addProducto(fila.id)">
+                                    <button class="btn btn-success" style="border-radius: 5px; font-family: sans-serif; padding-left: 30px" ng-click="addProducto(fila.id)">
                                         <a><b>Añadir</b>
                                             <i class="fas fa-shopping-cart" style="font-size: 20px;" >
                                             </i>
